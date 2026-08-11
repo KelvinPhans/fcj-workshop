@@ -5,27 +5,27 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Integrating Amazon Cognito Cloud Authentication for Startups Blogs Full-Stack Application (React + NestJS + PostgreSQL)
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+In this workshop, you will learn how to design, configure, and implement an enterprise-grade secure user authentication system using **Amazon Cognito User Pool** for the **Startups Blogs** platform.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+The system combines a full-stack architecture comprising **React 19 (TypeScript, Vite)** on the frontend, **NestJS REST API** on the backend, **PostgreSQL** with **Prisma ORM** for business data, and **AWS Amazon Cognito** in the `ap-southeast-2` region.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+#### Key Highlights
++ **Identity Management Delegation**: Passwords are never stored in the PostgreSQL database. Credential handling is entirely delegated to Amazon Cognito.
++ **6-Digit Email Verification**: Native verification emails sent upon public self-registration (`BUSINESS_OWNER`, `INVESTOR`, `ENTERPRISE_PARTNER`).
++ **HttpOnly Cookie Session Security**: Auth tokens (`sb_access_token`, `sb_id_token`, `sb_refresh_token`) are stored in server-side HttpOnly signed cookies, eliminating token theft risks from XSS attacks.
++ **JWT Verification via aws-jwt-verify**: NestJS backend cryptographically validates token RSA signatures against Cognito JWKS for all protected routes.
++ **Protected Raise Capital Route**: Role-based access control protecting the 8-step Raise Capital wizard (`RaiseCapital`), restricted to authorized business roles.
 
-#### Content
+#### Workshop Modules
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop Overview & Architecture](5.1-Workshop-overview/)
+2. [Environment Preparation & PostgreSQL Setup](5.2-Prerequiste/)
+3. [Configuring Amazon Cognito User Pool & App Client](5.3-Cognito-setup/)
+4. [NestJS Backend Integration & HttpOnly Cookie Session](5.4-Backend-integration/)
+5. [React Frontend Integration & Protected Raise Capital Route](5.5-Frontend-integration/)
+6. [Security Review & Future AWS Expansion Roadmap](5.6-Security-review/)
+7. [Resource Cleanup & Summary](5.7-Cleanup/)

@@ -1,59 +1,34 @@
 ---
 title: "Worklog Tuần 3"
 date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hiểu các dịch vụ lưu trữ (storage) trên AWS.
+- Nắm kiến thức cơ bản về các dịch vụ cơ sở dữ liệu (database) AWS.
+- Hiểu về AWS Identity and Access Management (IAM).
+- Thực hành quản lý tài nguyên một cách an toàn và bảo mật.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - Tìm hiểu về dịch vụ lưu trữ đối tượng Amazon S3 <br> - Nghiên cứu các khái niệm: <br>&emsp; + Bucket <br>&emsp; + Object <br>&emsp; + Object Key <br>&emsp; + Storage Classes <br> - Khởi tạo S3 bucket đầu tiên <br> - Thực hành tải lên (upload) và tải về (download) các đối tượng | 06/07/2026 | 06/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | - Nghiên cứu cơ chế phân quyền trên Amazon S3 và Bucket Policy <br> - Tìm hiểu về tính năng S3 Versioning (quản lý phiên bản) và Lifecycle Rules (quy tắc vòng đời dữ liệu) <br> - Thực hành quản lý tệp tin và thiết lập quyền truy cập trong S3 | 07/07/2026 | 07/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - So sánh chi tiết giữa: <br>&emsp; + Amazon S3 <br>&emsp; + Amazon EBS <br>&emsp; + Amazon EFS <br> - Hiểu rõ trường hợp sử dụng (use case) tối ưu cho từng loại lưu trữ <br> - Tìm hiểu khái niệm Sao lưu (Backup), Snapshot và độ bền dữ liệu (Data durability) | 08/07/2026 | 08/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Tìm hiểu kiến thức nền tảng về cơ sở dữ liệu (Relational vs NoSQL) <br> - Nghiên cứu dịch vụ cơ sở dữ liệu quan hệ Amazon RDS <br> - Nghiên cứu dịch vụ cơ sở dữ liệu NoSQL Amazon DynamoDB <br> - So sánh tình huống sử dụng thực tế giữa Amazon RDS và DynamoDB | 09/07/2026 | 09/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Tìm hiểu dịch vụ quản lý truy cập AWS IAM <br> - Nghiên cứu các thành phần: <br>&emsp; + IAM User <br>&emsp; + IAM Group <br>&emsp; + IAM Role <br>&emsp; + IAM Policy <br> - Nắm vững nguyên tắc quyền tối thiểu (Principle of Least Privilege) <br> - Thực hành tạo người dùng và gán phân quyền an toàn <br> - Tổng kết và củng cố kiến thức về Storage, Database và IAM | 10/07/2026 | 10/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hiểu sâu sắc dịch vụ Amazon S3 và mô hình lưu trữ đối tượng.
+- Tạo mới và quản lý thành thạo S3 bucket.
+- Phân biệt và áp dụng được quyền truy cập S3 cũng như Bucket Policy.
+- Nắm rõ sự khác biệt giữa S3, EBS và EFS.
+- Phân biệt kiến trúc cơ sở dữ liệu quan hệ và NoSQL.
+- Hiểu rõ cách hoạt động của Amazon RDS và Amazon DynamoDB.
+- Nắm chắc các khái niệm cốt lõi của AWS IAM.
+- Thực hành phân quyền chuẩn xác theo nguyên tắc Quyền tối thiểu.

@@ -1,31 +1,112 @@
 ---
-title: "Blog 3"
+title: "Blog 3 - Managing Cognito Sessions with HttpOnly Cookies and RBAC"
 date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL
+## Giải pháp Quản lý Phiên Đăng nhập An toàn và Phân quyền Người dùng Cấp Doanh nghiệp
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### 1. Giới thiệu bài viết
+Sau khi xác thực thành công credentials của người dùng với **Amazon Cognito**, vấn đề tiếp theo là: *Làm thế nào để duy trì và quản lý phiên đăng nhập (Session Management) một cách an toàn nhất?*
 
-Các điểm chính cần nắm:
+Đối với các ứng dụng Single Page Application (SPA) viết bằng React, việc lưu trữ JWT Access Token hay Refresh Token trong `localStorage` là nguyên nhân hàng đầu dẫn đến nguy cơ mất tài khoản khi ứng dụng dính phải lỗ hổng **Cross-Site Scripting (XSS)**.
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+Bài viết này giới thiệu kiến trúc quản lý phiên làm việc được triển khai trong nền tảng **Startups Blogs**:
+- Lưu trữ Token trong **HttpOnly Signed Cookies**.
+- Duy trì phiên làm việc bằng cơ chế **Refresh Token (`REFRESH_TOKEN_AUTH`)**.
+- Xử lý Đăng xuất và Revoke Token.
+- Kết hợp xác thực Cognito với **Role-Based Access Control (RBAC)** trong cơ sở dữ liệu PostgreSQL để bảo vệ các tuyến đường gọi vốn.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+---
 
-...Hình ảnh...
+### 2. An toàn Phiên với HttpOnly Signed Cookies
 
-...Link...
+Thay vì trả token về client để React tự lưu vào `localStorage`, Backend NestJS đóng gói các token thu được từ Cognito vào **HttpOnly Signed Cookies** với cấu hình thuộc tính bảo mật cao:
 
-...Hướng dẫn...
+```typescript
+// Trong AuthController.ts
+private getCookieOptions(maxAgeMs?: number) {
+  return {
+    httpOnly: true,                                         // Ngăn JavaScript (document.cookie) truy cập token
+    secure: process.env.COOKIE_SECURE === 'true',           // Bắt buộc HTTPS trên môi trường Production
+    sameSite: (process.env.COOKIE_SAME_SITE as any) || 'lax',// Ngăn chặn Cross-Site Request Forgery (CSRF)
+    path: '/',
+    signed: true,                                           // Ký cookie bằng secret key để chống chỉnh sửa
+    ...(maxAgeMs !== undefined && { maxAge: maxAgeMs }),
+  };
+}
+```
+
+#### So sánh Lưu trữ Token: `localStorage` vs `HttpOnly Cookie`
+
+| Tiêu chí So sánh | Browser `localStorage` | Server-side HttpOnly Cookie |
+| --- | :---: | :---: |
+| Trích xuất được qua JavaScript (`document.cookie`) | ⚠️ Có (Rất nguy hiểm) | ✅ Không (Bảo vệ tuyệt đối) |
+| Độc hại XSS đánh cắp Token | ⚠️ Rất cao | ✅ Miễn nhiễm với XSS read |
+| Chống tấn công CSRF | ✅ Tự nhiên nếu gửi Header | ✅ Bảo vệ qua `SameSite=Lax` & Signed Cookie |
+| Tự động gửi kèm Request | ❌ Phải viết mã JS đính kèm Header | ✅ Trình duyệt tự động đính kèm theo domain |
+
+---
+
+### 3. Quy trình Làm mới Phiên (Refresh Token Flow)
+
+Cognito Access Token mặc định có thời hạn 1 giờ. Khi Access Token hết hạn, người dùng không cần phải nhập lại mật khẩu. Hệ thống sẽ tự động gia hạn token thông qua `sb_refresh_token` cookie.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as React 19 Client
+    participant BE as NestJS AuthController
+    participant Cog as Amazon Cognito (ap-southeast-2)
+
+    User->>BE: POST /api/v1/auth/refresh (gửi kèm HttpOnly Refresh Cookie)
+    Note over BE: Trích xuất sb_refresh_token & sb_user_email từ Signed Cookie
+    BE->>Cog: InitiateAuthCommand (REFRESH_TOKEN_AUTH flow with SecretHash)
+    Cog-->>BE: Trả về AccessToken mới & IDToken mới
+    BE-->>User: Cập nhật HttpOnly Signed Cookies mới (HTTP 200 OK)
+```
+
+#### Đăng xuất & Thu hồi Token (Global SignOut & RevokeToken)
+Khi người dùng chọn **Logout**, Backend NestJS thực hiện 2 thao tác:
+1. Gửi lệnh `RevokeTokenCommand` và `GlobalSignOutCommand` tới Cognito để hủy hiệu lực của Refresh Token trên Đám mây.
+2. Xóa toàn bộ HttpOnly Cookies trên Trình duyệt bằng `response.clearCookie()`.
+
+---
+
+### 4. Kết hợp Cognito với Phân quyền RBAC trong PostgreSQL
+
+Trong **Startups Blogs**, Cognito đóng vai trò làm Nhà cung cấp Danh tính (Identity Provider), trong khi **PostgreSQL** lưu trữ vai trò nghiệp vụ của người dùng (`UserRole` enum):
+- `BUSINESS_OWNER`: Chủ doanh nghiệp / Founder.
+- `INVESTOR`: Nhà đầu tư.
+- `ENTERPRISE_PARTNER`: Đối tác doanh nghiệp.
+- `ADMIN`: Quản trị viên hệ thống (**Không mở đăng ký công khai**).
+
+#### Bảo vệ Tuyến đường Gọi vốn (Raise Capital Guard)
+Tuyến đường `/raise-capital` hiển thị Wizard 8 bước lập hồ sơ gọi vốn. Tuyến đường này được bảo vệ ở cả Frontend và Backend:
+
+- **Frontend ProtectedRoute (`App.tsx`)**:
+```tsx
+<Route
+  path="raise-capital"
+  element={
+    <ProtectedRoute allowedRoles={['BUSINESS_OWNER', 'ENTERPRISE_PARTNER']}>
+      <RaiseCapital />
+    </ProtectedRoute>
+  }
+/>
+```
+
+- **Ranh giới Tính năng Gọi vốn (Raise Capital Status)**:
+  - **ĐÃ TRIỂN KHAI (IMPLEMENTED)**: Tuyến đường bảo vệ `ProtectedRoute`, giao diện Form Wizard 8 bước, kiểm tra dữ liệu đầu vào (validation) và tự động lưu bản nháp vào `localStorage`.
+  - **DỰ KIẾN TƯƠNG LAI (PLANNED)**: Lưu dữ liệu gọi vốn vào PostgreSQL (Backend Write APIs `POST/PUT`), tải tệp logo và tài liệu lên Amazon S3 qua Presigned URLs.
+
+---
+
+### 5. Kết luận
+Giải pháp quản lý phiên bằng **HttpOnly Signed Cookies** kết hợp luồng **Refresh Token** của Amazon Cognito và hệ thống phân quyền **RBAC PostgreSQL** giúp **Startups Blogs** đạt được sự cân bằng hoàn hảo giữa **Trải nghiệm Người dùng (UX)** và **Bảo mật Cấp Doanh nghiệp (Enterprise Security)**:
+- Người dùng duy trì phiên đăng nhập mượt mà không bị ngắt quãng.
+- Bảo vệ tuyệt đối token khỏi nguy cơ bị đánh cắp qua tấn công XSS.
+- Phân quyền chặt chẽ các tính năng theo vai trò người dùng được ủy quyền.

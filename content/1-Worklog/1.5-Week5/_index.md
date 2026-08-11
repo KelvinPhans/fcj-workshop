@@ -1,57 +1,33 @@
 ---
 title: "Week 5 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Understand the fundamentals of Generative AI.
+- Understand Large Language Models and Foundation Models.
+- Become familiar with Amazon Bedrock.
+- Learn basic Prompt Engineering techniques.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | - Learn the differences between: <br>&emsp; + Artificial Intelligence <br>&emsp; + Machine Learning <br>&emsp; + Deep Learning <br>&emsp; + Generative AI <br> - Study common Generative AI applications <br> - Understand the basic idea of Large Language Models | 20/07/2026 | 20/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | - Learn about Foundation Models <br> - Learn basic concepts: <br>&emsp; + Token <br>&emsp; + Context <br>&emsp; + Prompt <br>&emsp; + Inference <br> - Understand how an LLM processes user input <br> - Learn about hallucination and common LLM limitations | 21/07/2026 | 21/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Learn about Amazon Bedrock <br> - Explore the Amazon Bedrock interface <br> - Learn how Foundation Models are accessed through Bedrock <br> - Explore available models <br> - Test basic prompts using a model | 22/07/2026 | 22/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Learn Prompt Engineering <br> - Practice: <br>&emsp; + Zero-shot prompting <br>&emsp; + Few-shot prompting <br>&emsp; + Role prompting <br>&emsp; + Structured prompting <br> - Compare model responses using different prompts | 23/07/2026 | 23/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Improve prompts based on previous results <br> - Learn about Responsible AI <br> - Learn common risks when using Generative AI <br> - Learn how to reduce unclear or incorrect responses <br> - Review Generative AI and Amazon Bedrock concepts | 24/07/2026 | 24/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood the fundamentals of Generative AI.
+- Understood the concepts of LLMs and Foundation Models.
+- Became familiar with Amazon Bedrock.
+- Successfully tested prompts with a Foundation Model.
+- Practiced multiple Prompt Engineering techniques.
+- Understood common LLM limitations such as hallucination.
+- Became aware of Responsible AI principles.

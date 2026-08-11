@@ -6,17 +6,13 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+Published technical articles index:
 
-This section will list and introduce the blogs you have posted to [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). For example:
+### 1. [Blog 1 - BUILDING SECURE AUTHENTICATION WITH AMAZON COGNITO FOR A REACT AND NESTJS APPLICATION](3.1-Blog1/)
+This blog introduces how Amazon Cognito User Pools can be integrated into a React and NestJS application to provide secure registration, email verification, login, and password recovery. Using Startups Blogs as a practical case study, the article explains why authentication requests are routed through the NestJS backend instead of calling Cognito directly from the browser, allowing sensitive configuration such as the Cognito Client Secret to remain securely on the server.
 
-###  [Blog 1 - SESSION POLICIES IN AMAZON EKS POD IDENTITY](3.1-Blog1/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### 2. [Blog 2 - SECURING AMAZON COGNITO AUTHENTICATION WITH SECRETHASH AND JWT VERIFICATION IN NESTJS](3.2-Blog2/)
+This blog focuses on the backend security mechanisms required when using an Amazon Cognito confidential app client. It explains how Cognito SecretHash is generated using HMAC-SHA256 and how access tokens are validated with `aws-jwt-verify` before protected APIs are accessed. The article also discusses why decoding a JWT alone is not sufficient and why signature, expiration, token use, and client identity must be verified.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
-
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+### 3. [Blog 3 - MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL](3.3-Blog3/)
+This blog explores secure session management for Amazon Cognito authentication. Instead of storing Cognito tokens in `localStorage` or `sessionStorage`, the Startups Blogs backend stores them in HttpOnly cookies that cannot be directly accessed by JavaScript. The article covers session restoration, refresh-token authentication, logout, cookie security, and how Cognito authentication can be combined with PostgreSQL user roles to protect application features.

@@ -1,58 +1,33 @@
 ---
 title: "Worklog Tuần 6"
 date: 2024-01-01
-weight: 1
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Ứng dụng kiến thức AWS và Generative AI vào một ứng dụng thực tế.
+- Tích hợp dịch vụ Amazon Bedrock với các dịch vụ backend.
+- Xây dựng và kiểm thử một API tích hợp trí tuệ nhân tạo (AI-powered API).
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - Xác định ý tưởng dự án và phân tích yêu cầu bài toán <br> - Quy định định dạng dữ liệu đầu vào (input) và đầu ra (output) <br> - Lựa chọn các dịch vụ AWS phù hợp cho dự án <br> - Thiết kế sơ đồ kiến trúc hệ thống cơ bản <br> - Khởi tạo mã nguồn dự án và thiết lập môi trường phát triển | 27/07/2026 | 27/07/2026 | |
+| 2 | - Lập trình logic gửi prompt tới Foundation Model qua Amazon Bedrock <br> - Kết nối ứng dụng trực tiếp với Amazon Bedrock SDK <br> - Xử lý gửi request và giải mã (parse) dữ liệu phản hồi từ mô hình <br> - Thử nghiệm với các bộ dữ liệu đầu vào khác nhau | 28/07/2026 | 28/07/2026 | |
+| 3 | - Viết mã nguồn cho xử lý backend trên AWS Lambda <br> - Tích hợp dịch vụ Amazon Bedrock vào hàm Lambda <br> - Cấu hình IAM Role với đủ quyền truy cập Bedrock cho Lambda <br> - Thực thi kiểm thử và khắc phục các lỗi liên quan đến phân quyền và runtime | 29/07/2026 | 29/07/2026 | |
+| 4 | - Khởi tạo cổng API bằng dịch vụ Amazon API Gateway <br> - Tích hợp API Gateway với hàm Lambda backend <br> - Tạo endpoint cho ứng dụng và sử dụng Postman để kiểm thử API <br> - Viết logic xử lý các phản hồi lỗi từ API | 30/07/2026 | 30/07/2026 | |
+| 5 | - Kiểm thử toàn bộ luồng hoạt động tích hợp của ứng dụng (End-to-End) <br> - Kiểm tra log chi tiết trên Amazon CloudWatch <br> - Tối ưu hóa cấu trúc prompt và kiểm tra hợp lệ dữ liệu nhập vào <br> - Sửa các lỗi phát sinh và hoàn thiện phiên bản ứng dụng đầu tiên | 31/07/2026 | 31/07/2026 | |
 
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Thiết kế thành công kiến trúc hệ thống cho ứng dụng AI.
+- Tích hợp thành công Amazon Bedrock vào xử lý backend.
+- Sử dụng thành thạo AWS Lambda để xử lý logic ứng dụng.
+- Kết nối thành công API Gateway với AWS Lambda.
+- Triển khai thành công tính năng AI thông qua endpoint API.
+- Sử dụng thành thạo CloudWatch Logs để kiểm vết gỡ lỗi.
+- Tối ưu hóa chất lượng phản hồi từ mô hình AI.
+- Hoàn thành phiên bản hoạt động đầu tiên của sản phẩm.

@@ -1,57 +1,33 @@
 ---
 title: "Week 6 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Apply AWS and Generative AI knowledge in a practical application.
+- Integrate Amazon Bedrock with backend services.
+- Build and test an AI-powered API.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | - Define the application idea and requirements <br> - Determine application input and output <br> - Identify required AWS services <br> - Design a basic system architecture <br> - Prepare project source code and development environment | 27/07/2026 | 27/07/2026 | |
+| 2 | - Implement logic for sending prompts to a Foundation Model <br> - Connect the application with Amazon Bedrock <br> - Process model requests <br> - Parse model responses <br> - Test different inputs | 28/07/2026 | 28/07/2026 | |
+| 3 | - Create Lambda backend logic <br> - Integrate Amazon Bedrock with Lambda <br> - Configure the required IAM Role <br> - Test Lambda execution <br> - Debug permission and runtime errors | 29/07/2026 | 29/07/2026 | |
+| 4 | - Create an API using API Gateway <br> - Connect API Gateway with Lambda <br> - Create an application endpoint <br> - Test requests using Postman or an equivalent tool <br> - Handle unsuccessful API responses | 30/07/2026 | 30/07/2026 | |
+| 5 | - Test the complete application flow <br> - Review CloudWatch Logs <br> - Improve prompts <br> - Validate user input <br> - Fix errors discovered during testing <br> - Complete the first usable version of the application | 31/07/2026 | 31/07/2026 | |
 
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Designed a basic architecture for an AI application.
+- Integrated Amazon Bedrock with backend logic.
+- Used AWS Lambda to process application requests.
+- Connected API Gateway with Lambda.
+- Successfully invoked AI functionality through an API.
+- Used CloudWatch Logs for debugging.
+- Improved prompt quality based on testing.
+- Completed an initial working version of the application.

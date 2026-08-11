@@ -7,13 +7,13 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Văn A
+&emsp; **Họ và tên:** Trần Tuấn Khanh
 
-&emsp; **Số điện thoại:** 0989888999
+&emsp; **Số điện thoại:** 0825358779
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** khanhtrantuan12a621@gmail.com
 
-&emsp; **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM
+&emsp; **Trường Đại học:** Đại học Sài Gòn
 
 &emsp; **Ngành:** Công nghệ thông tin
 
@@ -23,7 +23,7 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
+&emsp; **Thời gian thực tập:** Từ ngày 22/06/2026 đến ngày 15/08/2026
 
 ![Ảnh đại diện của bạn](/images/avatar.png)
 

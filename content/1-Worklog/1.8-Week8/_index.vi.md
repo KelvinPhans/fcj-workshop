@@ -1,59 +1,35 @@
 ---
 title: "Worklog Tuần 8"
 date: 2024-01-01
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hoàn thiện toàn bộ dự án thực tập.
+- Đóng gói bộ tài liệu kỹ thuật hoàn chỉnh.
+- Chuẩn bị nội dung báo cáo và buổi demo sản phẩm.
+- Hoàn thành báo cáo thực tập và bài tự đánh giá.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - Rà soát tổng thể dự án và kiểm thử lại toàn bộ các tính năng chính <br> - Sửa triệt để các lỗi còn tồn đọng và kiểm tra tính sẵn sàng của API <br> - Tổng kiểm tra các tài nguyên AWS đang được khởi chạy trong dự án | 10/08/2026 | 10/08/2026 | |
+| 2 | - Hoàn thiện toàn bộ bộ tài liệu kỹ thuật của dự án <br> - Chốt sơ đồ kiến trúc hệ thống và mô tả chi tiết các hàm chức năng <br> - Liệt kê chi tiết công nghệ và dịch vụ AWS đã áp dụng <br> - Kiểm tra lại hướng dẫn cài đặt và triển khai | 11/08/2026 | 11/08/2026 | |
+| 3 | - Soạn thảo slide thuyết trình cho buổi báo cáo cuối kỳ <br> - Kịch bản hóa và tổng duyệt trước buổi demo sản phẩm <br> - Rà soát các điểm nhấn kỹ thuật quan trọng và thực hành thao tác demo | 12/08/2026 | 12/08/2026 | |
+| 4 | - Trình bày/thuyết trình thử nghiệm báo cáo dự án trước mentor và nhóm <br> - Giải trình kiến trúc hệ thống và cách áp dụng các dịch vụ AWS <br> - Ghi nhận phản hồi và đóng góp từ mentor để cải thiện bài báo cáo <br> - Phân tích danh mục các hạng mục tối ưu cuối cùng | 13/08/2026 | 13/08/2026 | |
+| 5 | - Tiếp thu các góp ý và chỉnh sửa hoàn thiện sản phẩm <br> - Hoàn thành báo cáo thực tập tổng hợp <br> - Cập nhật đầy đủ Nhật ký công việc (Worklog) <br> - Thực hiện bài tự đánh giá kết quả thực tập | 14/08/2026 | 14/08/2026 | |
+| 6 | - Nhìn lại toàn bộ hành trình thực tập 8 tuần <br> - Tổng kết các kiến thức Điện toán đám mây AWS và Generative AI đã tích lũy <br> - Đóng gói hồ sơ báo cáo thực tập chính thức <br> - Đánh giá các thành tựu và bài học kinh nghiệm rút ra <br> - Hoàn thành chương trình thực tập | 15/08/2026 | 15/08/2026 | |
 
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hoàn thành và kiểm thử toàn diện sản phẩm dự án thực tập.
+- Đóng gói thành công tài liệu kiến trúc hệ thống kỹ thuật.
+- Chuẩn bị chu đáo slide thuyết trình và kịch bản demo sản phẩm.
+- Tiếp thu ý kiến đóng góp và tối ưu hóa dự án hoàn thiện nhất.
+- Hoàn thành đầy đủ nhật ký công việc (Worklog) 8 tuần.
+- Hoàn thành báo cáo thực tập tổng hợp và tự đánh giá bản thân.
+- Tổng kết toàn bộ tri thức về AWS Cloud và Generative AI thu nhận được.
+- Hoàn thành xuất sắc kỳ thực tập 8 tuần.

@@ -5,29 +5,27 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Tích hợp Xác thực Đám mây Amazon Cognito cho Ứng dụng Full-Stack Startups Blogs (React + NestJS + PostgreSQL)
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Trong bài thực hành (Workshop) này, bạn sẽ học cách thiết kế, cấu hình và triển khai hệ thống xác thực người dùng bảo mật chuẩn doanh nghiệp bằng **Amazon Cognito User Pool** cho nền tảng kết nối đầu tư **Startups Blogs**.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Hệ thống kết hợp kiến trúc Full-Stack bao gồm **React 19 (TypeScript, Vite)** ở Frontend, **NestJS REST API** ở Backend, cơ sở dữ liệu **PostgreSQL** kết hợp **Prisma ORM**, và đám mây **AWS Amazon Cognito** tại khu vực `ap-southeast-2`.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+#### Điểm nổi bật của giải pháp
++ **Ủy quyền Quản lý Identity**: Không lưu trữ mật khẩu trực tiếp trong cơ sở dữ liệu PostgreSQL. Mật khẩu và xác thực người dùng được ủy quyền hoàn toàn cho Amazon Cognito.
++ **Xác thực Email qua Mã 6 Chữ số**: Tự động gửi email kích hoạt tài khoản ngay sau khi người dùng công khai đăng ký (`BUSINESS_OWNER`, `INVESTOR`, `ENTERPRISE_PARTNER`).
++ **Bảo mật Session qua HttpOnly Cookies**: Token xác thực (`sb_access_token`, `sb_id_token`, `sb_refresh_token`) được lưu trong HttpOnly Signed Cookies phía Server, chống lại nguy cơ đánh cắp token qua tấn công XSS.
++ **Kiểm tra Chữ ký JWT với aws-jwt-verify**: NestJS Backend thẩm định trực tiếp chữ ký RSA của token từ Cognito JWKS đối với mọi request được bảo vệ.
++ **Bảo vệ Tuyến đường Gọi vốn (Raise Capital)**: Phân quyền giao diện 8 bước lập hồ sơ gọi vốn (`RaiseCapital`), chỉ cho phép các vai trò được ủy quyền tiếp cận.
 
-#### Nội dung
+#### Nội dung các phần hướng dẫn
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan về Workshop & Kiến trúc](5.1-Workshop-overview/)
+2. [Chuẩn bị môi trường & Cơ sở dữ liệu PostgreSQL](5.2-Prerequiste/)
+3. [Cấu hình Amazon Cognito User Pool & App Client](5.3-Cognito-setup/)
+4. [Tích hợp Backend NestJS & HttpOnly Cookie Session](5.4-Backend-integration/)
+5. [Tích hợp Frontend React & Tuyến đường Gọi vốn Bảo vệ](5.5-Frontend-integration/)
+6. [Rà soát Bảo mật & Định hướng Mở rộng AWS](5.6-Security-review/)
+7. [Dọn dẹp tài nguyên & Tổng kết](5.7-Cleanup/)

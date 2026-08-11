@@ -1,19 +1,48 @@
 ---
-title : "Giới thiệu"
-date : 2024-01-01 
-weight : 1
-chapter : false
-pre : " <b> 5.1. </b> "
+title: "Tổng quan Workshop"
+date: 2024-01-01
+weight: 1
+chapter: false
+pre: " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+### Tổng quan bài lab & Kiến trúc ứng dụng Startups Blogs
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+Trong bài hướng dẫn này, chúng ta sẽ tìm hiểu kiến trúc tổng thể của hệ thống **Startups Blogs** và luồng xác thực đám mây bằng **Amazon Cognito**.
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+#### 1. Tổng quan hệ thống Startups Blogs
+Startups Blogs giải quyết bài toán kết nối thông tin đầu tư giữa các Doanh nghiệp/Startup và Nhà đầu tư thông qua dữ liệu được cấu trúc chuẩn hóa.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+```mermaid
+graph LR
+    User([User Browser]) <-->|React 19 / Vite| FE[Frontend Application]
+    FE <-->|REST API / HttpOnly Cookies| BE[NestJS Backend API]
+    BE <-->|Prisma ORM| DB[(PostgreSQL Database)]
+    BE <-->|SDK & aws-jwt-verify| Cognito[Amazon Cognito User Pool ap-southeast-2]
+```
+
+#### 2. Phân định rõ các vai trò và phạm vi đăng ký
+Hệ thống quản lý 4 vai trò người dùng chính (`UserRole`):
+- **`BUSINESS_OWNER`**: Đăng ký công khai. Quản lý hồ sơ doanh nghiệp và tạo nhu cầu gọi vốn.
+- **`INVESTOR`**: Đăng ký công khai. Tìm kiếm, tra cứu và đánh giá các cơ hội đầu tư.
+- **`ENTERPRISE_PARTNER`**: Đăng ký công khai. Tham gia hợp tác chiến lược và đồng đầu tư.
+- **`ADMIN`**: **Không mở đăng ký công khai**. Quản trị viên hệ thống được cấp phát nội bộ để duyệt hồ sơ và kiểm duyệt nền tảng.
+
+#### 3. Phân định tính năng Thực tế (Implemented) vs Tương lai (Planned)
+- **ĐÃ TRIỂN KHAI (IMPLEMENTED)**:
+  - Cơ sở dữ liệu PostgreSQL & Prisma ORM Schema.
+  - REST APIs đọc dữ liệu công khai (`GET /businesses`, `GET /funding-opportunities`, `GET /investors`, `GET /taxonomies/*`).
+  - Toàn bộ backend xác thực Amazon Cognito (`Register`, `Verify Email`, `Login`, `Refresh`, `Logout`, `Forgot Password`).
+  - Bảo mật HttpOnly Signed Cookie & kiểm tra chữ ký RSA Token qua `aws-jwt-verify`.
+  - Giao diện React Frontend, AuthContext và Tuyến đường bảo vệ gọi vốn (`ProtectedRoute`).
+  - Giao diện Form Gọi vốn 8 bước (`RaiseCapital`) kiểm tra dữ liệu và lưu bản nháp vào `localStorage`.
+- **DỰ KIẾN TƯƠNG LAI (PLANNED)**:
+  - Tích hợp Amazon S3 để tải tệp logo doanh nghiệp, ảnh đại diện và tài liệu gọi vốn qua Presigned URLs.
+  - Các Backend Write APIs (`POST/PUT`) để lưu dữ liệu gọi vốn vào PostgreSQL.
+  - Yêu cầu truy cập tài liệu hạn chế & Nhắn tin giữa Nhà đầu tư và Chủ doanh nghiệp.
+  - Dashboard Quản trị viên (Admin Moderation).
+  - Kiến trúc triển khai Production trên AWS — sẽ chốt cấu hình chính thức ở giai đoạn tiếp theo.
+
+> Screenshot required:
+> Sơ đồ tổng quan kiến trúc hệ thống Startups Blogs và Cognito Auth Flow.
+> Hide AWS account identifiers and sensitive values before capturing.

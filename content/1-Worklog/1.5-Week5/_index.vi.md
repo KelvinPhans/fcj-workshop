@@ -1,59 +1,33 @@
 ---
 title: "Worklog Tuần 5"
 date: 2024-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hiểu kiến thức nền tảng về Generative AI (AI tạo sinh).
+- Nắm vững khái niệm về Mô hình ngôn ngữ lớn (LLM) và Foundation Model.
+- Làm quen và trải nghiệm dịch vụ Amazon Bedrock.
+- Học các kỹ thuật Prompt Engineering cơ bản.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 1 | - Phân biệt sự khác nhau giữa: <br>&emsp; + Artificial Intelligence <br>&emsp; + Machine Learning <br>&emsp; + Deep Learning <br>&emsp; + Generative AI <br> - Tìm hiểu các ứng dụng thực tế phổ biến của Generative AI <br> - Nghiên cứu khái niệm và cơ chế hoạt động của Large Language Model (LLM) | 20/07/2026 | 20/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | - Tìm hiểu về các Foundation Model <br> - Nghiên cứu các khái niệm cơ bản: <br>&emsp; + Token <br>&emsp; + Context <br>&emsp; + Prompt <br>&emsp; + Inference <br> - Tìm hiểu quy trình LLM xử lý câu lệnh đầu vào từ người dùng <br> - Nghiên cứu hiện tượng ảo giác (hallucination) và các giới hạn cốt lõi của LLM | 21/07/2026 | 21/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tìm hiểu tổng quan về dịch vụ Amazon Bedrock <br> - Khám phá và thao tác trên giao diện Amazon Bedrock <br> - Học cách truy cập và gọi các Foundation Model thông qua Bedrock <br> - Trải nghiệm thử nghiệm các mô hình AI có sẵn <br> - Gửi các câu lệnh prompt cơ bản tới mô hình để quan sát kết quả | 22/07/2026 | 22/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Học lý thuyết và kỹ thuật Prompt Engineering <br> - Thực hành các phương pháp: <br>&emsp; + Zero-shot prompting <br>&emsp; + Few-shot prompting <br>&emsp; + Role prompting <br>&emsp; + Structured prompting <br> - Đánh giá và so sánh phản hồi của mô hình theo từng dạng prompt | 23/07/2026 | 23/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Tối ưu hóa chất lượng prompt dựa trên kết quả thử nghiệm <br> - Tìm hiểu về AI có trách nhiệm (Responsible AI) và các rủi ro liên quan <br> - Học phương pháp giảm thiểu phản hồi mơ hồ hoặc sai lệch từ mô hình <br> - Tổng kết toàn bộ lý thuyết về Generative AI và Amazon Bedrock | 24/07/2026 | 24/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Nắm chắc khái niệm và ứng dụng của Generative AI.
+- Hiểu sâu về bản chất của các mô hình LLM và Foundation Model.
+- Sử dụng thành thạo dịch vụ Amazon Bedrock.
+- Thử nghiệm thành công kết nối và gửi prompt tới Foundation Model.
+- Áp dụng linh hoạt các kỹ thuật Prompt Engineering cơ bản.
+- Nhận biết rõ hạn chế của LLM như hỏng hóc hay hallucination.
+- Ý thức và nắm vững các nguyên tắc của Responsible AI.

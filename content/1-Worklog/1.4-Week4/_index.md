@@ -1,57 +1,34 @@
 ---
 title: "Week 4 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
-
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Understand Serverless Architecture.
+- Learn AWS Lambda and Amazon API Gateway.
+- Understand monitoring and logging using Amazon CloudWatch.
+- Build a simple serverless workflow.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 1 | - Learn about Serverless Architecture <br> - Understand event-driven systems <br> - Learn the fundamentals of AWS Lambda <br> - Create a simple Lambda function <br> - Run and test Lambda manually | 13/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 2 | - Learn how Lambda handles input and output <br> - Learn about Lambda execution roles <br> - Configure memory and timeout <br> - Practice debugging Lambda functions <br> - Review Lambda logs | 14/07/2026 | 14/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Learn about Amazon API Gateway <br> - Understand REST API concepts <br> - Learn HTTP methods: <br>&emsp; + GET <br>&emsp; + POST <br>&emsp; + PUT <br>&emsp; + DELETE <br> - Create a simple API <br> - Connect API Gateway with Lambda | 15/07/2026 | 15/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Learn about Amazon CloudWatch <br> - View Lambda logs <br> - Learn about CloudWatch Metrics <br> - Learn basic monitoring concepts <br> - Use logs to identify and debug errors | 16/07/2026 | 16/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Integrate API Gateway and Lambda <br> - Send requests to the API <br> - Test request and response handling <br> - Fix basic errors <br> - Review the complete serverless architecture | 17/07/2026 | 17/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 4 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood the concept of Serverless Architecture.
+- Successfully created and executed AWS Lambda functions.
+- Understood Lambda execution roles and configuration.
+- Learned how API Gateway exposes backend functions through APIs.
+- Successfully connected API Gateway with Lambda.
+- Became familiar with Amazon CloudWatch.
+- Used logs to identify and troubleshoot Lambda issues.
+- Built a basic serverless API workflow.
