@@ -6,35 +6,24 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+During the **First Cloud AI Journey (FCAJ)** internship program, I participated in **two technical community AWS events**. These activities provided valuable technical insights into AWS Cloud Architecture, system design thinking, AWS certification strategies, and modern Agentic AI trends.
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+### [Event 1: Cloud Architect](4.1-event1/)
+&emsp;**Event Name:** Cloud Architect
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Date:** 11/07/2026
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Role:** Participant / Team participant
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
-
-&emsp;**Role:** Attendee  
+&emsp;**Summary:** A team-based Cloud Architecture knowledge competition. The event helped reinforce Cloud Computing fundamentals, architectural trade-off analysis, and practical preparation strategies for AWS certifications.
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+### [Event 2: FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!](4.2-event2/)
+&emsp;**Event Name:** FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Date:** 25/07/2026
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Role:** Attendee
 
-&emsp;**Role:** Attendee  
+&emsp;**Summary:** A solution showcase and reporting session for the Agentic AI Hackathon organized by AWS FCAJ in collaboration with JI Fund. The event offered practical insights into evolving AI solutions from PoC to Production readiness, combining AWS services, and applying Guardrails and RBAC to AI applications.

@@ -6,73 +6,38 @@ chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-### React 19 Frontend Integration, AuthContext & Protected Capital Route
+### React 19 Frontend Integration, Zustand State, REST APIs & Admin Dashboard
 
-In this section, we examine how the **React 19 Frontend** application connects to NestJS Auth API and protects the capital raising wizard route (`RaiseCapital`).
+In this section, we examine how the **React 19 Frontend** application connects to NestJS backend REST APIs, manages state via Zustand, and presents the **Admin Dashboard UI**.
 
-#### 1. Authentication State Management (`AuthContext.tsx`)
-`AuthProvider` automatically invokes `GET /api/v1/auth/me` upon app load to validate session cookies:
-
-```typescript
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchUser = async () => {
-    try {
-      setIsLoading(true);
-      const currentUser = await authApi.getCurrentUser();
-      setUser(currentUser);
-    } catch {
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, register, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-```
-
-#### 2. Route Access Control (`ProtectedRoute.tsx`)
-Protects sensitive routes (such as `/raise-capital`), restricting access strictly to authorized roles (`BUSINESS_OWNER` and `ENTERPRISE_PARTNER`):
+#### 1. Authentication State & Interceptors (`authStore.ts` & Axios Interceptors)
+The frontend utilizes **Zustand** combined with **Axios Interceptors** to automatically attach Bearer JWT Tokens to API requests:
 
 ```typescript
-export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) {
-  const { user, isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) return <LoadingSpinner />;
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (allowedRoles && user && !allowedRoles.includes(user.role)) {
-    return <Navigate to="/" replace />;
+// Inside services/api.ts
+api.interceptors.request.use((config) => {
+  const token = useAuthStore.getState().token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-
-  return <>{children}</>;
-}
+  return config;
+});
 ```
 
-#### 3. 8-Step Raise Capital Wizard (`RaiseCapital.tsx`)
-The `/raise-capital` view renders an 8-step stepper wizard with step validation and `localStorage` draft auto-saving:
+#### 2. Capital Raising Integration & Backend Write APIs
+The capital submission view (`PostIdea.tsx` / `RaiseCapital`) connects directly to backend write endpoints:
+- Business creation (`POST /api/v1/businesses`).
+- Funding opportunity publishing (`POST /api/v1/businesses/:businessId/funding-opportunities`).
+- Image file upload (`POST /api/v1/upload`).
 
-1. **Business Information (`BusinessStep`)**
-2. **Funding Opportunity (`OpportunityStep`)**
-3. **Funding Details & Allocation (`FundingStep`)**
-4. **Market & Growth (`MarketGrowthStep`)**
-5. **Financial Highlights (`FinancialStep`)**
-6. **Documents & Attachments (`DocumentsStep`)**
-7. **Privacy Settings (`VisibilityStep`)**
-8. **Review & Submit (`ReviewStep`)**
-
-> **Implementation Note**: The 8-step wizard form, input validation, `localStorage` draft persistence, and `ProtectedRoute` role guard are **fully IMPLEMENTED on the frontend**. PostgreSQL backend persistence (Write APIs) and real Amazon S3 file uploads are **PLANNED FOR FUTURE PHASES**.
+#### 3. Admin Dashboard UI (`/admin/*`)
+The frontend features a comprehensive Admin area under `/admin`:
+- **Overview (`/admin/overview`)**: Statistical metrics for Users, Businesses, Articles, and Pending Submissions.
+- **Businesses Management (`/admin/businesses`)**: Approving (`PUBLISHED`) or Rejecting (`REJECTED`) businesses, viewing financial metrics (`AdminViewBusiness`).
+- **Users Management (`/admin/users`)**: Managing system-wide users and role assignments (`USER`, `MODERATOR`, `ADMIN`).
+- **Articles Management (`/admin/articles`)**: Article preview, comment moderation, and advanced filtering.
+- **Change Proposals (`/admin/businesses/:id/edit`)**: Admin JSON change proposal generation with founder Diff/Merge approval interfaces.
 
 > Screenshot required:
-> Protected `/raise-capital` route showing 8-step wizard form with step indicator.
+> Admin Dashboard Overview page (`/admin/overview`) showing stats widgets and business approval controls.
 > Hide AWS account identifiers and sensitive values before capturing.

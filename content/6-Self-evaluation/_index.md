@@ -6,30 +6,32 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+During my 8-week internship program at **First Cloud AI Journey (FCAJ)** from **22/06/2026** to **15/08/2026**, I had the opportunity to learn, practice, and apply Full-Stack Web Development and Cloud Computing knowledge from Saigon University into a real-world software engineering environment.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+Throughout the internship, I researched and developed the **Startups Blogs - Business Investment Connection Platform**, through which I enhanced my technical capabilities in NestJS REST API design, React 19 Frontend integration, **Amazon Cognito** cloud authentication service integration, PostgreSQL database management via Prisma ORM, system architecture analysis, and professional teamwork.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+Regarding professional conduct, I consistently fulfilled all weekly objectives, strictly adhered to workplace regulations, and proactively communicated with my mentors to achieve high work efficiency.
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+To objectively reflect on my 8-week internship period, I evaluate myself based on the following criteria:
 
-### Needs Improvement
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+| No. | Criteria | Description | Good | Fair | Average |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Professional knowledge & skills** | Full-Stack proficiency (React 19 + NestJS), Amazon Cognito integration, Prisma ORM | ✅ | ☐ | ☐ |
+| 2 | **Ability to learn** | Absorbing new technologies quickly, studying AWS SDK and REST API documentation | ✅ | ☐ | ☐ |
+| 3 | **Proactiveness** | Taking initiative in problem-solving and completing tasks independently | ✅ | ☐ | ☐ |
+| 4 | **Sense of responsibility** | Ensuring high code quality and completing weekly Worklog reports on time | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | Strict adherence to schedules, security guidelines, and project workflows | ✅ | ☐ | ☐ |
+| 6 | **Progressive mindset** | Actively receiving feedback from Mentors to continuously refine application quality | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Presenting technical concepts and reporting progress clearly | ☐ | ✅ | ☐ |
+| 8 | **Teamwork** | Working effectively with team members and engaging actively with mentors | ✅ | ☐ | ☐ |
+| 9 | **Professional conduct** | Respecting workplace culture, team members, and organization regulations | ✅ | ☐ | ☐ |
+| 10 | **Problem-solving skills** | Root cause analysis, applying HMAC-SHA256 SecretHash & HttpOnly Cookie security controls | ✅ | ☐ | ☐ |
+| 11 | **Contribution to project/team** | Successfully building the internship report and cloud auth solution for Startups Blogs | ✅ | ☐ | ☐ |
+| 12 | **Overall** | General evaluation of the entire 8-week internship journey | ✅ | ☐ | ☐ |
+
+### Future Self-Improvement Goals
+
+* Continue deepening distributed cloud architecture and advanced cybersecurity principles.
+* Refine technical presentation skills for engineering discussions.
+* Expand knowledge of Amazon S3 storage solutions and automated CI/CD cloud pipelines.

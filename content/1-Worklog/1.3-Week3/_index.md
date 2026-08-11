@@ -7,28 +7,26 @@ pre: " <b> 1.3. </b> "
 ---
 ### Week 3 Objectives:
 
-- Understand AWS storage services.
-- Understand basic database services on AWS.
-- Understand AWS Identity and Access Management.
-- Practice managing resources securely.
+- Develop the User Profile page interface (`UserProfile.tsx`).
+- Construct the User Dashboard user interface.
+- Study relational database storage concepts utilizing Amazon RDS for PostgreSQL.
+- Integrate backend REST APIs for displaying detailed user profile data (`GET /users/me`, `GET /users/:id`).
+- Handle static and dynamic data binding onto user profile UI components.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Learn about Amazon S3 <br> - Learn about: <br>&emsp; + Bucket <br>&emsp; + Object <br>&emsp; + Object Key <br>&emsp; + Storage Classes <br> - Create an S3 bucket <br> - Upload and download objects | 06/07/2026 | 06/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 2 | - Learn about S3 permissions <br> - Learn about Bucket Policies <br> - Learn about S3 Versioning <br> - Learn about Lifecycle Rules <br> - Practice managing files and permissions in S3 | 07/07/2026 | 07/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Compare: <br>&emsp; + Amazon S3 <br>&emsp; + Amazon EBS <br>&emsp; + Amazon EFS <br> - Understand the appropriate use cases for each storage service <br> - Learn about backup, snapshot, and data durability concepts | 08/07/2026 | 08/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Learn basic database concepts <br> - Understand relational and NoSQL databases <br> - Learn about Amazon RDS <br> - Learn about Amazon DynamoDB <br> - Compare common use cases of RDS and DynamoDB | 09/07/2026 | 09/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Learn about AWS IAM <br> - Learn about: <br>&emsp; + IAM User <br>&emsp; + IAM Group <br>&emsp; + IAM Role <br>&emsp; + IAM Policy <br> - Understand the Principle of Least Privilege <br> - Practice creating users and assigning permissions <br> - Review storage, database, and IAM concepts | 10/07/2026 | 10/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 1 | - Designed the layout for the User Profile page <br> - Programmed display sections for avatars, bios, contact details, and follower counts | 06/07/2026 | 06/07/2026 | |
+| 2 | - Constructed User Dashboard UI components <br> - Programmed management tabs for published articles and owned business profiles | 07/07/2026 | 07/07/2026 | |
+| 3 | - Studied Amazon RDS service fundamentals and PostgreSQL relational database concepts <br> - Authored API service functions connecting endpoints `GET /users/me` and `GET /users/:id` | 08/07/2026 | 08/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Connected API responses to UserProfile and Dashboard UI components <br> - Bound dynamic backend data onto user profile display cards | 09/07/2026 | 09/07/2026 | |
+| 5 | - Verified user profile information display accuracy in browser environments <br> - Handled edge cases for unauthenticated visitors or non-existent user profile records | 10/07/2026 | 10/07/2026 | |
 
 
 ### Week 3 Achievements:
 
-- Understood Amazon S3 and object storage concepts.
-- Successfully created and managed an S3 bucket.
-- Understood S3 permissions and Bucket Policies.
-- Learned the differences between S3, EBS, and EFS.
-- Understood basic relational and NoSQL database concepts.
-- Became familiar with Amazon RDS and DynamoDB.
-- Understood the core concepts of AWS IAM.
-- Practiced assigning AWS permissions based on the Principle of Least Privilege.
+- Completed User Profile (`UserProfile`) and User Dashboard user interfaces.
+- Understood user and business data persistence patterns in PostgreSQL databases.
+- Successfully integrated profile API services connecting React Frontend to NestJS Backend.
+- Accurately displayed user profile details, article listings, and owned businesses.
+- Effectively handled profile data exception handling on the user interface.

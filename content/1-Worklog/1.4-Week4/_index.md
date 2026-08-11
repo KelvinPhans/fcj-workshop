@@ -7,28 +7,26 @@ pre: " <b> 1.4. </b> "
 ---
 ### Week 4 Objectives:
 
-- Understand Serverless Architecture.
-- Learn AWS Lambda and Amazon API Gateway.
-- Understand monitoring and logging using Amazon CloudWatch.
-- Build a simple serverless workflow.
+- Integrate Frontend UI components with Amazon Cognito Auth flows (Login, Register, Email OTP Verification).
+- Study Amazon Cognito User Pools and Confidential Client integration concepts.
+- Manage global authentication state using Zustand store (`authStore`).
+- Investigate and resolve UI image card rendering glitches caused by Google Chrome Translate DOM mutations.
+- Test authentication flows and overall user experience on the frontend.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Learn about Serverless Architecture <br> - Understand event-driven systems <br> - Learn the fundamentals of AWS Lambda <br> - Create a simple Lambda function <br> - Run and test Lambda manually | 13/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 2 | - Learn how Lambda handles input and output <br> - Learn about Lambda execution roles <br> - Configure memory and timeout <br> - Practice debugging Lambda functions <br> - Review Lambda logs | 14/07/2026 | 14/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Learn about Amazon API Gateway <br> - Understand REST API concepts <br> - Learn HTTP methods: <br>&emsp; + GET <br>&emsp; + POST <br>&emsp; + PUT <br>&emsp; + DELETE <br> - Create a simple API <br> - Connect API Gateway with Lambda | 15/07/2026 | 15/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Learn about Amazon CloudWatch <br> - View Lambda logs <br> - Learn about CloudWatch Metrics <br> - Learn basic monitoring concepts <br> - Use logs to identify and debug errors | 16/07/2026 | 16/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Integrate API Gateway and Lambda <br> - Send requests to the API <br> - Test request and response handling <br> - Fix basic errors <br> - Review the complete serverless architecture | 17/07/2026 | 17/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 1 | - Built the Registration UI (`Register.tsx`) <br> - Implemented role selection form controls (`BUSINESS_OWNER`, `INVESTOR`, `ENTERPRISE_PARTNER`) | 13/07/2026 | 13/07/2026 | |
+| 2 | - Developed Login UI (`Login.tsx`) and Forgot Password view (`ForgotPassword.tsx`) <br> - Constructed the 6-digit Email OTP Verification view (`PendingVerification.tsx`) <br> - Studied Amazon Cognito User Pools architecture fundamentals | 14/07/2026 | 14/07/2026 | <https://docs.aws.amazon.com/cognito/> |
+| 3 | - Connected authentication forms to backend REST APIs powered by Amazon Cognito <br> - Utilized Zustand (`authStore`) for managing tokens and session user state | 15/07/2026 | 15/07/2026 | <https://github.com/pmndrs/zustand> |
+| 4 | - Investigated DOM rendering issues affecting image cards under Google Chrome Translate <br> - Analyzed Chrome Translate text-node wrapping behaviors causing React DOM mismatches | 16/07/2026 | 16/07/2026 | |
+| 5 | - Implemented DOM node protection attributes on image elements to prevent translate crashes <br> - Tested end-to-end user registration, OTP verification, and Cognito login | 17/07/2026 | 17/07/2026 | |
 
 
 ### Week 4 Achievements:
 
-- Understood the concept of Serverless Architecture.
-- Successfully created and executed AWS Lambda functions.
-- Understood Lambda execution roles and configuration.
-- Learned how API Gateway exposes backend functions through APIs.
-- Successfully connected API Gateway with Lambda.
-- Became familiar with Amazon CloudWatch.
-- Used logs to identify and troubleshoot Lambda issues.
-- Built a basic serverless API workflow.
+- Successfully integrated Frontend UI components with Amazon Cognito Auth workflows.
+- Understood user identity authentication mechanisms using Amazon Cognito User Pools.
+- Effectively managed user session states via Zustand store (`authStore`).
+- Resolved image card rendering issues caused by Chrome Translate DOM mutations.
+- Ensured registration, 6-digit OTP confirmation, and login flows operate smoothly and securely.

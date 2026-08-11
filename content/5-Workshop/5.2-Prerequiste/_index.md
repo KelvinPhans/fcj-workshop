@@ -6,21 +6,22 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-### Environment Preparation & Database Initialization
+### Environment Setup, Terraform & Database Preparation
 
-Before proceeding with Amazon Cognito configuration and full-stack integration, ensure the following local development setup is prepared.
+Before proceeding with Amazon Cognito configuration and full-stack cloud deployment, ensure the following local development environment is prepared.
 
 #### 1. Software Requirements
 - **Node.js**: Version 18+ or 20+ LTS.
 - **npm** / **yarn** / **pnpm**: Package manager.
-- **AWS CLI**: Installed and configured with region `ap-southeast-2`.
-- **PostgreSQL Database**: Running locally or accessible via docker container.
-- **Docker** *(Optional)*: To launch PostgreSQL container using `docker-compose`.
+- **Terraform**: Version v1.5+ for automated cloud infrastructure provisioning.
+- **AWS CLI**: Installed and configured with region **`us-east-1`** (N. Virginia).
+- **PostgreSQL Database**: Running locally via Docker (`docker-compose.yml` on port `5433`) or Amazon RDS.
+- **Docker**: For PostgreSQL and MinIO S3 local container orchestration.
 
-#### 2. Database Schema Generation via Prisma ORM
-The Startups Blogs domain data model is declared inside `prisma/schema.prisma`.
+#### 2. Database Schema Initialization via Prisma ORM
+The Startups Blogs domain data model is declared inside `backend/prisma/schema.prisma`.
 
-Execute the following commands to apply migrations:
+Execute the following commands to generate Prisma Client and apply migrations:
 
 ```bash
 cd backend
@@ -29,12 +30,12 @@ npx prisma db push
 ```
 
 #### 3. Seed Reference Data
-Seed taxonomy records for industries, business types, stages, and sample listings:
+Seed taxonomy records for industries, business types, stages, articles, and sample accounts:
 
 ```bash
 npx prisma db seed
 ```
 
 > Screenshot required:
-> Successful execution of `npx prisma db push` showing PostgreSQL tables `users`, `businesses`, and `funding_opportunities`.
+> Successful execution of `npx prisma db push` showing PostgreSQL tables `users`, `businesses`, `funding_opportunities`, `articles`, and `change_proposals`.
 > Hide AWS account identifiers and sensitive values before capturing.

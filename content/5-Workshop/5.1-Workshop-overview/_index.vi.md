@@ -6,43 +6,47 @@ chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-### Tổng quan bài lab & Kiến trúc ứng dụng Startups Blogs
+### Tổng quan bài lab & Kiến trúc Đám mây AWS Enterprise
 
-Trong bài hướng dẫn này, chúng ta sẽ tìm hiểu kiến trúc tổng thể của hệ thống **Startups Blogs** và luồng xác thực đám mây bằng **Amazon Cognito**.
+Trong bài hướng dẫn này, chúng ta sẽ tìm hiểu kiến trúc tổng thể của hệ thống **Startups Blogs** và luồng xác thực đám mây bằng **Amazon Cognito (`us-east-1`)**.
 
-#### 1. Tổng quan hệ thống Startups Blogs
-Startups Blogs giải quyết bài toán kết nối thông tin đầu tư giữa các Doanh nghiệp/Startup và Nhà đầu tư thông qua dữ liệu được cấu trúc chuẩn hóa.
+#### 1. Sơ đồ Kiến trúc AWS Enterprise
+Hệ thống được thiết kế theo chuẩn Enterprise Microservices & Serverless kết hợp, tách biệt hoàn toàn giữa Frontend, Backend, Database và Hệ thống Xác thực. Toàn bộ hạ tầng được tự động hóa bằng **Terraform** (Infrastructure as Code).
 
 ```mermaid
-graph LR
-    User([User Browser]) <-->|React 19 / Vite| FE[Frontend Application]
-    FE <-->|REST API / HttpOnly Cookies| BE[NestJS Backend API]
-    BE <-->|Prisma ORM| DB[(PostgreSQL Database)]
-    BE <-->|SDK & aws-jwt-verify| Cognito[Amazon Cognito User Pool ap-southeast-2]
+graph TD
+    User([User Browser]) <-->|CloudFront CDN| S3_FE[Amazon S3 Frontend Hosting us-east-1]
+    User <-->|HTTPS / REST API| APIGW[Amazon API Gateway]
+    APIGW <-->|Forward Traffic| EC2[Amazon EC2 Backend NestJS + PM2]
+    EC2 <-->|Prisma ORM / Port 5432| RDS[(Amazon RDS PostgreSQL Private Subnet)]
+    EC2 <-->|aws-sdk & aws-jwt-verify| Cognito[Amazon Cognito User Pool us-east-1]
+    EC2 <-->|S3 SDK / Image Upload| S3_Storage[Amazon S3 Media Bucket]
+    EC2 <-->|Logs & Metrics| CloudWatch[Amazon CloudWatch Monitoring]
 ```
 
 #### 2. Phân định rõ các vai trò và phạm vi đăng ký
 Hệ thống quản lý 4 vai trò người dùng chính (`UserRole`):
-- **`BUSINESS_OWNER`**: Đăng ký công khai. Quản lý hồ sơ doanh nghiệp và tạo nhu cầu gọi vốn.
+- **`BUSINESS_OWNER`**: Đăng ký công khai. Tạo và quản lý hồ sơ doanh nghiệp, công bố tin gọi vốn.
 - **`INVESTOR`**: Đăng ký công khai. Tìm kiếm, tra cứu và đánh giá các cơ hội đầu tư.
 - **`ENTERPRISE_PARTNER`**: Đăng ký công khai. Tham gia hợp tác chiến lược và đồng đầu tư.
-- **`ADMIN`**: **Không mở đăng ký công khai**. Quản trị viên hệ thống được cấp phát nội bộ để duyệt hồ sơ và kiểm duyệt nền tảng.
+- **`ADMIN`**: **Không mở đăng ký công khai**. Đồng bộ tự động với Cognito User Pool Group `ADMIN` qua `CognitoGroupsService`. Quản trị viên sử dụng Admin Dashboard để phê duyệt doanh nghiệp (`PUT /businesses/admin/:id/status`), kiểm duyệt bài viết và tạo Đề xuất thay đổi (`ChangeProposal`).
 
 #### 3. Phân định tính năng Thực tế (Implemented) vs Tương lai (Planned)
-- **ĐÃ TRIỂN KHAI (IMPLEMENTED)**:
-  - Cơ sở dữ liệu PostgreSQL & Prisma ORM Schema.
-  - REST APIs đọc dữ liệu công khai (`GET /businesses`, `GET /funding-opportunities`, `GET /investors`, `GET /taxonomies/*`).
-  - Toàn bộ backend xác thực Amazon Cognito (`Register`, `Verify Email`, `Login`, `Refresh`, `Logout`, `Forgot Password`).
-  - Bảo mật HttpOnly Signed Cookie & kiểm tra chữ ký RSA Token qua `aws-jwt-verify`.
-  - Giao diện React Frontend, AuthContext và Tuyến đường bảo vệ gọi vốn (`ProtectedRoute`).
-  - Giao diện Form Gọi vốn 8 bước (`RaiseCapital`) kiểm tra dữ liệu và lưu bản nháp vào `localStorage`.
+- **ĐÃ TRIỂN KHAI VÀ KIỂM THỬ (IMPLEMENTED AND VERIFIED)**:
+  - Hạ tầng mã nguồn Terraform IaC tại `terraform/` (Region: `us-east-1`).
+  - Cơ sở dữ liệu Amazon RDS PostgreSQL & Prisma ORM Schema đầy đủ.
+  - REST APIs Đọc & Ghi Doanh nghiệp (`POST/GET/PUT/DELETE /businesses`).
+  - REST APIs Đăng tin Gọi vốn (`POST/GET/PUT/DELETE /businesses/:businessId/funding-opportunities`).
+  - Tải ảnh đính kèm lên S3/MinIO (`POST /upload`).
+  - Backend xác thực Amazon Cognito, SecretHash HMAC-SHA256, và đồng bộ Cognito Group `ADMIN`.
+  - Bảo mật HttpOnly Signed Cookie & kiểm tra chữ ký RSA Token qua `aws-jwt-verify` từ JWKS `us-east-1`.
+  - Giao diện React 19 Frontend, AuthStore Zustand, Admin Dashboard (`/admin/*`) và Đề xuất thay đổi (Change Proposals).
+  - Yêu cầu liên hệ (`POST /businesses/:businessId/contact-requests`).
 - **DỰ KIẾN TƯƠNG LAI (PLANNED)**:
-  - Tích hợp Amazon S3 để tải tệp logo doanh nghiệp, ảnh đại diện và tài liệu gọi vốn qua Presigned URLs.
-  - Các Backend Write APIs (`POST/PUT`) để lưu dữ liệu gọi vốn vào PostgreSQL.
-  - Yêu cầu truy cập tài liệu hạn chế & Nhắn tin giữa Nhà đầu tư và Chủ doanh nghiệp.
-  - Dashboard Quản trị viên (Admin Moderation).
-  - Kiến trúc triển khai Production trên AWS — sẽ chốt cấu hình chính thức ở giai đoạn tiếp theo.
+  - Hệ thống Thông báo thời gian thực (Real-time Notification System với Notification Schema & WebSocket).
+  - Tối ưu hóa luồng phê duyệt gọi vốn đa tầng.
+  - Mở rộng bộ kiểm thử tự động E2E.
 
 > Screenshot required:
-> Sơ đồ tổng quan kiến trúc hệ thống Startups Blogs và Cognito Auth Flow.
+> Sơ đồ tổng quan kiến trúc hệ thống Startups Blogs Enterprise AWS Architecture.
 > Hide AWS account identifiers and sensitive values before capturing.

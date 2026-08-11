@@ -7,29 +7,24 @@ pre: " <b> 1.8. </b> "
 ---
 ### Mục tiêu tuần 8:
 
-- Hoàn thiện toàn bộ dự án thực tập.
-- Đóng gói bộ tài liệu kỹ thuật hoàn chỉnh.
-- Chuẩn bị nội dung báo cáo và buổi demo sản phẩm.
-- Hoàn thành báo cáo thực tập và bài tự đánh giá.
+- Hoàn tất đóng gói bản Frontend React 19, chuẩn bị triển khai web tĩnh.
+- Viết báo cáo thực tập phần công việc Frontend và tài liệu Workshop.
+- Rà soát lần cuối toàn bộ tài liệu Hugo Workshop Template.
+- Chuẩn bị sản phẩm và nội dung cho buổi báo cáo thuyết trình tổng kết thực tập.
 
 ### Công việc thực hiện trong tuần:
 | Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 1 | - Rà soát tổng thể dự án và kiểm thử lại toàn bộ các tính năng chính <br> - Sửa triệt để các lỗi còn tồn đọng và kiểm tra tính sẵn sàng của API <br> - Tổng kiểm tra các tài nguyên AWS đang được khởi chạy trong dự án | 10/08/2026 | 10/08/2026 | |
-| 2 | - Hoàn thiện toàn bộ bộ tài liệu kỹ thuật của dự án <br> - Chốt sơ đồ kiến trúc hệ thống và mô tả chi tiết các hàm chức năng <br> - Liệt kê chi tiết công nghệ và dịch vụ AWS đã áp dụng <br> - Kiểm tra lại hướng dẫn cài đặt và triển khai | 11/08/2026 | 11/08/2026 | |
-| 3 | - Soạn thảo slide thuyết trình cho buổi báo cáo cuối kỳ <br> - Kịch bản hóa và tổng duyệt trước buổi demo sản phẩm <br> - Rà soát các điểm nhấn kỹ thuật quan trọng và thực hành thao tác demo | 12/08/2026 | 12/08/2026 | |
-| 4 | - Trình bày/thuyết trình thử nghiệm báo cáo dự án trước mentor và nhóm <br> - Giải trình kiến trúc hệ thống và cách áp dụng các dịch vụ AWS <br> - Ghi nhận phản hồi và đóng góp từ mentor để cải thiện bài báo cáo <br> - Phân tích danh mục các hạng mục tối ưu cuối cùng | 13/08/2026 | 13/08/2026 | |
-| 5 | - Tiếp thu các góp ý và chỉnh sửa hoàn thiện sản phẩm <br> - Hoàn thành báo cáo thực tập tổng hợp <br> - Cập nhật đầy đủ Nhật ký công việc (Worklog) <br> - Thực hiện bài tự đánh giá kết quả thực tập | 14/08/2026 | 14/08/2026 | |
-| 6 | - Nhìn lại toàn bộ hành trình thực tập 8 tuần <br> - Tổng kết các kiến thức Điện toán đám mây AWS và Generative AI đã tích lũy <br> - Đóng gói hồ sơ báo cáo thực tập chính thức <br> - Đánh giá các thành tựu và bài học kinh nghiệm rút ra <br> - Hoàn thành chương trình thực tập | 15/08/2026 | 15/08/2026 | |
+| 1 | - Thực hiện đóng gói sản phẩm Frontend React 19 (`npm run build`) <br> - Tối ưu hóa dung lượng bundle và kiểm tra tài nguyên tĩnh (static assets) | 10/08/2026 | 10/08/2026 | |
+| 2 | - Chuẩn bị môi trường triển khai web tĩnh thử nghiệm <br> - Kiểm thử chạy bản build hoàn chỉnh của ứng dụng trên máy chủ | 11/08/2026 | 11/08/2026 | |
+| 3 | - Tổng hợp kết quả thực tập 8 tuần mảng lập trình Frontend <br> - Biên soạn báo cáo thực tập chi tiết phần đóng gói dự án và tài liệu Workshop | 12/08/2026 | 12/08/2026 | |
+| 4 | - Rà soát lần cuối toàn bộ bộ tài liệu Hugo Workshop (English và Tiếng Việt) <br> - Đảm bảo tính liên kết đồng bộ giữa báo cáo thực tập và tài liệu hướng dẫn | 13/08/2026 | 13/08/2026 | |
+| 5 | - Đóng gói toàn bộ sản phẩm mã nguồn và tài liệu hoàn chỉnh <br> - Chuẩn bị nội dung slide thuyết trình sẵn sàng cho buổi báo cáo tổng kết | 14/08/2026 | 14/08/2026 | |
 
 
 ### Kết quả đạt được tuần 8:
 
-- Hoàn thành và kiểm thử toàn diện sản phẩm dự án thực tập.
-- Đóng gói thành công tài liệu kiến trúc hệ thống kỹ thuật.
-- Chuẩn bị chu đáo slide thuyết trình và kịch bản demo sản phẩm.
-- Tiếp thu ý kiến đóng góp và tối ưu hóa dự án hoàn thiện nhất.
-- Hoàn thành đầy đủ nhật ký công việc (Worklog) 8 tuần.
-- Hoàn thành báo cáo thực tập tổng hợp và tự đánh giá bản thân.
-- Tổng kết toàn bộ tri thức về AWS Cloud và Generative AI thu nhận được.
-- Hoàn thành xuất sắc kỳ thực tập 8 tuần.
+- Đóng gói thành công ứng dụng Frontend React 19 tối ưu cho triển khai web tĩnh.
+- Hoàn thành xuất sắc báo cáo thực tập phần Frontend và tài liệu Workshop.
+- Rà soát và chuẩn hóa lần cuối bộ tài liệu Hugo Workshop 8 tuần chỉn chu.
+- Chuẩn bị đầy đủ sản phẩm demo và slide thuyết trình cho buổi báo cáo kết thúc kỳ thực tập.

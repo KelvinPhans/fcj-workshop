@@ -1,121 +1,155 @@
 ---
-title: "Event 2"
+title: "Event 2 - Agentic AI Build Week"
 date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Event 2 - FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!
 
-### Mục Đích Của Sự Kiện
+## Tổng quan sự kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+**FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!** là phiên chia sẻ giải pháp và báo cáo kết quả cuộc thi Hackathon do cộng đồng **AWS First Cloud AI Journey (FCAJ)** phối hợp cùng quỹ đầu tư **JI Fund** tổ chức.
 
-### Danh Sách Diễn Giả
+Sự kiện quy tụ đông đảo các sinh viên, lập trình viên, kỹ sư điện toán đám mây và chuyên gia trí tuệ nhân tạo (AI). Tại sự kiện, các đội thi Hackathon đã trực tiếp trình diễn sản phẩm (demo), thuyết trình sơ đồ kiến trúc hệ thống, chia sẻ phương pháp triển khai thực tế và thảo luận về những thách thức khi xây dựng ứng dụng tích hợp Agentic AI.
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+Mục tiêu tham dự sự kiện của em là tìm hiểu cách các đội thi phát triển sản phẩm AI trong giới hạn thời gian thực tế (khoảng 48 giờ), cũng như nghiên cứu quá trình chuyển đổi một bản thử nghiệm (Proof of Concept - PoC) thành một hệ thống sẵn sàng cho môi trường Production trên nền tảng AWS.
 
-### Nội Dung Nổi Bật
+---
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+## Mục tiêu đạt được khi tham gia
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- Tìm hiểu khái niệm Agentic AI và các ứng dụng thực tế trong hệ thống phần mềm.
+- Nắm vững quy trình phát triển từ bản mẫu PoC sang giải pháp có khả năng mở rộng (Scalable Solution).
+- Học hỏi kinh nghiệm triển khai dự án thực tế từ các đội thi Hackathon.
+- Hiểu rõ các yếu tố kỹ thuật cần thiết khi đưa ứng dụng AI vào môi trường Production.
+- Quan sát cách kết hợp các dịch vụ Đám mây AWS trong một kiến trúc hệ thống AI hoàn chỉnh.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+---
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+## Danh sách diễn giả tiêu biểu
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- **Mr. Nguyễn Gia Hưng** – Head of Solution Architect, AWS Vietnam | Founder of AWS First Cloud AI Journey (FCAJ).
+- **Mr. Joseph Marazota** – Head of Technology, Amazon ASEAN.
+- Các đội thi xuất sắc tham gia Hackathon.
 
-#### Domain-Driven Design (DDD)
+---
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+## Nội dung chính của sự kiện
 
-#### Event-Driven Architecture
+Sự kiện tập trung chuyên sâu vào chủ đề **Agentic AI**. Khác với các ứng dụng Generative AI truyền thống chỉ phản hồi các câu lệnh prompt từ người dùng, một hệ thống Agentic AI có khả năng:
+- Lập kế hoạch thực hiện tác vụ (Task planning).
+- Tự động gọi và sử dụng các công cụ bên ngoài (Tool calling).
+- Thực hiện quy trình xử lý đa bước (Multi-step workflows).
+- Đánh giá kết quả trung gian để điều chỉnh hành vi.
+- Tương tác với các thành phần khác trong hệ thống phần mềm.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+Bên cạnh chức năng AI, các bài thi Hackathon còn được đánh giá dựa trên tiêu chí sẵn sàng cho môi trường Production:
+- **Guardrails**: Kiểm soát và giới hạn hành vi của mô hình AI.
+- **Role-Based Access Control (RBAC)**: Phân quyền truy cập dữ liệu nghiêm ngặt.
+- **Human-in-the-loop**: Sự tham gia của con người trong các bước quyết định quan trọng.
+- **Tối ưu hóa chi phí API (API Cost Optimization)**: Quản lý ngân sách gọi mô hình AI.
+- **Scalability, Security & Reliability**: Khả năng mở rộng, bảo mật và độ tin cậy hệ thống.
 
-#### Compute Evolution
+Các đội thi đã hoàn thiện sản phẩm trong khoảng thời gian **48 giờ** và có thời lượng thuyết trình giới thiệu bài toán, ý tưởng giải pháp, kiến trúc AWS, quá trình triển khai và demo sản phẩm trực tiếp.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+---
 
-#### Amazon Q Developer
+## Trình bày giải pháp tiêu biểu của các đội thi
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+### A. Agentic AI cho Hệ thống Đặt hàng Trực tuyến (Online Ordering)
 
-### Những Gì Học Được
+- **Bài toán:** Các hệ thống đặt hàng trực tuyến truyền thống yêu cầu người dùng qua nhiều bước thủ công: tạo tài khoản, nhập thông tin thanh toán, duyệt menu và chọn món.
+- **Giải pháp PoC:** Xây dựng AI Agent hỗ trợ đặt hàng qua giao tiếp ngôn ngữ tự nhiên.
+- **Tính năng báo cáo:**
+  - Tự động thu thập dữ liệu thực đơn từ website chính thức.
+  - Lưu trữ dữ liệu liên quan trên hạ tầng AWS.
+  - Lưu lịch sử đơn hàng và sở thích của người dùng.
+  - Tự động tạo đơn hàng và thêm sản phẩm vào giỏ hàng qua luồng hội thoại.
+- **Ý nghĩa:** Minh họa cách AI Agent có thể thay mặt người dùng thực thi tác vụ thay vì chỉ trả về văn bản phản hồi.
 
-#### Tư Duy Thiết Kế
+![Hình 1. Kiến trúc AWS được trình bày bởi đội Agentic AI cho đặt món trực tuyến.](/images/events/agentic-ai-online-ordering-architecture.jpg)
+*Hình 1. Kiến trúc AWS được trình bày bởi đội Agentic AI cho đặt món trực tuyến.*
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+---
 
-#### Kiến Trúc Kỹ Thuật
+### B. Agentic AI cho Phân tích Dữ liệu (Data Analysis)
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- **Bài toán:** Chuyên viên phân tích dữ liệu (Data Analysts) tốn nhiều thời gian cho các báo cáo định kỳ và công việc phân tích lặp đi lặp lại.
+- **Giải pháp PoC:**
+  - Tiếp nhận yêu cầu phân tích dữ liệu qua câu lệnh.
+  - Tự động tạo báo cáo phân tích ban đầu.
+  - Tích hợp **Agent Loop** giúp cải thiện kết quả dựa trên phản hồi của chuyên viên.
+  - Áp dụng **Guardrails** để kiểm tra và xác thực tính chính xác của dữ liệu trả về.
+- **Ý nghĩa:** Minh họa mô hình hợp tác hiệu quả giữa con người (Data Analyst) và AI Agent.
 
-#### Chiến Lược Hiện Đại Hóa
+![Hình 2. Kiến trúc AWS được trình bày bởi đội Agentic AI cho phân tích dữ liệu.](/images/events/agentic-ai-data-analysis-architecture.jpg)
+*Hình 2. Kiến trúc AWS được trình bày bởi đội Agentic AI cho phân tích dữ liệu.*
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+---
 
-### Ứng Dụng Vào Công Việc
+### C. Agentic AI cho Giám sát Lưu lượng Hành khách (Passenger Traffic Tracking)
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- **Kiến trúc các dịch vụ AWS được đội thi sử dụng:**
+  Amazon Kinesis Video Streams, Amazon ECS, Amazon ECR, Amazon SageMaker Endpoints, Amazon S3, Amazon DynamoDB, Amazon CloudFront, Amazon API Gateway, AWS Lambda, AgentCore Runtime, Amazon Bedrock, Amazon Cognito, AWS IAM, AWS Secrets Manager, AWS CloudTrail, Amazon CloudWatch.
+- **Mô tả giải pháp:**
+  - Luồng video/hình ảnh được thu nhận vào hệ thống qua Amazon Kinesis Video Streams.
+  - Các thành phần xử lý (ECS/SageMaker) phân tích khung hình và trích xuất chỉ số lưu lượng hành khách.
+  - Dữ liệu và kết quả phân tích được lưu trữ an toàn trên S3 và DynamoDB.
+  - API Gateway và Lambda phục vụ dữ liệu cho ứng dụng Frontend qua CloudFront.
+  - Tích hợp dịch vụ bảo mật (Cognito, IAM, Secrets Manager) và giám sát (CloudWatch, CloudTrail).
+  - Thành phần Agentic AI (Bedrock / AgentCore) hỗ trợ truy vấn và phân tích thông minh trên dữ liệu lưu lượng đã xử lý.
 
-### Trải nghiệm trong event
+*(Lưu ý: Sơ đồ kiến trúc trên thuộc bài trình bày của đội thi Hackathon tại sự kiện, không phải kiến trúc của dự án Startups Blogs).*
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+![Hình 3. Kiến trúc AWS được trình bày bởi đội theo dõi lưu lượng hành khách.](/images/events/agentic-ai-traffic-tracking-architecture.jpg)
+*Hình 3. Kiến trúc AWS được trình bày bởi đội theo dõi lưu lượng hành khách.*
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+---
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+## Kiến thức thu nhận được (Knowledge Gained)
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+- **Bản chất của Agentic AI:** Một AI Agent hiệu quả cần bao gồm lập kế hoạch, thực thi, sử dụng công cụ và đánh giá kết quả, thay vì chỉ dựa vào một câu prompt đơn lẻ.
+- **Tầm quan trọng của Guardrails:** Cần thiết lập cơ chế kiểm soát (Guardrails) để đảm bảo mô hình AI hoạt động đúng phạm vi và an toàn.
+- **Khoảng cách giữa PoC và Production:** Hệ thống PoC và Production khác biệt rất lớn về tiêu chuẩn bảo mật, khả năng mở rộng, độ tin cậy, giám sát (observability) và chi phí vận hành.
+- **Giải quyết bài toán người dùng thực:** Công nghệ AI chỉ thực sự có giá trị khi giúp đơn giản hóa quy trình công việc thực tế của người dùng.
+- **Tích hợp dịch vụ Đám mây AWS:** Cách kết hợp linh hoạt các dịch vụ AWS để tạo nên một kiến trúc AI end-to-end hoàn chỉnh.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+---
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+## Ứng dụng tiềm năng vào dự án Startups Blogs (Future Possibilities)
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+*(Lưu ý: Đây là những định hướng nghiên cứu và khả năng mở rộng trong tương lai dựa trên bài học từ sự kiện. Hệ thống Startups Blogs hiện tại không triển khai Agentic AI, Amazon Bedrock hay SageMaker).*
+
+- **Tìm kiếm thông minh:** Nghiên cứu khả năng hỗ trợ nhà đầu tư tìm kiếm các cơ hội gọi vốn qua truy vấn ngôn ngữ tự nhiên.
+- **Hỗ trợ tạo nội dung:** Định hướng tính năng gợi ý cấu trúc mô tả doanh nghiệp và bài viết gọi vốn cho các Business Owner.
+- **Tóm tắt thông tin công khai:** Hỗ trợ nhà đầu tư tóm tắt các thông tin doanh nghiệp và cơ hội đầu tư công khai trên nền tảng.
+- **Hỗ trợ kiểm duyệt nội dung:** Nghiên cứu công cụ hỗ trợ Admin rà soát và kiểm duyệt bài viết tự động.
+- **Áp dụng Guardrails & RBAC:** Đảm bảo tính năng AI trong tương lai tuân thủ phân quyền chặt chẽ, không truy cập trái phép vào dữ liệu riêng tư của nhà đầu tư hoặc doanh nghiệp.
+
+---
+
+## Trải nghiệm cá nhân (Personal Experience)
+
+Đây là lần đầu tiên em có cơ hội tham sát một sự kiện Hackathon quy mô lớn tập trung vào chủ đề **Agentic AI**. Em rất ấn tượng không chỉ bởi các phần demo sản phẩm sáng tạo của các đội thi mà còn bởi những thảo luận sâu sắc về bài toán đưa AI vào môi trường Production.
+
+Sự kiện đã giúp em nhận ra rằng việc phát triển một ứng dụng AI đòi hỏi nhiều hơn là chỉ chọn một mô hình ngôn ngữ lớn (LLM); các yếu tố bảo mật, phân quyền, độ tin cậy, giám sát và tối ưu chi phí mới là chìa khóa quyết định sự thành bại của sản phẩm. Việc giao lưu cùng các bạn sinh viên, kỹ sư phần mềm và các chuyên gia AWS tại sự kiện đã mang lại cho em nhiều góc nhìn kỹ thuật và định hướng nghề nghiệp quý báu.
+
+---
+
+## Bài học rút ra (Lessons Learned)
+
+- Luôn xuất phát từ bài toán thực tế của người dùng trước khi lựa chọn công nghệ.
+- Đảm bảo sự cân bằng giữa tính năng, độ chính xác, an toàn bảo mật và chi phí vận hành.
+- Thiết kế cơ chế phân quyền (RBAC) và bảo vệ dữ liệu ngay từ đầu khi ứng dụng AI truy cập dữ liệu hệ thống.
+- Phân biệt rõ ràng tiêu chuẩn giữa một bản thiết kế PoC và một kiến trúc Production.
+- Tham gia các cộng đồng công nghệ và sự kiện Hackathon là phương pháp học hỏi thực tế rất hiệu quả.
+
+<!-- Event 2 personal photos will be added later. -->
+
+---
+
+## Kết luận
+
+Sự kiện **FCAJ x Agentic AI Build Week** đã mang lại những góc nhìn công nghệ rất hiện đại về Agentic AI và kiến trúc hệ thống Đám mây AWS. Những bài học về sự khác biệt giữa PoC và Production, việc áp dụng Guardrails, phân quyền RBAC và quản lý chi phí sẽ là nền tảng kiến thức quý báu cho em trong hành trình phát triển phần mềm và xây dựng các hệ thống scalable trong tương lai.

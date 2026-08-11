@@ -6,31 +6,32 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-Trong suốt thời gian thực tập tại **[Tên công ty/tổ chức]** từ **[ngày bắt đầu]** đến **[ngày kết thúc]**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế.  
-Tôi đã tham gia **[mô tả ngắn gọn dự án hoặc công việc chính]**, qua đó cải thiện kỹ năng **[liệt kê kỹ năng: lập trình, phân tích, viết báo cáo, giao tiếp…]**.  
+Trong suốt thời gian thực tập tại chương trình **First Cloud AI Journey (FCAJ)** từ ngày **22/06/2026** đến ngày **15/08/2026**, em đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức Điện toán Đám mây cũng như Phát triển Phần mềm Full-Stack từ Đại học Sài Gòn vào môi trường làm việc thực tế.
 
-Về tác phong, tôi luôn cố gắng hoàn thành tốt nhiệm vụ, tuân thủ nội quy, và tích cực trao đổi với đồng nghiệp để nâng cao hiệu quả công việc.
+Trong kỳ thực tập, em đã tham gia nghiên cứu và xây dựng dự án **Startups Blogs - Nền tảng Kết nối Đầu tư Doanh nghiệp Khởi nghiệp**, qua đó nâng cao toàn diện các kỹ năng lập trình NestJS REST API, React 19 Frontend, tích hợp dịch vụ xác thực đám mây **Amazon Cognito**, quản lý cơ sở dữ liệu PostgreSQL qua Prisma ORM, phân tích hệ thống và kỹ năng làm việc nhóm chuyên nghiệp.
 
-Để phản ánh một cách khách quan quá trình thực tập, tôi xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
+Về tác phong làm việc, em luôn cố gắng hoàn thành tốt các mục tiêu tuần được giao, tuân thủ nghiêm túc các quy định của đơn vị thực tập và tích cực chủ động trao đổi với mentor để nâng cao hiệu quả công việc.
+
+Để phản ánh một cách khách quan quá trình thực tập 8 tuần, em xin tự đánh giá bản thân dựa trên các tiêu chí dưới đây:
 
 
-| STT | Tiêu chí                            | Mô tả                                                                                            | Tốt | Khá | Trung bình |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | --- | --- | ---------- |
-| 1   | **Kiến thức và kỹ năng chuyên môn** | Hiểu biết về ngành, áp dụng kiến thức vào thực tế, kỹ năng sử dụng công cụ, chất lượng công việc | ✅   | ☐   | ☐          |
-| 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ☐   | ✅   | ☐          |
-| 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
-| 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
-| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ☐   | ☐   | ✅          |
-| 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ☐   | ✅   | ☐          |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     | ☐   | ✅   | ☐          |
-| 8   | **Hợp tác nhóm**                    | Làm việc hiệu quả với đồng nghiệp, tham gia nhóm                                                 | ✅   | ☐   | ☐          |
-| 9   | **Ứng xử chuyên nghiệp**            | Tôn trọng đồng nghiệp, đối tác, môi trường làm việc                                              | ✅   | ☐   | ☐          |
-| 10  | **Tư duy giải quyết vấn đề**        | Nhận diện vấn đề, đề xuất giải pháp, sáng tạo                                                    | ☐   | ✅   | ☐          |
-| 11  | **Đóng góp vào dự án/tổ chức**      | Hiệu quả công việc, sáng kiến cải tiến, ghi nhận từ team                                         | ✅   | ☐   | ☐          |
-| 12  | **Tổng thể**                        | Đánh giá chung về toàn bộ quá trình thực tập                                                     | ✅   | ☐   | ☐          |
+| STT | Tiêu chí | Mô tả | Tốt | Khá | Trung bình |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Kiến thức và kỹ năng chuyên môn** | Nắm vững kiến thức Full-Stack (React 19 + NestJS), tích hợp dịch vụ đám mây Amazon Cognito, Prisma ORM | ✅ | ☐ | ☐ |
+| 2 | **Khả năng học hỏi** | Tiếp thu nhanh các công nghệ mới, chủ động nghiên cứu tài liệu AWS SDK và REST API | ✅ | ☐ | ☐ |
+| 3 | **Chủ động** | Tự nghiên cứu tài liệu, giải quyết vấn đề kỹ thuật và hoàn thành nhiệm vụ đúng tiến độ | ✅ | ☐ | ☐ |
+| 4 | **Tinh thần trách nhiệm** | Đảm bảo chất lượng mã nguồn, hoàn thành báo cáo Worklog 8 tuần đúng thời hạn | ✅ | ☐ | ☐ |
+| 5 | **Kỷ luật** | Tuân thủ nghiêm túc giờ giấc, quy định bảo mật thông tin và quy trình làm việc của dự án | ✅ | ☐ | ☐ |
+| 6 | **Tính cầu tiến** | Sẵn sàng tiếp thu ý kiến đóng góp từ Mentor để cải thiện chất lượng sản phẩm | ✅ | ☐ | ☐ |
+| 7 | **Giao tiếp** | Trình bày ý tưởng kỹ thuật, báo cáo công việc rõ ràng trong các buổi làm việc | ☐ | ✅ | ☐ |
+| 8 | **Hợp tác nhóm** | Làm việc hiệu quả với các thành viên trong nhóm, tương tác tích cực với mentor | ✅ | ☐ | ☐ |
+| 9 | **Ứng xử chuyên nghiệp** | Tôn trọng quy định, môi trường làm việc và văn hóa doanh nghiệp | ✅ | ☐ | ☐ |
+| 10 | **Tư duy giải quyết vấn đề** | Phân tích root cause, áp dụng các giải pháp bảo mật như SecretHash HMAC-SHA256 & HttpOnly Cookie | ✅ | ☐ | ☐ |
+| 11 | **Đóng góp vào dự án/tổ chức** | Xây dựng thành công báo cáo thực tập và tích hợp giải pháp xác thực Cognito cho Startups Blogs | ✅ | ☐ | ☐ |
+| 12 | **Tổng thể** | Đánh giá chung về toàn bộ quá trình thực tập 8 tuần | ✅ | ☐ | ☐ |
 
-### Cần cải thiện
+### Định hướng tiếp tục hoàn thiện & cải thiện bản thân
 
-* Nâng cao tính kỹ luật, chấp hành nghiêm chỉnh nội quy của công ty hoặc bất kỳ trong một tổ chức nào
-* Cải thiện trong cách tư duy giải quyết vấn đề
-* Học cách giao tiếp tốt hơn trong giao tiếp hằng ngày và trong công việc, xử lý tình huống
+* Tiếp tục nâng cao hơn nữa tư duy kiến trúc hệ thống phân tán và bảo mật đám mây.
+* Trau dồi thêm kỹ năng trình bày thuyết trình kỹ thuật nâng cao.
+* Mở rộng nghiên cứu các giải pháp lưu trữ Amazon S3 và tự động hóa hạ tầng CI/CD trên AWS.

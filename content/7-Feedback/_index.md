@@ -1,43 +1,41 @@
 ---
-title: "Sharing and Feedback"
+title: "Feedback & Suggestions"
 date: 2024-01-01
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
 
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud AI Journey program. This will help the FCAJ team improve any shortcomings based on the following aspects:
-
 ### Overall Evaluation
 
 **1. Working Environment**  
-The working environment is very friendly and open. FCAJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+The working environment at First Cloud AI Journey (FCAJ) is highly dynamic, friendly, and supportive. Team members are always approachable and ready to assist whenever technical challenges arise.
 
-**2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+**2. Mentor & Admin Support**  
+Mentors provide clear, structured guidance on advanced cloud concepts, including Amazon Cognito authentication architecture, NestJS backend security, and React state management. The administration team facilitates all logistics efficiently.
 
-**3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+**3. Alignment with Field of Study**  
+The assigned project tasks for **Startups Blogs** perfectly align with my Computer Science curriculum at Saigon University, providing invaluable hands-on full-stack and AWS cloud development experience.
 
 **4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+Throughout the 8-week program, I mastered modern technologies including NestJS REST APIs, Prisma ORM with PostgreSQL, Amazon Cognito User Pools, `aws-jwt-verify`, and professional teamwork skills.
 
-**5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+**5. Culture & Team Spirit**  
+The team culture fosters open technical discussions, mutual respect, and collaborative problem solving.
 
-**6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+**6. Internship Support & Benefits**  
+Flexible working hours, well-structured learning roadmaps, and internal technical workshops provided significant value.
 
----
 
-### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+### Additional Highlights
 
----
+- **Most Satisfying Experience**: Direct mentorship from senior engineers while building a real-world Full-Stack application powered by AWS cloud authentication.
+- **Future Improvements**: Introduce more frequent technical sharing sessions (Tech Talks) covering advanced AWS services such as AWS Serverless and CI/CD pipelines.
+- **Recommendation**: Highly recommend this internship program to university students seeking practical cloud software engineering experience.
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+
+### Suggestions & Future Outlook
+
+- **Experience Enhancement**: Encourage technical Q&A sessions between interns and senior cloud architects.
+- **Future Career**: Eager to continue contributing to the company's cloud engineering projects in the future.
+- **Acknowledgements**: Sincere thanks to the FCAJ team and mentors for their dedicated support throughout the internship journey.

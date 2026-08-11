@@ -5,6 +5,7 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
+
 # Startups Blogs - Business Investment Connection Platform
 ## Nền tảng Kết nối Đầu tư và Quảng bá Doanh nghiệp Khởi nghiệp
 
@@ -15,7 +16,7 @@ pre: " <b> 2. </b> "
 
 Hệ thống cho phép các doanh nghiệp tạo lập hồ sơ năng lực, công bố các cơ hội gọi vốn (Funding Opportunities), minh bạch hóa lộ trình sử dụng vốn và thu hút dòng vốn đầu tư. Đồng thời, nhà đầu tư có thể dễ dàng tìm kiếm, lọc và đánh giá các cơ hội đầu tư tiềm năng thông qua giao diện trực quan và dữ liệu được cấu trúc chuẩn hóa.
 
-Dự án hiện đã hoàn thiện kiến trúc Full-Stack cơ bản với **React 19 (Vite, TypeScript)** ở Frontend, **NestJS (REST API, TypeScript)** ở Backend, **PostgreSQL & Prisma ORM** ở tầng dữ liệu và tích hợp **Amazon Cognito User Pool (`ap-southeast-2`)** cho toàn bộ quy trình xác thực người dùng bảo mật qua HttpOnly Cookies.
+Dự án hiện đã hoàn thiện kiến trúc Full-Stack Enterprise với **React 19 (Vite, TypeScript)** ở Frontend, **NestJS (REST API, TypeScript)** ở Backend, **PostgreSQL & Prisma ORM** ở tầng dữ liệu, kết hợp hạ tầng đám mây **AWS (Region: `us-east-1`)** được tự động hóa hoàn toàn bằng **Terraform (Infrastructure as Code)**.
 
 ---
 
@@ -30,14 +31,16 @@ Dự án hiện đã hoàn thiện kiến trúc Full-Stack cơ bản với **Rea
 **Startups Blogs** cung cấp một nền tảng tập trung nơi:
 - **Doanh nghiệp**: Đăng ký tài khoản, xác thực email, quản lý hồ sơ doanh nghiệp, công bố cơ hội gọi vốn, lập kế hoạch sử dụng vốn và tiếp cận nhà đầu tư.
 - **Nhà đầu tư**: Đăng ký tài khoản nhà đầu tư, tra cứu danh sách doanh nghiệp, lọc cơ hội gọi vốn theo ngành nghề, quy mô vốn, giai đoạn phát triển và xem thông tin minh bạch.
-- **Bảo mật hệ thống**: Tận dụng dịch vụ **Amazon Cognito** kết hợp với **HttpOnly Cookies** và **JWT Verification (`aws-jwt-verify`)** tại NestJS backend để đảm bảo an toàn tuyệt đối cho phiên làm việc.
+- **Quản trị viên & Phê duyệt**: Đăng nhập quản trị với quyền `ADMIN` được đồng bộ qua Cognito Groups để duyệt hồ sơ doanh nghiệp, quản lý bài viết và xử lý các đề xuất thay đổi (Change Proposals).
+- **Bảo mật hệ thống**: Tận dụng dịch vụ **Amazon Cognito (`us-east-1`)** kết hợp với **HttpOnly Cookies** và **JWT Verification (`aws-jwt-verify`)** tại NestJS backend để đảm bảo an toàn tuyệt đối cho phiên làm việc.
 
 ---
 
-### 3. Lợi ích giải pháp & ROI (Benefits & ROI)
-- **Tối ưu hóa thời gian kết nối**: Rút ngắn thời gian tiếp cận giữa doanh nghiệp và nhà đầu tư từ vài tháng xuống còn vài ngày nhờ hệ thống tra cứu và lọc thông tin thông minh.
+### 3. Lợi ích giải pháp (Expected Benefits)
+- **Tối ưu hóa thời gian kết nối**: Rút ngắn thời gian tiếp cận giữa doanh nghiệp và nhà đầu tư nhờ hệ thống tra cứu và lọc thông tin thông minh.
 - **Minh bạch hóa hồ sơ đầu tư**: Chuẩn hóa dữ liệu hồ sơ doanh nghiệp, danh mục sử dụng vốn (Use of Funds) và điểm tin tài chính (Financial Highlights).
 - **Bảo mật cấp doanh nghiệp**: Ủy quyền xác thực người dùng cho Amazon Cognito giúp loại bỏ rủi ro lưu trữ mật khẩu tại cơ sở dữ liệu nội bộ và bảo vệ chống tấn công XSS/CSRF bằng cơ chế HttpOnly Cookie.
+- **Triển khai tự động & Tin cậy**: 100% hạ tầng AWS được lập trình bằng Terraform giúp dễ dàng tái tạo môi trường và mở rộng quy mô.
 
 ---
 
@@ -45,41 +48,48 @@ Dự án hiện đã hoàn thiện kiến trúc Full-Stack cơ bản với **Rea
 
 ```mermaid
 graph TD
-    Client[Browser / React 19 Frontend] <-->|HTTPS / REST API / HttpOnly Cookies| Backend[NestJS Backend API]
-    Backend <-->|aws-sdk & aws-jwt-verify| Cognito[Amazon Cognito User Pool ap-southeast-2]
-    Backend <-->|Prisma ORM| DB[(PostgreSQL Database)]
-    
-    subgraph Future_AWS_Services [Dự kiến mở rộng]
-        Backend -.->|AWS SDK Presigned URLs| S3[Amazon S3 Bucket]
-    end
+    Client[Browser / React 19 Frontend] <-->|CDN / Cache| CloudFront[Amazon CloudFront CDN us-east-1]
+    CloudFront <-->|Static Files| S3_FE[Amazon S3 Frontend Hosting]
+    Client <-->|HTTPS / REST API / HttpOnly Cookies| APIGW[Amazon API Gateway]
+    APIGW <-->|Forward Traffic| EC2[Amazon EC2 Backend NestJS + PM2]
+    EC2 <-->|Prisma ORM / Port 5432| RDS[(Amazon RDS PostgreSQL Private Subnet)]
+    EC2 <-->|aws-sdk & aws-jwt-verify| Cognito[Amazon Cognito User Pool us-east-1]
+    EC2 <-->|S3 SDK / Presigned Upload| S3_Storage[Amazon S3 Media Bucket]
+    EC2 <-->|Logs & Metrics| CloudWatch[Amazon CloudWatch Monitoring]
 ```
 
-#### Luồng xử lý xác thực (Authentication Flow)
-1. **Đăng ký (Register)**: Người dùng chọn vai trò (`BUSINESS_OWNER`, `INVESTOR`, `ENTERPRISE_PARTNER`) → NestJS gửi lệnh `SignUpCommand` tới Cognito → Cognito gửi mã xác thực 6 chữ số qua Email → Người dùng nhập mã xác thực (`ConfirmSignUpCommand`) → Tài khoản chuyển trạng thái `ACTIVE` trong PostgreSQL.
-2. **Đăng nhập (Login)**: Người dùng nhập Email/Password → NestJS tính toán `SECRET_HASH` (HMAC-SHA256) và gửi lệnh `USER_PASSWORD_AUTH` tới Cognito → Cognito trả về Access Token, ID Token & Refresh Token → NestJS lưu Token vào **HttpOnly Signed Cookies** (`sb_access_token`, `sb_id_token`, `sb_refresh_token`).
-3. **Xác thực phiên (Session Validation - `/auth/me`)**: Frontend gửi request kèm HttpOnly Cookie → `CognitoAuthGuard` tại NestJS trích xuất token, giải mã và kiểm tra chữ ký RSA trực tiếp với Cognito JWKS via `aws-jwt-verify` → Truy vấn dữ liệu người dùng an toàn từ PostgreSQL.
+#### Luồng xử lý dữ liệu & Bảo mật (End-to-End Flow)
+1. **Tải giao diện**: Người dùng truy cập trang web, **Amazon CloudFront CDN** trả về giao diện React 19 siêu tốc từ **S3 Frontend Bucket**.
+2. **Xác thực danh tính**: Người dùng đăng nhập, NestJS gọi **Amazon Cognito User Pool (`us-east-1`)** qua `USER_PASSWORD_AUTH` kèm `SECRET_HASH` (HMAC-SHA256). Cognito kiểm tra và cấp JWT Tokens được lưu an toàn trong **HttpOnly Signed Cookies**.
+3. **Thực thi API**: Mọi API request được định tuyến qua **Amazon API Gateway** tới máy chủ **EC2** chạy NestJS nằm trong **Amazon VPC**.
+4. **Cơ sở dữ liệu an toàn**: Máy chủ EC2 kết nối tới **Amazon RDS PostgreSQL** nằm trong Private Subnet, ngăn chặn hoàn toàn truy cập trực tiếp từ Internet.
+5. **Dọn dẹp & Giám sát**: Mọi diễn biến được **Amazon CloudWatch** lưu vết 24/7 và hỗ trợ cảnh báo qua SNS Email.
 
 ---
 
 ### 5. Công nghệ sử dụng (Technology Stack)
 
-#### Frontend (Đã triển khai)
+#### Frontend (Đã triển khai & Kiểm thử)
 - **React 19**, **TypeScript**, **Vite**
-- **React Router v7** cho điều hướng trang
+- **React Router v7** điều hướng trang
+- **Zustand (`authStore`, `businessStore`)** quản lý Global State
 - **CSS Modules** cho quản lý giao diện
-- **AuthContext** & **Custom Hooks** cho quản lý trạng thái xác thực
+- **Axios Interceptors** tự động xử lý token và lỗi
 
-#### Backend (Đã triển khai)
+#### Backend (Đã triển khai & Kiểm thử)
 - **NestJS**, **TypeScript**
-- **Prisma ORM** quản lý tương tác cơ sở dữ liệu
-- **PostgreSQL** lưu trữ dữ liệu nghiệp vụ
+- **Prisma ORM** quản lý cơ sở dữ liệu PostgreSQL
 - **@aws-sdk/client-cognito-identity-provider** & **aws-jwt-verify**
-- **@nestjs/throttler** chống tấn công Brute-force
+- **@aws-sdk/client-s3** tải ảnh lên S3/MinIO
+- **Passport JWT** & **Cognito Groups Service** quản lý quyền `ADMIN`
 
-#### Hạ tầng AWS (Đã triển khai & Tương lai)
-- **Amazon Cognito (`ap-southeast-2`)**: *ĐÃ TRIỂN KHAI* (Quản lý User Pool, Client App, Email verification, Token lifecycle).
-- **Amazon S3**: *DỰ KIẾN* (Lưu trữ tệp logo doanh nghiệp, tài liệu gọi vốn qua Presigned URLs).
-- **Production AWS Deployment**: *DỰ KIẾN* (Kiến trúc triển khai Production trên AWS — sẽ chốt cấu hình chính thức ở giai đoạn tiếp theo).
+#### Hạ tầng AWS & IaC (Đã triển khai & Kiểm thử)
+- **Terraform (IaC)**: Lập trình toàn bộ hạ tầng AWS tại thư mục `terraform/` (Region: `us-east-1`).
+- **Amazon Cognito (`us-east-1`)**: Quản lý User Pool, Client App, Email OTP, Cognito Groups `ADMIN`.
+- **Amazon S3 & CloudFront**: Hosting Frontend tĩnh và lưu trữ hình ảnh doanh nghiệp (`POST /upload`).
+- **Amazon API Gateway**: Cửa ngõ bảo vệ và định tuyến API.
+- **Amazon EC2 & RDS PostgreSQL**: Máy chủ xử lý backend và cơ sở dữ liệu quan hệ bảo mật trong VPC.
+- **Amazon CloudWatch**: Giám sát Logs, CPU, Memory và cảnh báo qua SNS Email.
 
 ---
 
@@ -87,19 +97,21 @@ graph TD
 
 | Hạng mục / Tính năng | Trạng thái triển khai | Ghi chú chi tiết |
 | --- | :---: | --- |
-| Cơ sở dữ liệu PostgreSQL & Schema Prisma | **ĐÃ TRIỂN KHAI** | Đã tạo Schema đầy đủ cho User, Business, FundingOpportunity, InvestorProfile, Industry, TeamMember... |
-| REST API đọc dữ liệu (Read-only APIs) | **ĐÃ TRIỂN KHAI** | `GET /businesses`, `GET /funding-opportunities`, `GET /investors`, `GET /taxonomies/*` |
-| Backend Xác thực Amazon Cognito | **ĐÃ TRIỂN KHAI** | Đăng ký, Đăng nhập, Xác thực Email, Refresh Session, Quên/Đặt lại mật khẩu, Log out |
-| Bảo mật HttpOnly Signed Cookie & JWT Guard | **ĐÃ TRIỂN KHAI** | Tích hợp `aws-jwt-verify` kiểm tra chữ ký token RSA từ Cognito JWKS |
-| Giao diện React & AuthContext | **ĐÃ TRIỂN KHAI** | Các trang Home, Explore, Details, Login, Register, Verify Email, Password Reset |
-| Quy trình Gọi vốn 8 bước (Raise Capital Wizard) | **ĐÃ TRIỂN KHAI (FRONTEND)** | Form 8 bước có kiểm tra dữ liệu đầu vào và tự động lưu nháp vào `localStorage` |
-| Phân quyền tuyến đường gọi vốn (Route Guard) | **ĐÃ TRIỂN KHAI** | Bảo vệ route `/raise-capital` chỉ cho phép `BUSINESS_OWNER` & `ENTERPRISE_PARTNER` |
-| Lưu dữ liệu gọi vốn vào PostgreSQL (Write APIs) | **DỰ KIẾN (PLANNED)** | Các API `POST/PUT` tạo và chỉnh sửa Business / Funding Opportunity |
-| Tải tệp lên Amazon S3 (Logo, Pitch Deck) | **DỰ KIẾN (PLANNED)** | Tích hợp Amazon S3 SDK và cấp quyền truy cập qua Presigned URLs |
-| Yêu cầu xem tài liệu & Nhắn tin trao đổi | **DỰ KIẾN (PLANNED)** | Tính năng kết nối trực tiếp giữa Nhà đầu tư và Chủ doanh nghiệp |
-| Dashboard Quản trị viên (Admin Moderation) | **DỰ KIẾN (PLANNED)** | Đuyệt hồ sơ doanh nghiệp và cơ hội gọi vốn trước khi công bố public |
+| Hạ tầng Terraform IaC (VPC, EC2, RDS, Cognito, S3, CloudFront, CloudWatch) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Mã nguồn Terraform nằm trong `terraform/`, định vị Region `us-east-1` |
+| Cơ sở dữ liệu PostgreSQL & Schema Prisma | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Đã hoàn thiện Schema cho User, Business, Article, Funding, Follow, Bookmark, Proposal |
+| REST API đọc & ghi Doanh nghiệp (CRUD Businesses) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | `POST /businesses`, `GET /businesses`, `PUT /businesses/:id`, `DELETE /businesses/:id` |
+| REST API Đăng tin เรียก vốn (Funding Opportunities) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | `POST`, `GET`, `PUT`, `DELETE` tại `/businesses/:businessId/funding-opportunities` |
+| Tải ảnh lên S3/MinIO (`POST /upload`) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Tích hợp `@aws-sdk/client-s3`, kiểm tra định dạng và trả về Public Image URL |
+| Backend Xác thực Amazon Cognito & Groups | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Đăng ký, Đăng nhập, Xác thực Email, Refresh, Logout, Đồng bộ Cognito Group `ADMIN` |
+| Bảo mật HttpOnly Signed Cookie & JWT Guard | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Thẩm định chữ ký RSA token qua `aws-jwt-verify` từ JWKS `us-east-1` |
+| Dashboard Quản trị & Phê duyệt (Admin Dashboard) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Duyệt doanh nghiệp (`PUT /businesses/admin/:id/status`), xem thống kê, quản lý bài viết |
+| Quy trình Đề xuất Thay đổi (Change Proposals) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | Mô hình `ChangeProposal` cho phép Admin tạo đề xuất và Owner duyệt Diff/Merge |
+| Yêu cầu Liên hệ (Contact Requests) | **ĐÃ TRIỂN KHAI & KIỂM THỬ** | `POST /businesses/:businessId/contact-requests` gửi thông điệp tới Founder |
+| Hệ thống Thông báo thời gian thực (Real-time Notifications) | **DỰ KIẾN (PLANNED)** | Đã có UI mock, đang phát triển Notification Schema & WebSocket/Polling backend |
+| Tối ưu luồng duyệt tin gọi vốn chuyên sâu | **DỰ KIẾN (PLANNED)** | Mở rộng luồng duyệt chi tiết cho các gói vốn lớn |
+| Mở rộng Bộ kiểm thử E2E | **DỰ KIẾN (PLANNED)** | Mở rộng test coverage tự động cho toàn bộ luồng tích hợp |
 
-> **Lưu ý về tài khoản ADMIN**: Đăng ký công khai trên hệ thống chỉ áp dụng cho 3 vai trò: `BUSINESS_OWNER`, `INVESTOR`, và `ENTERPRISE_PARTNER`. Vai trò `ADMIN` được quản lý và cấp phát nội bộ, không mở đăng ký tự do qua quy trình Public Register.
+> **Lưu ý về tài khoản ADMIN**: Đăng ký công khai trên hệ thống chỉ áp dụng cho 3 vai trò: `BUSINESS_OWNER`, `INVESTOR`, và `ENTERPRISE_PARTNER`. Vai trò `ADMIN` được cấp phát nội bộ và đồng bộ tự động với Cognito User Pool Group `ADMIN` qua `CognitoGroupsService`.
 
 ---
 
@@ -107,18 +119,18 @@ graph TD
 1. **Không lưu trữ mật khẩu tại PostgreSQL**: Mật khẩu người dùng được quản lý hoàn toàn bởi Amazon Cognito User Pool.
 2. **Khóa Client Secret an toàn**: `COGNITO_CLIENT_SECRET` được bảo vệ ở phía NestJS Server, sử dụng thuật toán HMAC-SHA256 để tạo `SECRET_HASH`.
 3. **Bảo vệ Cookie HttpOnly**: Token xác thực được lưu trong HttpOnly Signed Cookie, ngăn chặn các cuộc tấn công đánh cắp token qua XSS.
-4. **Giới hạn tần suất request (Rate Limiting)**: Sử dụng ThrottlerGuard tại AuthController để ngăn chặn rủi ro dò mật khẩu và rác hệ thống.
+4. **Phân quyền hai tầng (Double Guard)**: Mọi thao tác chỉnh sửa dữ liệu bắt buộc kiểm tra cả JWT Auth Token và quyền sở hữu (`ownerId`).
 5. **Không để lộ khóa bí mật**: Các tham số `.env`, AWS Account ID, Secret Key đều không được hiển thị trong mã nguồn công khai hoặc tài liệu workshop.
 
 ---
 
 ### 8. Ước tính chi phí (Cost Considerations)
-> **Thông báo**: Chi phí chính thức sẽ được tính toán chi tiết bằng công cụ **AWS Pricing Calculator** dựa trên kiến trúc triển khai Production hoàn chỉnh.
+> **Thông báo**: Chi phí thực tế sẽ được tính toán chi tiết bằng công cụ **AWS Pricing Calculator** dựa trên hạ tầng cấu hình tại `us-east-1`.
 
-Các danh mục chi phí AWS liên quan bao gồm:
-- **Amazon Cognito**: Miễn phí cho 50,000 MAUs (Monthly Active Users) đầu tiên trong gói AWS Free Tier.
-- **Amazon S3** *(Dự kiến)*: Chi phí lưu trữ theo GB/tháng và số lượng request PUT/GET.
-- **Dịch vụ Hosting & Database** *(Dự kiến)*: Tính theo cấu hình tài nguyên thực tế khi triển khai.
+Các dịch vụ bao gồm:
+- **Amazon Cognito**: Miễn phí cho 50,000 MAUs đầu tiên trong gói AWS Free Tier.
+- **Amazon EC2 & RDS**: Sử dụng `t3.micro` / `db.t3.micro` cho môi trường phát triển.
+- **Amazon S3 & CloudFront**: Tính theo lưu lượng dữ liệu và số lượng request.
 
 ---
 
@@ -128,12 +140,12 @@ Các danh mục chi phí AWS liên quan bao gồm:
 | --- | :---: | --- |
 | Lộ mật khẩu / Token người dùng | **Cao** | Ủy quyền xác thực hoàn toàn cho Amazon Cognito & dùng HttpOnly Cookie |
 | Đăng ký rác / Spam tài khoản | **Trung bình** | Bắt buộc xác thực Email qua mã 6 chữ số từ Cognito & áp dụng Rate Limiting |
-| Xâm nhập trái phép trang gọi vốn | **Cao** | Áp dụng `ProtectedRoute` và `CognitoAuthGuard` kiểm tra vai trò người dùng |
-| Trôi dạt dữ liệu form gọi vốn | **Thấp** | Tự động lưu bản nháp vào `localStorage` của trình duyệt |
+| Mạo danh chỉnh sửa dữ liệu doanh nghiệp | **Cao** | Áp dụng `JwtAuthGuard` & kiểm tra chặt chẽ `ownerId` tại Backend Controller |
+| Sai lệch cấu hình hạ tầng Đám mây | **Thấp** | Tự động hóa 100% hạ tầng bằng mã nguồn Terraform |
 
 ---
 
 ### 10. Kết quả kỳ vọng (Expected Outcomes)
 - Xây dựng thành công hệ thống kết nối đầu tư chuẩn hóa cho các Startup và doanh nghiệp vừa và nhỏ.
-- Chứng minh khả năng tích hợp giải pháp xác thực đám mây **Amazon Cognito** vào hệ thống Full-Stack (NestJS + React + PostgreSQL).
-- Đảm bảo tính mở rộng cao cho việc tích hợp thêm các dịch vụ AWS khác (như Amazon S3) trong các giai đoạn phát triển tiếp theo.
+- Chứng minh giải pháp kiến trúc Enterprise AWS tích hợp hoàn chỉnh: Terraform IaC, Amazon Cognito, EC2, RDS PostgreSQL, API Gateway, S3, CloudFront và CloudWatch.
+- Đảm bảo khả năng bảo mật cao, vận hành ổn định và sẵn sàng cho việc mở rộng quy mô sản xuất.

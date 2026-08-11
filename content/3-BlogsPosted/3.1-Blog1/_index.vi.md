@@ -10,9 +10,9 @@ pre: " <b> 3.1. </b> "
 ## Thách thức & Giải pháp Xây dựng Hệ thống Xác thực Đám mây Bảo mật cho Ứng dụng Full-Stack
 
 ### 1. Giới thiệu bài viết
-Trong thiết kế ứng dụng ứng dụng web hiện đại, quản lý danh tính (Identity Management) và xác thực người dùng là một trong những thành phần quan trọng nhất nhưng cũng tiềm ẩn nhiều rủi ro an ninh mạng.
+Trong thiết kế ứng dụng web hiện đại, quản lý danh tính (Identity Management) và xác thực người dùng là một trong những thành phần quan trọng nhất nhưng cũng tiềm ẩn nhiều rủi ro an ninh mạng.
 
-Đối với nền tảng **Startups Blogs** (Nền tảng kết nối các Doanh nghiệp khởi nghiệp, Chủ doanh nghiệp, Nhà đầu tư và Đối tác chiến lược), thông tin về hồ sơ đầu tư và danh mục tài chính chứa nhiều thông tin nhạy cảm. Vì vậy, thay vì tự xây dựng cơ chế quản lý mật khẩu và mã hóa trong cơ sở dữ liệu nội bộ, hệ thống lựa chọn **Amazon Cognito User Pool** tại khu vực `ap-southeast-2` làm giải pháp ủy quyền quản lý danh tính.
+Đối với nền tảng **Startups Blogs** (Nền tảng kết nối các Doanh nghiệp khởi nghiệp, Chủ doanh nghiệp, Nhà đầu tư và Đối tác chiến lược), thông tin về hồ sơ đầu tư và danh mục tài chính chứa nhiều thông tin nhạy cảm. Vì vậy, thay vì tự xây dựng cơ chế quản lý mật khẩu và mã hóa trong cơ sở dữ liệu nội bộ, hệ thống lựa chọn **Amazon Cognito User Pool** tại khu vực `us-east-1` làm giải pháp ủy quyền quản lý danh tính.
 
 Bài viết này trình bày chi tiết cách tích hợp **Amazon Cognito** vào mô hình kiến trúc Full-Stack bao gồm **React 19 (Vite, TypeScript)** ở Frontend, **NestJS REST API** ở Backend và cơ sở dữ liệu **PostgreSQL (Prisma ORM)**.
 
@@ -25,7 +25,7 @@ Một trong những quyết định kiến trúc quan trọng nhất của Start
 ```mermaid
 graph TD
     Client[React 19 Browser] <-->|1. HTTPS / REST API| Backend[NestJS Backend API]
-    Backend <-->|2. AWS SDK & ClientSecret HMAC-SHA256| Cognito[Amazon Cognito User Pool ap-southeast-2]
+    Backend <-->|2. AWS SDK & ClientSecret HMAC-SHA256| Cognito[Amazon Cognito User Pool us-east-1]
     Backend <-->|3. User Identity Mapping| DB[(PostgreSQL Database)]
 ```
 
@@ -47,7 +47,7 @@ sequenceDiagram
     actor User as Người dùng
     participant FE as React 19 Frontend
     participant BE as NestJS AuthController
-    participant Cog as Amazon Cognito (ap-southeast-2)
+    participant Cog as Amazon Cognito (us-east-1)
     participant DB as PostgreSQL (Prisma)
 
     Note over User, DB: QUY TRÌNH ĐĂNG KÝ VÀ XÁC THỰC EMAIL

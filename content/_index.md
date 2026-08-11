@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 ---
 
-    
 # Internship Report
 
 ### Student Information:
@@ -27,7 +26,10 @@ chapter: false
 
 &emsp; **Internship Duration:** From 22/06/2026 to 15/08/2026
 
-![Your profile picture](/images/avatar.png)
+<p align="center">
+  <img src="/images/profile/khanh-avatar.jpg" alt="Personal photo" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; margin: 15px 0;">
+</p>
+<p align="center"><em>Personal photo</em></p>
 
 ### Report Content
 

@@ -7,28 +7,24 @@ pre: " <b> 1.7. </b> "
 ---
 ### Week 7 Objectives:
 
-- Continue developing the internship project.
-- Test and debug the application.
-- Improve reliability and code quality.
-- Prepare technical documentation.
+- Conduct a thorough code review of the Frontend codebase.
+- Standardize all UI error prompts (Validation messages, Toast notifications) into clean English.
+- Collaborate with team members to resolve git merge conflicts during Cognito Auth integration.
+- Fix UI layout regressions occurring after feature branch code merges.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Review the current project <br> - Review the system architecture <br> - Identify incomplete features <br> - Create a list of issues that need to be fixed <br> - Continue implementing project features | 03/08/2026 | 03/08/2026 | |
-| 2 | - Complete remaining application functions <br> - Improve request and response processing <br> - Verify communication between AWS services <br> - Review IAM permissions <br> - Resolve integration problems | 04/08/2026 | 04/08/2026 | |
-| 3 | - Perform functional testing <br> - Test different input scenarios <br> - Test invalid input <br> - Review error handling <br> - Debug problems using CloudWatch Logs | 05/08/2026 | 05/08/2026 | |
-| 4 | - Improve prompts based on test results <br> - Improve response consistency <br> - Refactor source code <br> - Remove unnecessary code <br> - Improve code readability and maintainability | 06/08/2026 | 06/08/2026 | |
-| 5 | - Create or update the system architecture diagram <br> - Document AWS services used in the project <br> - Write project setup and execution instructions <br> - Review project documentation <br> - Prepare the application for demonstration | 07/08/2026 | 07/08/2026 | |
+| 1 | - Reviewed the entire Frontend codebase to audit user-facing error message strings <br> - Listed inconsistent UI validation messages and alert prompts | 03/08/2026 | 03/08/2026 | |
+| 2 | - Standardized all form validation errors and toast alerts into clean English <br> - Ensured consistent language usage across the user interface | 04/08/2026 | 04/08/2026 | |
+| 3 | - Partnered with team members to resolve git merge conflicts involving Cognito Auth <br> - Merged feature branches cleanly into the primary `main` branch | 05/08/2026 | 05/08/2026 | |
+| 4 | - Fixed UI rendering regressions following code merge (Header layout, button states) <br> - Verified session state refresh handling across frontend components | 06/08/2026 | 06/08/2026 | |
+| 5 | - Tested all frontend navigation routes (Explore Businesses, News, Auth, UserProfile) <br> - Ensured smooth user experience and verified zero console errors | 07/08/2026 | 07/08/2026 | |
 
 
 ### Week 7 Achievements:
 
-- Completed most of the application functionality.
-- Improved communication between AWS services.
-- Performed functional and error-case testing.
-- Identified and fixed application issues using logs.
-- Improved prompt quality and response consistency.
-- Improved source code structure.
-- Completed the project architecture diagram.
-- Prepared technical documentation for the project.
+- Standardized 100% of UI error messages and validation prompts into professional English.
+- Successfully resolved all git merge conflicts encountered during Cognito Auth integration.
+- Fixed UI layout regressions occurring post-merge.
+- Ensured a consistent, professional, and stable frontend user experience.

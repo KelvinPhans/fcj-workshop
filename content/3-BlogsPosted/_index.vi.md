@@ -1,18 +1,24 @@
 ---
-title: "Các bài viết Blog"
+title: "Các bài blogs đã đăng"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
-Danh mục các bài viết kỹ thuật đã đăng tải:
+# Danh sách các Bài viết Kỹ thuật (Technical Blogs Drafts)
 
-### 1. [Blog 1 - XÂY DỰNG HỆ THỐNG XÁC THỰC BẢO MẬT VỚI AMAZON COGNITO CHO ỨNG DỤNG REACT VÀ NESTJS](3.1-Blog1/)
-Bài viết giới thiệu giải pháp tích hợp Amazon Cognito User Pool vào ứng dụng Full-Stack React và NestJS để cung cấp các tính năng đăng ký, xác thực email qua mã 6 chữ số, đăng nhập và khôi phục mật khẩu. Lấy dự án Startups Blogs làm ca nghiên cứu thực tế, bài viết giải thích lý do tại sao các request xác thực được điều hướng qua NestJS Backend thay vì gọi trực tiếp từ trình duyệt, giúp bảo vệ an toàn Client Secret trên Server.
+Trong quá trình nghiên cứu và thực tập tại chương trình **First Cloud AI Journey (FCAJ)**, em đã biên soạn 3 bài viết kỹ thuật chuyên sâu xoay quanh chủ đề **Kiến trúc Xác thực Đám mây AWS Amazon Cognito**, **Bảo mật JWT Token với aws-jwt-verify (`us-east-1`)**, và **Quản lý Session qua HttpOnly Cookie & Phân quyền RBAC cho ứng dụng Startups Blogs**.
 
-### 2. [Blog 2 - TĂNG CƯỜNG BẢO MẬT AMAZON COGNITO VỚI SECRETHASH VÀ KIỂM TRA CHỮ KÝ JWT TRONG NESTJS](3.2-Blog2/)
-Bài viết tập trung vào các cơ chế bảo mật Backend khi sử dụng Amazon Cognito Confidential App Client. Hướng dẫn chi tiết cách tính toán Cognito `SECRET_HASH` bằng thuật toán HMAC-SHA256 và cách thẩm định chữ ký RSA của Access Token bằng `aws-jwt-verify` trước khi cho phép truy cập API. Đồng thời phân tích lý do tại sao việc chỉ decode chuỗi JWT là chưa đủ và bắt buộc phải xác minh chữ ký, thời hạn, token_use và client_id.
+> **Ghi chú**: Các bài viết kỹ thuật dưới đây là bản dự thảo kỹ thuật (Drafts) được chuẩn bị để chia sẻ kinh nghiệm thực tế.
 
-### 3. [Blog 3 - QUẢN LÝ PHIÊN ĐĂNG NHẬP AMAZON COGNITO VỚI HTTPONLY COOKIES, REFRESH TOKENS VÀ PHÂN QUYỀN RBAC](3.3-Blog3/)
-Bài viết khám phá giải pháp quản lý phiên làm việc an toàn cho Amazon Cognito. Thay vì lưu trữ token trong `localStorage` hay `sessionStorage` dễ bị tấn công XSS, NestJS Backend lưu token vào HttpOnly Signed Cookies phía Server. Bài viết trình bày chi tiết cơ chế duy trì phiên, làm mới token (`REFRESH_TOKEN_AUTH`), đăng xuất, cài đặt thuộc tính bảo mật cookie và cách kết hợp xác thực Cognito với vai trò người dùng trong PostgreSQL để bảo vệ tính năng gọi vốn.
+---
+
+### [Blog 1: Xây dựng Hệ thống Xác thực Bảo mật với Amazon Cognito cho Ứng dụng React và NestJS](3.1-Blog1/)
+Bài viết giới thiệu tổng quan về lý do lựa chọn Amazon Cognito User Pool (`us-east-1`) làm giải pháp quản lý danh tính tập trung cho nền tảng Startups Blogs, lý do không lưu mật khẩu trực tiếp ở cơ sở dữ liệu nội bộ và kiến trúc gửi request xác thực qua NestJS Server-side với `SECRET_HASH` (HMAC-SHA256).
+
+### [Blog 2: Bảo mật Xác thực Amazon Cognito với SecretHash và Kiểm tra Chữ ký JWT qua JWKS trong NestJS](3.2-Blog2/)
+Bài viết đi sâu vào cơ chế kỹ thuật sinh mã `SecretHash` HMAC-SHA256 từ `COGNITO_CLIENT_SECRET`, quy trình thẩm định token trực tiếp qua `jwks-rsa` / `aws-jwt-verify` với RSA Public Keys từ JWKS `us-east-1`, và tại sao chỉ decode JWT đơn thuần là chưa đủ an toàn.
+
+### [Blog 3: Quản lý Phiên Đăng nhập bằng HttpOnly Cookie, Refresh Token và Phân quyền RBAC kết hợp Cognito Groups](3.3-Blog3/)
+Bài viết phân tích phương án lưu trữ JWT trong HttpOnly Signed Cookie chống tấn công XSS/CSRF, quy trình cấp lại token với Refresh Token, và cơ chế phân quyền hai tầng kết hợp giữa NestJS RolesGuard và Cognito User Pool Group `ADMIN`.

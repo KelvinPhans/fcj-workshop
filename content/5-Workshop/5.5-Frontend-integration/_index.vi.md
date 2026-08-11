@@ -6,73 +6,38 @@ chapter: false
 pre: " <b> 5.5. </b> "
 ---
 
-### Tích hợp Frontend React 19, AuthContext & Tuyến đường Bảo vệ Gọi vốn
+### Tích hợp Frontend React 19, Zustand State, REST APIs & Admin Dashboard
 
-Trong phần này, chúng ta sẽ xem xét cách ứng dụng **React 19 Frontend** tích hợp với NestJS Auth API và bảo vệ tuyến đường đăng ký gọi vốn (`RaiseCapital`).
+Trong phần này, chúng ta sẽ xem xét cách ứng dụng **React 19 Frontend** tích hợp toàn diện với NestJS Backend REST APIs, quản lý trạng thái bằng Zustand, và triển khai giao diện **Admin Dashboard**.
 
-#### 1. Quản lý Trạng thái Xác thực (`AuthContext.tsx`)
-`AuthProvider` tự động gọi endpoint `GET /api/v1/auth/me` khi khởi chạy ứng dụng để kiểm tra phiên đăng nhập từ HttpOnly Cookie:
-
-```typescript
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchUser = async () => {
-    try {
-      setIsLoading(true);
-      const currentUser = await authApi.getCurrentUser();
-      setUser(currentUser);
-    } catch {
-      setUser(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, register, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-```
-
-#### 2. Phân quyền Tuyến đường (`ProtectedRoute.tsx`)
-Bảo vệ các route nhạy cảm (như `/raise-capital`), chỉ cho phép các vai trò được ủy quyền tiếp cận (`BUSINESS_OWNER` và `ENTERPRISE_PARTNER`):
+#### 1. Quản lý Trạng thái Xác thực & Token (`authStore.ts` & Axios Interceptors)
+Frontend sử dụng thư viện **Zustand** kết hợp với **Axios Interceptors** để tự động đính kèm Bearer JWT Token vào mọi API request gửi lên Backend:
 
 ```typescript
-export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) {
-  const { user, isAuthenticated, isLoading } = useAuth();
-
-  if (isLoading) return <LoadingSpinner />;
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (allowedRoles && user && !allowedRoles.includes(user.role)) {
-    return <Navigate to="/" replace />;
+// Trong services/api.ts
+api.interceptors.request.use((config) => {
+  const token = useAuthStore.getState().token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-
-  return <>{children}</>;
-}
+  return config;
+});
 ```
 
-#### 3. Quy trình Đăng ký Gọi vốn 8 Bước (Raise Capital Wizard)
-Giao diện `/raise-capital` triển khai form wizard 8 bước với tính năng kiểm tra dữ liệu (validation) và tự động lưu bản nháp vào `localStorage`:
+#### 2. Tích hợp Luồng Đăng ký Gọi vốn & Backend Write APIs
+Giao diện Đăng ký Gọi vốn (`PostIdea.tsx` / `RaiseCapital`) kết nối trực tiếp với backend write endpoints:
+- Đăng tạo doanh nghiệp mới (`POST /api/v1/businesses`).
+- Đăng tải tin gọi vốn (`POST /api/v1/businesses/:businessId/funding-opportunities`).
+- Tải tệp hình ảnh đính kèm (`POST /api/v1/upload`).
 
-1. **Thông tin Doanh nghiệp (`BusinessStep`)**
-2. **Thông tin Cơ hội Gọi vốn (`OpportunityStep`)**
-3. **Chi tiết Gọi vốn & Phân bổ Vốn (`FundingStep`)**
-4. **Thị trường & Chiến lược Phát triển (`MarketGrowthStep`)**
-5. **Điểm tin Tài chính (`FinancialStep`)**
-6. **Tài liệu & Hồ sơ Đính kèm (`DocumentsStep`)**
-7. **Cài đặt Quyền Riêng tư (`VisibilityStep`)**
-8. **Tổng duyệt & Gửi Hồ sơ (`ReviewStep`)**
-
-> **Lưu ý về trạng thái triển khai**: Form 8 bước, kiểm tra dữ liệu đầu vào, lưu bản nháp `localStorage` và bảo vệ tuyến đường bằng `ProtectedRoute` **đã được triển khai trên Frontend**. Việc lưu dữ liệu vào cơ sở dữ liệu PostgreSQL (Write APIs) và tải tệp lên Amazon S3 thuộc **định hướng nâng cấp trong tương lai (PLANNED)**.
+#### 3. Giao diện Quản trị viên (Admin Dashboard UI - `/admin/*`)
+Hệ thống Frontend triển khai khu vực Admin chuyên nghiệp tại tuyến đường `/admin`:
+- **Overview (`/admin/overview`)**: Thống kê số lượng Users, Businesses, Articles, và Pending Submissions.
+- **Businesses Management (`/admin/businesses`)**: Phê duyệt (`PUBLISHED`) hoặc Từ chối (`REJECTED`) doanh nghiệp, xem thông tin tài chính và lịch sử gọi vốn (`AdminViewBusiness`).
+- **Users Management (`/admin/users`)**: Xem danh sách người dùng toàn hệ thống, cập nhật vai trò (`USER`, `MODERATOR`, `ADMIN`).
+- **Articles Management (`/admin/articles`)**: Xem trước bài viết (Preview), quản lý bình luận rác và lọc bài viết nâng cao.
+- **Change Proposals (`/admin/businesses/:id/edit`)**: Admin tạo đề xuất chỉnh sửa dữ liệu JSON, cho phép Founder kiểm tra Diff/Merge trước khi áp dụng.
 
 > Screenshot required:
-> Protected `/raise-capital` route showing 8-step wizard form with step indicator.
+> Admin Dashboard Overview page (`/admin/overview`) showing stats widgets and business approval controls.
 > Hide AWS account identifiers and sensitive values before capturing.

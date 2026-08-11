@@ -6,90 +6,76 @@ chapter: false
 pre: " <b> 5.4. </b> "
 ---
 
-### NestJS Backend Integration, Amazon Cognito SDK & HttpOnly Cookie Session
+### NestJS Backend Integration, REST APIs, Amazon S3 Upload & Security Guards
 
-In this section, we examine how the NestJS backend integrates with **Amazon Cognito SDK** (`@aws-sdk/client-cognito-identity-provider`) and protects user sessions via **HttpOnly Signed Cookies**.
+In this section, we examine how the NestJS backend implements **REST APIs**, integrates the **Amazon Cognito SDK**, verifies cryptographic **RSA JWT signatures (`us-east-1`)**, and handles image file uploads to **Amazon S3**.
 
-#### 1. Cognito Secret Hash Calculation (`cognito-secret-hash.ts`)
-Because the Confidential App Client uses a Client Secret, all backend requests sent to Cognito must include a `SECRET_HASH` generated via HMAC-SHA256:
+#### 1. Implemented & Protected REST APIs
+
+- **Businesses (`BusinessesController`)**:
+  - `POST /businesses`: Create new Business (Requires `JwtAuthGuard`).
+  - `GET /businesses`: Public business discovery listing.
+  - `GET /businesses/:slug`: Detailed business profile by slug.
+  - `PUT /businesses/:id`: Update Business (Validates `ownerId` authorization).
+  - `DELETE /businesses/:id`: Delete Business (Validates `ownerId` authorization).
+  - `GET /businesses/admin/all` & `PUT /businesses/admin/:id/status`: Admin listing & approval workflow (`ADMIN`).
+
+- **Funding Opportunities (`FundingOpportunitiesController`)**:
+  - `POST /businesses/:businessId/funding-opportunities`: Publish funding opportunity.
+  - `GET /businesses/:businessId/funding-opportunities`: Retrieve funding opportunities list.
+  - `PUT /businesses/:businessId/funding-opportunities/:id`: Update funding opportunity.
+  - `DELETE /businesses/:businessId/funding-opportunities/:id`: Delete funding opportunity.
+
+- **Amazon S3 Media Upload (`UploadController` & `UploadService`)**:
+  - `POST /upload`: Uploads image files (up to 5MB, supports jpg, png, gif, webp) to Amazon S3 / MinIO.
+  - Integrates `@aws-sdk/client-s3` (`PutObjectCommand`, `PutBucketPolicyCommand`).
+
+- **Admin & Change Proposals (`AdminController` & `ProposalsController`)**:
+  - `GET /admin/stats`: Overview system statistics.
+  - `POST /admin/proposals/business/:id`: Create JSON change proposal.
+  - `POST /proposals/:id/approve` & `POST /proposals/:id/reject`: Founder Diff/Merge review & approval.
+
+#### 2. Cryptographic RSA JWT Signature Verification & Issuer `us-east-1` (`CognitoStrategy`)
+
+Protected API requests are verified by `CognitoStrategy` using `jwks-rsa`:
 
 ```typescript
-import * as crypto from 'crypto';
+@Injectable()
+export class CognitoStrategy extends PassportStrategy(Strategy, 'cognito') {
+  constructor() {
+    const userPoolId = process.env.COGNITO_USER_POOL_ID;
+    const region = process.env.AWS_REGION || 'us-east-1';
 
-export function generateCognitoSecretHash(username: string, clientId: string, clientSecret: string): string {
-  return crypto
-    .createHmac('SHA256', clientSecret)
-    .update(username + clientId)
-    .digest('base64');
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      audience: process.env.COGNITO_CLIENT_ID,
+      issuer: `https://cognito-idp.${region}.amazonaws.com/${userPoolId}`,
+      algorithms: ['RS256'],
+      secretOrKeyProvider: passportJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: `https://cognito-idp.${region}.amazonaws.com/${userPoolId}/.well-known/jwks.json`,
+      }),
+    });
+  }
 }
 ```
 
-#### 2. Registration & Authentication Handlers (`CognitoService`)
-- **User Registration (`SignUpCommand`)**:
+#### 3. Dual-Layer Authorization Guard
+
+The system combines `JwtAuthGuard` (verifies user identity) and `RolesGuard` (verifies `UserRole` & Cognito Group `ADMIN` permissions):
+
 ```typescript
-async signUp(email: string, password: string, fullName: string) {
-  const secretHash = this.getSecretHash(email);
-  const command = new SignUpCommand({
-    ClientId: this.clientId,
-    SecretHash: secretHash,
-    Username: email,
-    Password: password,
-    UserAttributes: [
-      { Name: 'email', Value: email },
-      { Name: 'name', Value: fullName },
-    ],
-  });
-  return await this.cognitoClient.send(command);
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles(Role.ADMIN)
+@Get('admin/all')
+findAllForAdmin() {
+  return this.businessesService.findAllForAdmin(...);
 }
-```
-
-- **User Authentication (`USER_PASSWORD_AUTH`)**:
-```typescript
-async login(email: string, password: string): Promise<CognitoTokens> {
-  const secretHash = this.getSecretHash(email);
-  const command = new InitiateAuthCommand({
-    AuthFlow: AuthFlowType.USER_PASSWORD_AUTH,
-    ClientId: this.clientId,
-    AuthParameters: {
-      USERNAME: email,
-      PASSWORD: password,
-      SECRET_HASH: secretHash,
-    },
-  });
-  const response = await this.cognitoClient.send(command);
-  return {
-    accessToken: response.AuthenticationResult.AccessToken,
-    idToken: response.AuthenticationResult.IdToken,
-    refreshToken: response.AuthenticationResult.RefreshToken,
-    expiresIn: response.AuthenticationResult.ExpiresIn,
-  };
-}
-```
-
-#### 3. HttpOnly Signed Cookie Token Transport (`auth.controller.ts`)
-User passwords and JWT tokens are **never stored in PostgreSQL** nor exposed to client-side JavaScript. NestJS attaches signed HttpOnly cookies:
-
-```typescript
-response.cookie('sb_access_token', result.tokens.accessToken, {
-  httpOnly: true,
-  secure: process.env.COOKIE_SECURE === 'true',
-  sameSite: 'lax',
-  path: '/',
-  signed: true,
-  maxAge: 3600 * 1000,
-});
-```
-
-#### 4. Cryptographic JWT Signature Verification (`CognitoAuthGuard` & `aws-jwt-verify`)
-Protected routes use `CognitoAuthGuard`. The guard uses official `aws-jwt-verify` to fetch JWKS from Cognito and verify the Access Token RSA signature before fetching user records from PostgreSQL:
-
-```typescript
-const payload = await this.cognitoService.verifyAccessToken(accessToken);
-const user = await this.prisma.user.findUnique({
-  where: { email: payload.username },
-});
 ```
 
 > Screenshot required:
-> NestJS AuthController endpoints in Swagger UI (`/auth/register`, `/auth/verify-email`, `/auth/login`, `/auth/me`).
+> NestJS Swagger API Documentation showing protected endpoints for Businesses, Funding Opportunities, Upload, and Admin routes.
 > Hide AWS account identifiers and sensitive values before capturing.

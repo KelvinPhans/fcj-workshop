@@ -25,9 +25,10 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 22/06/2026 đến ngày 15/08/2026
 
-![Ảnh đại diện của bạn](/images/avatar.png)
-
-
+<p align="center">
+  <img src="/images/profile/khanh-avatar.jpg" alt="Ảnh cá nhân" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; margin: 15px 0;">
+</p>
+<p align="center"><em>Ảnh cá nhân</em></p>
 
 ### Nội dung báo cáo
 

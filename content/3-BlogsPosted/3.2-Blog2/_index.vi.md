@@ -7,7 +7,7 @@ pre: " <b> 3.2. </b> "
 ---
 
 # SECURING AMAZON COGNITO AUTHENTICATION WITH SECRETHASH AND JWT VERIFICATION IN NESTJS
-## Đảm bảo An toàn Tuyệt đối cho Backend với SecretHash HMAC-SHA256 và Thẩm định Chữ ký RSA JWT
+## Đảm bảo An toàn Tuyệt đối cho Backend với SecretHash HMAC-SHA256 và Thẩm định Chữ ký RSA JWT (`us-east-1`)
 
 ### 1. Giới thiệu bài viết
 Trong các ứng dụng doanh nghiệp sử dụng **Amazon Cognito Confidential App Client**, việc bảo vệ giao tiếp giữa Backend Server và Cognito User Pool đòi hỏi các cơ chế mã hóa và thẩm định nghiêm ngặt.
@@ -70,24 +70,24 @@ async login(email: string, password: string): Promise<CognitoTokens> {
 
 ### 3. Thẩm định Chữ ký JWT với `aws-jwt-verify`
 
-Khi client gửi request chứa token xác thực đến Backend NestJS, Backend phải thẩm định xem token này có thực sự do **Amazon Cognito User Pool** (`ap-southeast-2`) phát hành hay không.
+Khi client gửi request chứa token xác thực đến Backend NestJS, Backend phải thẩm định xem token này có thực sự do **Amazon Cognito User Pool** (`us-east-1`) phát hành hay không.
 
 #### Tại sao việc Decode JWT đơn thuần (`jwt.decode()`) là NGUY HIỂM?
 Nhiều lập trình viên mắc sai lầm khi chỉ dùng `jwt.decode()` hoặc `JSON.parse(atob(token.split('.')[1]))` để lấy dữ liệu payload. 
 - **Giải mã (Decode)** chỉ là việc chuyển đổi chuỗi Base64Url sang JSON, **hoàn toàn không xác minh tính toàn vẹn hay nguồn gốc**.
-- Tẻhker có thể tự tạo một chuỗi JSON giả mạo với bất kỳ `sub` hay `email` nào, mã hóa Base64 và gửi lên Server. Nếu Server chỉ decode mà không xác thực chữ ký (Signature Verification), hệ thống sẽ bị xâm nhập hoàn toàn.
+- Tấn công giả mạo có thể tự tạo một chuỗi JSON với bất kỳ `sub` hay `email` nào, mã hóa Base64 và gửi lên Server. Nếu Server chỉ decode mà không xác thực chữ ký (Signature Verification), hệ thống sẽ bị xâm nhập hoàn toàn.
 
 #### Cơ chế Thẩm định Chữ ký RSA với JWKS (JSON Web Key Set)
 Chữ ký của Cognito JWT được ký bằng thuật toán mã hóa bất đối xứng **RS256** (RSA Signature with SHA-256).
 - Cognito công bố các khóa công khai (Public Keys) tại đường dẫn JWKS tiêu chuẩn:
-  `https://cognito-idp.ap-southeast-2.amazonaws.com/<userPoolId>/.well-known/jwks.json`
+  `https://cognito-idp.us-east-1.amazonaws.com/<userPoolId>/.well-known/jwks.json`
 - Để thẩm định token, Backend phải tải JWKS, chọn đúng `kid` (Key ID) trùng với header của token, và dùng Public Key để kiểm tra chữ ký RSA.
 
 ```mermaid
 graph TD
     Request[Request with sb_access_token Cookie] --> Guard[CognitoAuthGuard]
     Guard --> Verifier[aws-jwt-verify Verifier]
-    Verifier <-->|1. Fetch JWKS RSA Public Keys| JWKS[Cognito JWKS Endpoint ap-southeast-2]
+    Verifier <-->|1. Fetch JWKS RSA Public Keys| JWKS[Cognito JWKS Endpoint us-east-1]
     Verifier -->|2. Verify RSA Signature| SigCheck{Signature Valid?}
     SigCheck -- No --> Reject[Throw 401 Unauthorized]
     SigCheck -- Yes --> ClaimsCheck{Validate Claims}
@@ -102,7 +102,7 @@ Dự án **Startups Blogs** sử dụng thư viện chính thức `aws-jwt-verif
 2. **Thời hạn hiệu lực (Expiration `exp`)**: Đảm bảo token chưa hết hạn sử dụng.
 3. **Mục đích sử dụng Token (`token_use`)**: Xác minh `token_use === 'access'`.
 4. **App Client Identifier (`client_id`)**: Khớp đúng với `COGNITO_CLIENT_ID` của hệ thống.
-5. **Issuer (`iss`)**: Khớp đúng với URL issuer của Cognito Region `ap-southeast-2`.
+5. **Issuer (`iss`)**: Khớp đúng với URL issuer của Cognito Region `us-east-1`.
 
 ```typescript
 // Trong CognitoService (Khởi tạo Verifier)
@@ -141,9 +141,7 @@ async canActivate(context: ExecutionContext): Promise<boolean> {
 ---
 
 ### 4. Kết luận
-Việc kết hợp **SecretHash (HMAC-SHA256)** ở chiều gửi request tới Cognito và **`aws-jwt-verify` (RSA JWKS Verification)** ở chiều nhận request tại NestJS Backend giúp nền tảng **Startups Blogs** đạt chuẩn bảo mật cao nhất:
+Việc kết hợp **SecretHash (HMAC-SHA256)** ở chiều gửi request tới Cognito và **`aws-jwt-verify` (RSA JWKS Verification `us-east-1`)** ở chiều nhận request tại NestJS Backend giúp nền tảng **Startups Blogs** đạt chuẩn bảo mật cao nhất:
 - Không lộ Client Secret.
 - Chống tuyệt đối hành vi giả mạo JWT Token.
 - Bảo vệ các tuyến đường dữ liệu quan trọng như đăng ký gọi vốn.
-
-Trong bài viết tiếp theo (Blog 3), chúng ta sẽ khám phá giải pháp lưu trữ token qua **HttpOnly Signed Cookies**, cơ chế **Refresh Token**, và phân quyền người dùng theo vai trò (RBAC) với PostgreSQL.

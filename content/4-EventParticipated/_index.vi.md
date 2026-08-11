@@ -6,37 +6,24 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
+Trong quá trình thực tập tại chương trình **First Cloud AI Journey (FCAJ)**, em đã tham gia **2 sự kiện công nghệ cộng đồng AWS** chuyên sâu. Những hoạt động này đã mang lại nhiều kiến thức chuyên môn quý báu về kiến trúc Đám mây AWS, tư duy thiết kế hệ thống, chứng chỉ AWS cũng như các xu hướng công nghệ Agentic AI mới nhất.
 
+### [Event 1: Cloud Architect](4.1-event1/)
+&emsp;**Tên sự kiện:** Cloud Architect
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+&emsp;**Thời gian:** 11/07/2026
 
-### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Vai trò trong sự kiện:** Người tham dự / Thành viên đội chơi
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+&emsp;**Tóm tắt:** Trò chơi thi đấu kiến thức về Điện toán đám mây và Kiến trúc AWS theo hình thức đối kháng đồng đội. Sự kiện giúp củng cố tư duy thiết kế kiến trúc Đám mây, phân tích trade-off và học hỏi kinh nghiệm thi chứng chỉ AWS thực tế.
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+---
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+### [Event 2: FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!](4.2-event2/)
+&emsp;**Tên sự kiện:** FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!
 
+&emsp;**Thời gian:** 25/07/2026
 
+&emsp;**Vai trò trong sự kiện:** Người tham dự
 
-### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
-
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
-
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
-
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
-
+&emsp;**Tóm tắt:** Buổi chia sẻ giải pháp và báo cáo kết quả cuộc thi Hackathon về Agentic AI do AWS FCAJ phối hợp cùng quỹ JI Fund tổ chức. Sự kiện mang đến cái nhìn thực tế về cách chuyển đổi sản phẩm từ PoC sang môi trường Production, cách kết hợp các dịch vụ AWS và áp dụng Guardrails, RBAC trong ứng dụng AI.

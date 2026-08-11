@@ -6,21 +6,22 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-### Chuẩn bị Môi trường & Khởi tạo Cơ sở dữ liệu
+### Chuẩn bị Môi trường, Terraform & Cơ sở dữ liệu
 
-Trước khi thực hiện các bước cấu hình Amazon Cognito và kết nối Full-Stack, bạn cần chuẩn bị các công cụ môi trường sau.
+Trước khi thực hiện các bước cấu hình Amazon Cognito và hạ tầng Đám mây AWS, bạn cần chuẩn bị các công cụ môi trường sau.
 
 #### 1. Yêu cầu công cụ (Prerequisites)
 - **Node.js**: Phiên bản 18+ hoặc 20+ LTS.
 - **npm** / **yarn** / **pnpm**: Trình quản lý gói phụ thuộc.
-- **AWS CLI**: Đã cài đặt và cấu hình credentials với khu vực `ap-southeast-2`.
-- **PostgreSQL Database**: Đã khởi chạy locally hoặc trên một instance thử nghiệm.
-- **Docker** *(Tùy chọn)*: Để khởi chạy PostgreSQL container qua `docker-compose`.
+- **Terraform**: Phiên bản v1.5+ để khởi tạo hạ tầng Đám mây tự động.
+- **AWS CLI**: Đã cài đặt và cấu hình credentials với khu vực **`us-east-1`** (N. Virginia).
+- **PostgreSQL Database**: Đã khởi chạy locally qua Docker (`docker-compose.yml` tại cổng `5433`) hoặc dịch vụ Amazon RDS PostgreSQL.
+- **Docker**: Khởi chạy container PostgreSQL và MinIO S3 simulation.
 
 #### 2. Cấu hình cơ sở dữ liệu với Prisma ORM
-Mô hình dữ liệu của Startups Blogs được định nghĩa chi tiết trong `prisma/schema.prisma`. 
+Mô hình dữ liệu của Startups Blogs được định nghĩa chi tiết trong `backend/prisma/schema.prisma`. 
 
-Khởi tạo các bảng dữ liệu bằng lệnh:
+Khởi tạo và đồng bộ cơ sở dữ liệu bằng lệnh:
 
 ```bash
 cd backend
@@ -28,13 +29,13 @@ npx prisma generate
 npx prisma db push
 ```
 
-#### 3. Chạy dữ liệu mẫu (Seed Data)
-Đăng ký dữ liệu mẫu cho danh mục ngành nghề (Industries), loại hình doanh nghiệp, giai đoạn phát triển và hồ sơ mẫu:
+#### 3. Khởi tạo dữ liệu mẫu (Seed Data)
+Đăng ký dữ liệu mẫu cho danh mục ngành nghề (Industries), loại hình doanh nghiệp, giai đoạn phát triển, bài viết mẫu và tài khoản thử nghiệm:
 
 ```bash
 npx prisma db seed
 ```
 
 > Screenshot required:
-> Kết quả lệnh `npx prisma db push` và cơ sở dữ liệu PostgreSQL đã được khởi tạo các bảng `users`, `businesses`, `funding_opportunities`.
+> Kết quả lệnh `npx prisma db push` và cơ sở dữ liệu PostgreSQL đã được khởi tạo các bảng `users`, `businesses`, `funding_opportunities`, `articles`, `change_proposals`.
 > Hide AWS account identifiers and sensitive values before capturing.

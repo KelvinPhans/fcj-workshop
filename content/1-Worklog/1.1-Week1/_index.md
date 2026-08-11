@@ -7,31 +7,29 @@ pre: " <b> 1.1. </b> "
 ---
 ### Week 1 Objectives:
 
-- Connect and get acquainted with members of First Cloud AI Journey.
-- Understand the internship program, rules, and learning roadmap.
-- Understand the basic concepts of AWS Cloud.
-- Become familiar with AWS Management Console and AWS CLI.
-- Understand the fundamentals of Amazon EC2 and practice launching an EC2 instance.
+- Meet Startups Blogs team members and First Cloud AI Journey (FCAJ) program mentors.
+- Understand business requirements for the investment connection platform, working guidelines, and the 8-week internship roadmap.
+- Gain a general understanding of Cloud Computing, global AWS infrastructure, and core AWS service categories (Compute, Storage, Networking, Database, Security).
+- Install and configure resource management tools: AWS Management Console and AWS CLI.
+- Learn core concepts of Amazon EC2 (Instance types, AMI, EBS, Security Groups, Key Pairs, SSH).
+- Study React 19 (Vite, TypeScript), analyze business discovery requirements, and design wireframes for Startups Blogs.
+- Initialize the basic Frontend project structure (React Router v7, Shared Layouts).
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 1 | - Get acquainted with First Cloud AI Journey members <br> - Meet mentors and understand the internship program <br> - Read and take note of internship unit rules and regulations <br> - Review the internship roadmap and expected outcomes <br> - Prepare the required accounts and working environment | 22/06/2026 | 22/06/2026 | |
-| 2 | - Learn about Cloud Computing and AWS <br> - Learn the main AWS service categories: <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + Security <br> - Learn about AWS Regions and Availability Zones <br> - Become familiar with AWS Global Infrastructure | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Create and configure an AWS Free Tier account <br> - Learn how to navigate AWS Management Console <br> - Install AWS CLI <br> - Configure AWS CLI <br> - Practice basic AWS CLI commands <br> - Learn about: <br>&emsp; + Access Key <br>&emsp; + Secret Access Key <br>&emsp; + Default Region <br>&emsp; + CLI output format | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Learn the fundamentals of Amazon EC2 <br> - Learn about: <br>&emsp; + EC2 Instance <br>&emsp; + Instance Types <br>&emsp; + Amazon Machine Image (AMI) <br>&emsp; + Amazon EBS <br>&emsp; + Security Groups <br>&emsp; + Key Pairs <br>&emsp; + Elastic IP <br> - Learn different methods for connecting to EC2 <br> - Learn how SSH connections work | 25/06/2026 | 25/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Practice launching an EC2 instance <br> - Configure a Security Group <br> - Create and use a Key Pair <br> - Connect to EC2 using SSH <br> - Create and attach an EBS volume <br> - Review instance information through AWS Console <br> - Practice viewing EC2 resources using AWS CLI | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 1 | - Received internship assignments, met mentors and team members <br> - Learned project goals for building the Startups Blogs business investment connection platform <br> - Reviewed internship rules and prepared accounts and the local development environment | 22/06/2026 | 22/06/2026 | |
+| 2 | - Studied Cloud Computing fundamentals and AWS Global Infrastructure (Regions & AZs) <br> - Researched primary AWS service groups: Compute, Storage, Networking, Database, Security <br> - Studied React 19, Vite build tools, and TypeScript programming fundamentals | 23/06/2026 | 23/06/2026 | <https://cloudjourney.awsstudygroup.com/> <br> <https://react.dev/> |
+| 3 | - Created and configured an AWS Free Tier account <br> - Installed AWS CLI on local machine; configured Access Key, Secret Key, Default Region <br> - Analyzed business requirements and drafted wireframe mockups for core Startups Blogs pages | 24/06/2026 | 24/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Studied core Amazon EC2 concepts (Instance types, AMI, EBS volumes, Security Groups, SSH) <br> - Initialized the React 19 (Vite, TypeScript) frontend repository <br> - Configured application routing using React Router v7 | 25/06/2026 | 25/06/2026 | <https://reactrouter.com/> |
+| 5 | - Practiced launching a test EC2 instance on AWS Console, configured Security Groups, connected via SSH <br> - Developed shared UI layout components (Header, Navigation, Footer, Shared Layouts) <br> - Verified local execution of the React frontend application | 26/06/2026 | 26/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Week 1 Achievements:
 
-- Understood the basic concepts of Cloud Computing and AWS.
-- Became familiar with major AWS service categories such as Compute, Storage, Networking, Database, and Security.
-- Successfully created and configured an AWS Free Tier account.
-- Became familiar with AWS Management Console.
-- Installed and configured AWS CLI successfully.
-- Used basic AWS CLI commands to retrieve AWS resource information.
-- Understood the fundamental components of Amazon EC2.
-- Successfully launched and connected to an EC2 instance using SSH.
-- Practiced creating and attaching an EBS volume.
-- Understood the relationship between AWS Console and AWS CLI when managing AWS resources.
+- Understood project development goals for Startups Blogs and role assignments within the team.
+- Mastered foundational concepts of Cloud Computing, AWS infrastructure, and core service categories.
+- Successfully configured AWS Free Tier accounts and AWS CLI developer tools.
+- Understood Amazon EC2 fundamentals and practiced remote access via SSH.
+- Completed wireframe UI designs for the Startups Blogs application.
+- Successfully initialized the React 19 (Vite, TypeScript) frontend codebase with React Router v7 and reusable layout components.

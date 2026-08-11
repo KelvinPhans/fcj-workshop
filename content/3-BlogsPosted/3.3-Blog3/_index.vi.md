@@ -7,7 +7,7 @@ pre: " <b> 3.3. </b> "
 ---
 
 # MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL
-## Giải pháp Quản lý Phiên Đăng nhập An toàn và Phân quyền Người dùng Cấp Doanh nghiệp
+## Giải pháp Quản lý Phiên Đăng nhập An toàn và Phân quyền Người dùng Cấp Doanh nghiệp (`us-east-1`)
 
 ### 1. Giới thiệu bài viết
 Sau khi xác thực thành công credentials của người dùng với **Amazon Cognito**, vấn đề tiếp theo là: *Làm thế nào để duy trì và quản lý phiên đăng nhập (Session Management) một cách an toàn nhất?*
@@ -18,7 +18,7 @@ Bài viết này giới thiệu kiến trúc quản lý phiên làm việc đư�
 - Lưu trữ Token trong **HttpOnly Signed Cookies**.
 - Duy trì phiên làm việc bằng cơ chế **Refresh Token (`REFRESH_TOKEN_AUTH`)**.
 - Xử lý Đăng xuất và Revoke Token.
-- Kết hợp xác thực Cognito với **Role-Based Access Control (RBAC)** trong cơ sở dữ liệu PostgreSQL để bảo vệ các tuyến đường gọi vốn.
+- Kết hợp xác thực Cognito với **Role-Based Access Control (RBAC)** trong cơ sở dữ liệu PostgreSQL để bảo vệ các tuyến đường gọi vốn và quản trị.
 
 ---
 
@@ -60,7 +60,7 @@ sequenceDiagram
     autonumber
     actor User as React 19 Client
     participant BE as NestJS AuthController
-    participant Cog as Amazon Cognito (ap-southeast-2)
+    participant Cog as Amazon Cognito (us-east-1)
 
     User->>BE: POST /api/v1/auth/refresh (gửi kèm HttpOnly Refresh Cookie)
     Note over BE: Trích xuất sb_refresh_token & sb_user_email từ Signed Cookie
@@ -76,13 +76,13 @@ Khi người dùng chọn **Logout**, Backend NestJS thực hiện 2 thao tác:
 
 ---
 
-### 4. Kết hợp Cognito với Phân quyền RBAC trong PostgreSQL
+### 4. Kết hợp Cognito với Phân quyền RBAC trong PostgreSQL & Cognito Groups
 
 Trong **Startups Blogs**, Cognito đóng vai trò làm Nhà cung cấp Danh tính (Identity Provider), trong khi **PostgreSQL** lưu trữ vai trò nghiệp vụ của người dùng (`UserRole` enum):
 - `BUSINESS_OWNER`: Chủ doanh nghiệp / Founder.
 - `INVESTOR`: Nhà đầu tư.
 - `ENTERPRISE_PARTNER`: Đối tác doanh nghiệp.
-- `ADMIN`: Quản trị viên hệ thống (**Không mở đăng ký công khai**).
+- `ADMIN`: Quản trị viên hệ thống (**Đồng bộ tự động qua Cognito Group `ADMIN`**).
 
 #### Bảo vệ Tuyến đường Gọi vốn (Raise Capital Guard)
 Tuyến đường `/raise-capital` hiển thị Wizard 8 bước lập hồ sơ gọi vốn. Tuyến đường này được bảo vệ ở cả Frontend và Backend:
@@ -99,14 +99,12 @@ Tuyến đường `/raise-capital` hiển thị Wizard 8 bước lập hồ sơ 
 />
 ```
 
-- **Ranh giới Tính năng Gọi vốn (Raise Capital Status)**:
-  - **ĐÃ TRIỂN KHAI (IMPLEMENTED)**: Tuyến đường bảo vệ `ProtectedRoute`, giao diện Form Wizard 8 bước, kiểm tra dữ liệu đầu vào (validation) và tự động lưu bản nháp vào `localStorage`.
-  - **DỰ KIẾN TƯƠNG LAI (PLANNED)**: Lưu dữ liệu gọi vốn vào PostgreSQL (Backend Write APIs `POST/PUT`), tải tệp logo và tài liệu lên Amazon S3 qua Presigned URLs.
+- **Tính năng Đã Triển khai (Implemented)**:
+  - Tuyến đường bảo vệ `ProtectedRoute`, giao diện Form Wizard 8 bước.
+  - Tải ảnh đại diện và tài liệu đính kèm lên Amazon S3 (`POST /upload`).
+  - Lưu và ghi dữ liệu gọi vốn trực tiếp vào cơ sở dữ liệu PostgreSQL (`POST /businesses`, `POST /businesses/:businessId/funding-opportunities`).
 
 ---
 
 ### 5. Kết luận
-Giải pháp quản lý phiên bằng **HttpOnly Signed Cookies** kết hợp luồng **Refresh Token** của Amazon Cognito và hệ thống phân quyền **RBAC PostgreSQL** giúp **Startups Blogs** đạt được sự cân bằng hoàn hảo giữa **Trải nghiệm Người dùng (UX)** và **Bảo mật Cấp Doanh nghiệp (Enterprise Security)**:
-- Người dùng duy trì phiên đăng nhập mượt mà không bị ngắt quãng.
-- Bảo vệ tuyệt đối token khỏi nguy cơ bị đánh cắp qua tấn công XSS.
-- Phân quyền chặt chẽ các tính năng theo vai trò người dùng được ủy quyền.
+Giải pháp quản lý phiên bằng **HttpOnly Signed Cookies** kết hợp luồng **Refresh Token** của Amazon Cognito (`us-east-1`) và hệ thống phân quyền **RBAC PostgreSQL** giúp **Startups Blogs** đạt được sự cân bằng hoàn hảo giữa **Trải nghiệm Người dùng (UX)** và **Bảo mật Cấp Doanh nghiệp (Enterprise Security)**.

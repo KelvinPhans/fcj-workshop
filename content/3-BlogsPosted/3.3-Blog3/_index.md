@@ -7,34 +7,34 @@ pre: " <b> 3.3. </b> "
 ---
 
 # MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL
-## Enterprise Session Management and Role-Based Authorization Architecture
+## Enterprise Session Management and Role-Based Authorization (`us-east-1`)
 
 ### 1. Introduction
-Once user credentials are successfully authenticated against **Amazon Cognito**, the next critical question arises: *How do we securely manage user sessions?*
+Following successful user credential authentication with **Amazon Cognito**, the next consideration is: *How to maintain and manage user sessions securely?*
 
-For React Single Page Applications (SPAs), storing JWT Access Tokens or Refresh Tokens inside browser `localStorage` represents a primary attack vector for credential theft via **Cross-Site Scripting (XSS)** vulnerabilities.
+For Single Page Applications (SPAs) built with React, storing JWT Access or Refresh Tokens in `localStorage` exposes user accounts to severe risks from **Cross-Site Scripting (XSS)** vulnerabilities.
 
-This article details the session management architecture implemented in the **Startups Blogs** platform:
-- Token storage inside server-side **HttpOnly Signed Cookies**.
-- Session continuation via **Refresh Token authentication (`REFRESH_TOKEN_AUTH`)**.
-- Logout and token revocation mechanisms.
-- Combining Cognito identity authentication with **Role-Based Access Control (RBAC)** in PostgreSQL to protect fundraising features.
+This article highlights the session management architecture implemented in **Startups Blogs**:
+- Storing Tokens in **HttpOnly Signed Cookies**.
+- Maintaining active sessions via **Refresh Token (`REFRESH_TOKEN_AUTH`)**.
+- Handling Global SignOut and Token Revocation.
+- Combining Cognito authentication with **Role-Based Access Control (RBAC)** in PostgreSQL to protect capital-raising and administrative routes.
 
 ---
 
-### 2. Session Security via HttpOnly Signed Cookies
+### 2. Session Security with HttpOnly Signed Cookies
 
-Rather than returning raw JWT strings to client JavaScript, NestJS packages Cognito tokens into **HttpOnly Signed Cookies** with strict security flags:
+Instead of returning tokens to browser storage, NestJS packages Cognito tokens inside **HttpOnly Signed Cookies** with strict security flags:
 
 ```typescript
 // Inside AuthController.ts
 private getCookieOptions(maxAgeMs?: number) {
   return {
-    httpOnly: true,                                         // Prevents client JavaScript (document.cookie) from accessing tokens
-    secure: process.env.COOKIE_SECURE === 'true',           // Enforces HTTPS transport in Production environments
-    sameSite: (process.env.COOKIE_SAME_SITE as any) || 'lax',// Guards against Cross-Site Request Forgery (CSRF)
+    httpOnly: true,                                         // Inaccessible to client JavaScript
+    secure: process.env.COOKIE_SECURE === 'true',           // Enforces HTTPS in production
+    sameSite: (process.env.COOKIE_SAME_SITE as any) || 'lax',// Prevents CSRF attacks
     path: '/',
-    signed: true,                                           // Signs cookies with a server secret to prevent tampering
+    signed: true,                                           // Signed with secret key against tampering
     ...(maxAgeMs !== undefined && { maxAge: maxAgeMs }),
   };
 }
@@ -42,50 +42,50 @@ private getCookieOptions(maxAgeMs?: number) {
 
 #### Token Storage Comparison: `localStorage` vs `HttpOnly Cookie`
 
-| Comparison Metric | Browser `localStorage` | Server-Side HttpOnly Cookie |
+| Comparison Criteria | Browser `localStorage` | Server-Side HttpOnly Cookie |
 | --- | :---: | :---: |
-| Accessible via JavaScript (`document.cookie`) | ⚠️ Yes (High Risk) | ✅ No (Total Protection) |
-| Vulnerable to XSS Token Theft | ⚠️ Extreme | ✅ Immune to XSS reading |
-| Protection against CSRF | ✅ Natural if attached via header | ✅ Protected via `SameSite=Lax` & Signed Cookies |
-| Automatic Request Dispatch | ❌ Requires JS code to attach headers | ✅ Browser attaches automatically by domain |
+| JavaScript Extractable (`document.cookie`) | ⚠️ Yes (Vulnerable) | ✅ No (Strictly Isolated) |
+| XSS Token Theft Risk | ⚠️ Critical | ✅ Immune to XSS Read |
+| CSRF Mitigation | ✅ Via Custom Headers | ✅ Via `SameSite=Lax` & Signed Cookies |
+| Automatic Transport | ❌ Requires JS Header Injection | ✅ Automatically attached by browser |
 
 ---
 
-### 3. Refresh Token Flow (`REFRESH_TOKEN_AUTH`)
+### 3. Session Refresh Flow
 
-Cognito Access Tokens expire after 1 hour by default. When an Access Token expires, users do not need to re-enter passwords. The backend automatically renews tokens via the `sb_refresh_token` cookie.
+Cognito Access Tokens expire after 1 hour. Upon expiration, users do not need to re-enter credentials. The system automatically renews tokens via the `sb_refresh_token` cookie.
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor User as React 19 Client
     participant BE as NestJS AuthController
-    participant Cog as Amazon Cognito (ap-southeast-2)
+    participant Cog as Amazon Cognito (us-east-1)
 
-    User->>BE: POST /api/v1/auth/refresh (sends HttpOnly Refresh Cookie)
-    Note over BE: Extracts sb_refresh_token & sb_user_email from Signed Cookie
+    User->>BE: POST /api/v1/auth/refresh (with HttpOnly Refresh Cookie)
+    Note over BE: Extract sb_refresh_token & sb_user_email from Signed Cookie
     BE->>Cog: InitiateAuthCommand (REFRESH_TOKEN_AUTH flow with SecretHash)
     Cog-->>BE: Returns fresh AccessToken & IDToken
-    BE-->>User: Updates fresh HttpOnly Signed Cookies (HTTP 200 OK)
+    BE-->>User: Issues updated HttpOnly Signed Cookies (HTTP 200 OK)
 ```
 
-#### Logout & Token Revocation (`GlobalSignOut` & `RevokeToken`)
-When a user clicks **Logout**, NestJS performs two security steps:
-1. Issues `RevokeTokenCommand` and `GlobalSignOutCommand` to Cognito to invalidate the Refresh Token on the AWS cloud.
+#### Logout & Token Revocation
+When a user logs out, NestJS executes:
+1. Dispatches `RevokeTokenCommand` and `GlobalSignOutCommand` to Cognito to invalidate the Refresh Token on AWS.
 2. Clears all HttpOnly cookies on the browser via `response.clearCookie()`.
 
 ---
 
-### 4. Combining Cognito Identity with PostgreSQL Role-Based Access Control (RBAC)
+### 4. Combining Cognito with RBAC & Cognito Groups in PostgreSQL
 
-In **Startups Blogs**, Cognito acts as the Identity Provider, while **PostgreSQL** stores domain user roles (`UserRole` enum):
-- `BUSINESS_OWNER`: Startup Founders / Owners.
-- `INVESTOR`: Investors / Angel Investors.
-- `ENTERPRISE_PARTNER`: Strategic Enterprise Partners.
-- `ADMIN`: Platform Administrators (**Not publicly registrable**).
+In **Startups Blogs**, Cognito acts as the Identity Provider while **PostgreSQL** maintains application domain roles (`UserRole` enum):
+- `BUSINESS_OWNER`: Business Founder.
+- `INVESTOR`: Investor.
+- `ENTERPRISE_PARTNER`: Strategic Corporate Partner.
+- `ADMIN`: System Administrator (**Synchronized with Cognito Group `ADMIN`**).
 
-#### Protected Capital Raising Route (`RaiseCapital`)
-The `/raise-capital` view renders an 8-step wizard form guarded at both frontend and backend layers:
+#### Capital Raising Protection (`ProtectedRoute`)
+The `/raise-capital` route renders an 8-step wizard protected at both Frontend and Backend levels:
 
 - **Frontend ProtectedRoute (`App.tsx`)**:
 ```tsx
@@ -99,14 +99,12 @@ The `/raise-capital` view renders an 8-step wizard form guarded at both frontend
 />
 ```
 
-- **Feature Boundary Status**:
-  - **IMPLEMENTED**: `ProtectedRoute` guard, 8-step wizard form, input validation, and `localStorage` draft auto-saving.
-  - **PLANNED FOR FUTURE PHASES**: PostgreSQL persistence (Backend Write APIs `POST/PUT`) and Amazon S3 presigned URL file uploads.
+- **Implemented Functionality**:
+  - Protected navigation route and 8-step Form Wizard.
+  - Image logo and document attachment uploads to Amazon S3 (`POST /upload`).
+  - Direct persistence into PostgreSQL database (`POST /businesses`, `POST /businesses/:businessId/funding-opportunities`).
 
 ---
 
 ### 5. Conclusion
-Managing user sessions via **HttpOnly Signed Cookies** combined with Amazon Cognito's **Refresh Token flow** and PostgreSQL **RBAC authorization** affords **Startups Blogs** an optimal balance between **User Experience (UX)** and **Enterprise Security**:
-- Seamless session continuation without user disruption.
-- Total defense against XSS token theft.
-- Strict role-based authorization protecting application features.
+Combining **HttpOnly Signed Cookies** with Amazon Cognito (`us-east-1`) **Refresh Token flows** and **PostgreSQL RBAC** achieves an optimal balance between **User Experience** and **Enterprise Security**.
