@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-Trang này ghi nhận toàn bộ tiến trình công việc thực tập (Worklog) của sinh viên **Trần Tuấn Khanh** trong suốt **8 tuần** (từ ngày **22/06/2026** đến ngày **14/08/2026**) tại chương trình **First Cloud AI Journey (FCAJ)**.
+**Trong trang này**, tôi trình bày nhật ký công việc trong suốt **8 tuần thực tập**, từ ngày **22/06/2026** đến ngày **14/08/2026**, tại chương trình **First Cloud AI Journey (FCAJ)**.
 
-Công việc thực tập được phân công tập trung vào mảng **Phát triển Giao diện ứng dụng Frontend (React 19, TypeScript, Vite)** cho dự án **Startups Blogs** và **Biên soạn, hoàn thiện Bộ tài liệu hướng dẫn thực hành Workshop (Hugo Workshop Template)**.
+Trong thời gian này, tôi tập trung phát triển giao diện ứng dụng **Startups Blogs** bằng **React 19, TypeScript và Vite**; đồng thời biên soạn, hoàn thiện tài liệu hướng dẫn thực hành trên **Hugo Workshop Template**.
 
-Danh mục nhật ký chi tiết theo từng tuần:
+Nội dung công việc theo từng tuần được trình bày như sau:
 
 **Tuần 1 (22/06/2026 - 26/06/2026):** [Nghiên cứu React (Vite), thiết kế Wireframe và khởi tạo cấu trúc Frontend](1.1-week1/)
 

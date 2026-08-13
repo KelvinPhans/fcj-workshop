@@ -12,14 +12,14 @@ pre: " <b> 1.7. </b> "
 - Phối hợp với nhóm xử lý các xung đột mã nguồn (merge conflicts) khi ghép tính năng luồng Cognito Auth.
 - Khắc phục các sự cố hiển thị giao diện sau khi hợp nhất mã nguồn.
 
-### Công việc thực hiện trong tuần:
-| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+### Các công việc cần triển khai trong tuần này:
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 1 | - Kiểm tra tổng thể mã nguồn Frontend để rà soát các chuỗi văn bản thông báo lỗi <br> - Lập danh sách các thông báo UI còn chưa đồng nhất | 03/08/2026 | 03/08/2026 | |
-| 2 | - Chuẩn hóa toàn bộ thông báo lỗi form và thông báo toast sang chuẩn tiếng Anh <br> - Đảm bảo tính nhất quán của ngôn ngữ trên giao diện người dùng | 04/08/2026 | 04/08/2026 | |
-| 3 | - Phối hợp với các thành viên nhóm xử lý merge conflicts liên quan đến Cognito Auth <br> - Kiểm tra và hợp nhất các nhánh tính năng về nhánh chính `main` | 05/08/2026 | 05/08/2026 | |
-| 4 | - Khắc phục sự cố giao diện phát sinh sau merge (Sửa nút bấm, hiển thị header) <br> - Xử lý tính ổn định của luồng làm mới phiên đăng nhập người dùng trên UI | 06/08/2026 | 06/08/2026 | |
-| 5 | - Kiểm thử toàn bộ các tuyến đường giao diện (Explore Businesses, News, Auth, UserProfile) <br> - Đảm bảo trải nghiệm người dùng trên Frontend mượt mà và không phát sinh lỗi | 07/08/2026 | 07/08/2026 | |
+| 2 | - Kiểm tra tổng thể mã nguồn Frontend để rà soát các chuỗi văn bản thông báo lỗi <br> - Lập danh sách các thông báo UI còn chưa đồng nhất | 03/08/2026 | 03/08/2026 | |
+| 3 | - Chuẩn hóa toàn bộ thông báo lỗi form và thông báo toast sang chuẩn tiếng Anh <br> - Đảm bảo tính nhất quán của ngôn ngữ trên giao diện người dùng | 04/08/2026 | 04/08/2026 | |
+| 4 | - Phối hợp với các thành viên nhóm xử lý merge conflicts liên quan đến Cognito Auth <br> - Kiểm tra và hợp nhất các nhánh tính năng về nhánh chính `main` | 05/08/2026 | 05/08/2026 | |
+| 5 | - Khắc phục sự cố giao diện phát sinh sau merge (Sửa nút bấm, hiển thị header) <br> - Xử lý tính ổn định của luồng làm mới phiên đăng nhập người dùng trên UI | 06/08/2026 | 06/08/2026 | |
+| 6 | - Kiểm thử toàn bộ các tuyến đường giao diện (Explore Businesses, News, Auth, UserProfile) <br> - Đảm bảo trải nghiệm người dùng trên Frontend mượt mà và không phát sinh lỗi | 07/08/2026 | 07/08/2026 | |
 
 
 ### Kết quả đạt được tuần 7:

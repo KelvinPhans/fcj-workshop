@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-This page records the complete 8-week internship worklog of student **Trần Tuấn Khanh** from **22/06/2026** to **14/08/2026** during the **First Cloud AI Journey (FCAJ)** program.
+This page records the complete 8-week internship worklog of student **Phan Gia Kiệt** from **22/06/2026** to **14/08/2026** during the **First Cloud AI Journey (FCAJ)** program.
 
 The internship responsibilities focused on **Frontend Application Development (React 19, TypeScript, Vite)** for the **Startups Blogs** platform and **Authoring and Refining the Workshop Documentation Suite (Hugo Workshop Template)**.
 

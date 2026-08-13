@@ -12,14 +12,14 @@ pre: " <b> 1.5. </b> "
 - Biên soạn nội dung hướng dẫn các bước chuẩn bị môi trường (Prerequisites).
 - Hỗ trợ nhóm bổ sung các tài liệu hướng dẫn dịch vụ Đám mây AWS (Cognito, EC2, RDS) cho Workshop.
 
-### Công việc thực hiện trong tuần:
-| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+### Các công việc cần triển khai trong tuần này:
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| 1 | - Tiếp nhận yêu cầu chuẩn hóa bộ tài liệu hướng dẫn thực hành Workshop <br> - Nghiên cứu cấu trúc theme Hugo Learn trong thư mục `content/5-Workshop/` | 20/07/2026 | 20/07/2026 | <https://gohugo.io/documentation/> |
-| 2 | - Rà soát và chỉnh sửa nội dung bài lab Tổng quan Workshop (`5.1-Workshop-overview`) <br> - Chuẩn hóa sơ đồ kiến trúc hệ thống và luồng dữ liệu ứng dụng Startups Blogs | 21/07/2026 | 21/07/2026 | |
-| 3 | - Biên soạn tài liệu hướng dẫn bài lab Chuẩn bị môi trường (`5.2-Prerequiste`) <br> - Viết hướng dẫn chi tiết về Node.js, AWS CLI, Docker và cơ sở dữ liệu PostgreSQL | 22/07/2026 | 22/07/2026 | |
-| 4 | - Hỗ trợ nhóm biên soạn tài liệu Cấu hình Amazon Cognito (`5.3-Cognito-setup`) <br> - Viết các bước thiết lập User Pool, Confidential Client và Cognito Groups | 23/07/2026 | 23/07/2026 | <https://docs.aws.amazon.com/cognito/> |
-| 5 | - Rà soát cú pháp định dạng Markdown và kiểm tra hiển thị trên giao diện Hugo <br> - Đảm bảo tài liệu được trình bày rành mạch, kỹ thuật chính xác và dễ theo dõi | 24/07/2026 | 24/07/2026 | |
+| 2 | - Tiếp nhận yêu cầu chuẩn hóa bộ tài liệu hướng dẫn thực hành Workshop <br> - Nghiên cứu cấu trúc theme Hugo Learn trong thư mục `content/5-Workshop/` | 20/07/2026 | 20/07/2026 | <https://gohugo.io/documentation/> |
+| 3 | - Rà soát và chỉnh sửa nội dung bài lab Tổng quan Workshop (`5.1-Workshop-overview`) <br> - Chuẩn hóa sơ đồ kiến trúc hệ thống và luồng dữ liệu ứng dụng Startups Blogs | 21/07/2026 | 21/07/2026 | |
+| 4 | - Biên soạn tài liệu hướng dẫn bài lab Chuẩn bị môi trường (`5.2-Prerequiste`) <br> - Viết hướng dẫn chi tiết về Node.js, AWS CLI, Docker và cơ sở dữ liệu PostgreSQL | 22/07/2026 | 22/07/2026 | |
+| 5 | - Hỗ trợ nhóm biên soạn tài liệu Cấu hình Amazon Cognito (`5.3-Cognito-setup`) <br> - Viết các bước thiết lập User Pool, Confidential Client và Cognito Groups | 23/07/2026 | 23/07/2026 | <https://docs.aws.amazon.com/cognito/> |
+| 6 | - Rà soát cú pháp định dạng Markdown và kiểm tra hiển thị trên giao diện Hugo <br> - Đảm bảo tài liệu được trình bày rành mạch, kỹ thuật chính xác và dễ theo dõi | 24/07/2026 | 24/07/2026 | |
 
 
 ### Kết quả đạt được tuần 5:
