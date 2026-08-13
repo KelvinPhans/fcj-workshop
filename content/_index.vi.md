@@ -7,11 +7,11 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Trần Tuấn Khanh
+&emsp; **Họ và tên:** Phan Gia Kiệt
 
-&emsp; **Số điện thoại:** 0825358779
+&emsp; **Số điện thoại:** 0387763537
 
-&emsp; **Email:** khanhtrantuan12a621@gmail.com
+&emsp; **Email:** phangiakiet65@gmail.com
 
 &emsp; **Trường Đại học:** Đại học Sài Gòn
 
@@ -25,10 +25,7 @@ chapter: false
 
 &emsp; **Thời gian thực tập:** Từ ngày 22/06/2026 đến ngày 15/08/2026
 
-<p align="center">
-  <img src="/images/profile/khanh-avatar.jpg" alt="Ảnh cá nhân" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; margin: 15px 0;">
-</p>
-<p align="center"><em>Ảnh cá nhân</em></p>
+{{< profile-image src="images/profile/kiet-avatar.jpg" alt="Ảnh cá nhân" caption="Ảnh cá nhân" >}}
 
 ### Nội dung báo cáo
 

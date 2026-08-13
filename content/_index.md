@@ -8,11 +8,11 @@ chapter: false
 # Internship Report
 
 ### Student Information:
-&emsp; **Full Name:** Trần Tuấn Khanh
+&emsp; **Full Name:** Phan Gia Kiệt
 
-&emsp; **Phone Number:** 0825358779
+&emsp; **Phone Number:** 0387763537
 
-&emsp; **Email:** khanhtrantuan12a621@gmail.com
+&emsp; **Email:** phangiakiet65@gmail.com
 
 &emsp; **University:** Saigon University
 
@@ -26,10 +26,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 22/06/2026 to 15/08/2026
 
-<p align="center">
-  <img src="/images/profile/khanh-avatar.jpg" alt="Personal photo" style="max-width: 400px; width: 100%; height: auto; border-radius: 8px; margin: 15px 0;">
-</p>
-<p align="center"><em>Personal photo</em></p>
+{{< profile-image src="images/profile/kiet-avatar.jpg" alt="Personal photo" caption="Personal photo" >}}
 
 ### Report Content
 
