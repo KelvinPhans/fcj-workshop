@@ -1,6 +1,6 @@
 ---
 title: "Blog 2 - Securing Cognito Auth with SecretHash and JWT Verification"
-date: 2024-01-01
+date: 2026-07-15
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
@@ -8,6 +8,8 @@ pre: " <b> 3.2. </b> "
 
 # SECURING AMAZON COGNITO AUTHENTICATION WITH SECRETHASH AND JWT VERIFICATION IN NESTJS
 ## Securing Backend Infrastructure with SecretHash HMAC-SHA256 and RSA JWT Signature Verification (`us-east-1`)
+
+{{< blog-image src="images/blogs/cognito-jwt-verification-comparison.jpg" alt="JWT Verification Comparison in Backend" caption="Figure 1. Comparison between insecure JWT decoding and cryptographic signature verification in the backend." >}}
 
 ### 1. Introduction
 When using **Amazon Cognito Confidential App Clients** in enterprise applications, securing communications between the backend server and Cognito User Pools requires strict cryptographic validation.
@@ -83,17 +85,18 @@ Cognito JWT signatures use asymmetric **RS256** (RSA Signature with SHA-256):
   `https://cognito-idp.us-east-1.amazonaws.com/<userPoolId>/.well-known/jwks.json`
 - To verify tokens, the backend fetches JWKS keys matching the token `kid` (Key ID) header and validates the RSA signature.
 
-```mermaid
+{{< mermaid >}}
 graph TD
     Request[Request with sb_access_token Cookie] --> Guard[CognitoAuthGuard]
     Guard --> Verifier[aws-jwt-verify Verifier]
-    Verifier <-->|1. Fetch JWKS RSA Public Keys| JWKS[Cognito JWKS Endpoint us-east-1]
-    Verifier -->|2. Verify RSA Signature| SigCheck{Signature Valid?}
+    Verifier -->|Fetch JWKS Public Keys| JWKS[Cognito JWKS Endpoint]
+    JWKS -->|RSA Public Key| Verifier
+    Verifier -->|Verify RSA Signature| SigCheck{Signature Valid?}
     SigCheck -- No --> Reject[Throw 401 Unauthorized]
     SigCheck -- Yes --> ClaimsCheck{Validate Claims}
     ClaimsCheck -- Expired / Invalid ClientId / Invalid token_use --> Reject
     ClaimsCheck -- Valid --> Pass[Grant Access & Attach User]
-```
+{{< /mermaid >}}
 
 #### NestJS Verification Implementation (`cognito.service.ts` & `cognito-auth.guard.ts`)
 The **Startups Blogs** backend uses `aws-jwt-verify` to automate JWKS caching and validate 5 security requirements:
@@ -120,3 +123,11 @@ Combining **SecretHash (HMAC-SHA256)** for outbound SDK requests and **`aws-jwt-
 - Client secret remains protected.
 - Prevents JWT token tampering.
 - Secures restricted endpoints such as capital raising operations.
+
+### 💬 Discussion
+
+Which library do you use to verify JWT tokens in production projects? Share your experience in the discussion.
+
+👉 **[Join the discussion on Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2242621059836187/)**
+
+*#AWS #AmazonCognito #NestJS #ReactJS #WebSecurity #JWT #HMAC #SoftwareArchitecture #BackendDevelopment #CyberSecurity*

@@ -1,6 +1,6 @@
 ---
 title: "Blog 3 - Managing Cognito Sessions with HttpOnly Cookies and RBAC"
-date: 2024-01-01
+date: 2026-07-25
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
@@ -8,6 +8,8 @@ pre: " <b> 3.3. </b> "
 
 # MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL
 ## Giải pháp Quản lý Phiên Đăng nhập An toàn và Phân quyền Người dùng Cấp Doanh nghiệp (`us-east-1`)
+
+{{< blog-image src="images/blogs/blog3-proposed-session-rbac-architecture.jpg" alt="Kiến trúc quản lý phiên bảo mật và RBAC đề xuất" caption="Hình 1. Kiến trúc quản lý phiên bảo mật và phân quyền RBAC được đề xuất." >}}
 
 ### 1. Giới thiệu bài viết
 Sau khi xác thực thành công credentials của người dùng với **Amazon Cognito**, vấn đề tiếp theo là: *Làm thế nào để duy trì và quản lý phiên đăng nhập (Session Management) một cách an toàn nhất?*
@@ -55,10 +57,9 @@ private getCookieOptions(maxAgeMs?: number) {
 
 Cognito Access Token mặc định có thời hạn 1 giờ. Khi Access Token hết hạn, người dùng không cần phải nhập lại mật khẩu. Hệ thống sẽ tự động gia hạn token thông qua `sb_refresh_token` cookie.
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
-    autonumber
-    actor User as React 19 Client
+    participant User as React 19 Client
     participant BE as NestJS AuthController
     participant Cog as Amazon Cognito (us-east-1)
 
@@ -67,7 +68,7 @@ sequenceDiagram
     BE->>Cog: InitiateAuthCommand (REFRESH_TOKEN_AUTH flow with SecretHash)
     Cog-->>BE: Trả về AccessToken mới & IDToken mới
     BE-->>User: Cập nhật HttpOnly Signed Cookies mới (HTTP 200 OK)
-```
+{{< /mermaid >}}
 
 #### Đăng xuất & Thu hồi Token (Global SignOut & RevokeToken)
 Khi người dùng chọn **Logout**, Backend NestJS thực hiện 2 thao tác:
@@ -108,3 +109,11 @@ Tuyến đường `/raise-capital` hiển thị Wizard 8 bước lập hồ sơ 
 
 ### 5. Kết luận
 Giải pháp quản lý phiên bằng **HttpOnly Signed Cookies** kết hợp luồng **Refresh Token** của Amazon Cognito (`us-east-1`) và hệ thống phân quyền **RBAC PostgreSQL** giúp **Startups Blogs** đạt được sự cân bằng hoàn hảo giữa **Trải nghiệm Người dùng (UX)** và **Bảo mật Cấp Doanh nghiệp (Enterprise Security)**.
+
+### 💬 Thảo luận
+
+Mọi người thường xử lý việc tự động làm mới token ở frontend như thế nào để không làm gián đoạn các API đang thực thi? Hãy cùng chia sẻ giải pháp kỹ thuật.
+
+👉 **[Tham gia thảo luận trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2243690619729231/)**
+
+*#AWS #AmazonCognito #ReactJS #NestJS #WebSecurity #SessionManagement #RBAC #FrontendDev #WebDevelopment*

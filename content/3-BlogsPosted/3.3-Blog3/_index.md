@@ -1,6 +1,6 @@
 ---
 title: "Blog 3 - Managing Cognito Sessions with HttpOnly Cookies and RBAC"
-date: 2024-01-01
+date: 2026-07-25
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
@@ -8,6 +8,8 @@ pre: " <b> 3.3. </b> "
 
 # MANAGING AMAZON COGNITO SESSIONS WITH HTTPONLY COOKIES, REFRESH TOKENS, AND ROLE-BASED ACCESS CONTROL
 ## Enterprise Session Management and Role-Based Authorization (`us-east-1`)
+
+{{< blog-image src="images/blogs/blog3-proposed-session-rbac-architecture.jpg" alt="Proposed secure session management and RBAC architecture" caption="Figure 1. Proposed secure session management and RBAC architecture." >}}
 
 ### 1. Introduction
 Following successful user credential authentication with **Amazon Cognito**, the next consideration is: *How to maintain and manage user sessions securely?*
@@ -55,10 +57,9 @@ private getCookieOptions(maxAgeMs?: number) {
 
 Cognito Access Tokens expire after 1 hour. Upon expiration, users do not need to re-enter credentials. The system automatically renews tokens via the `sb_refresh_token` cookie.
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
-    autonumber
-    actor User as React 19 Client
+    participant User as React 19 Client
     participant BE as NestJS AuthController
     participant Cog as Amazon Cognito (us-east-1)
 
@@ -67,7 +68,7 @@ sequenceDiagram
     BE->>Cog: InitiateAuthCommand (REFRESH_TOKEN_AUTH flow with SecretHash)
     Cog-->>BE: Returns fresh AccessToken & IDToken
     BE-->>User: Issues updated HttpOnly Signed Cookies (HTTP 200 OK)
-```
+{{< /mermaid >}}
 
 #### Logout & Token Revocation
 When a user logs out, NestJS executes:
@@ -108,3 +109,11 @@ The `/raise-capital` route renders an 8-step wizard protected at both Frontend a
 
 ### 5. Conclusion
 Combining **HttpOnly Signed Cookies** with Amazon Cognito (`us-east-1`) **Refresh Token flows** and **PostgreSQL RBAC** achieves an optimal balance between **User Experience** and **Enterprise Security**.
+
+### 💬 Discussion
+
+How do you refresh tokens silently on the frontend without interrupting requests already in progress? Share your technical approach in the discussion.
+
+👉 **[Join the discussion on Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2243690619729231/)**
+
+*#AWS #AmazonCognito #ReactJS #NestJS #WebSecurity #SessionManagement #RBAC #FrontendDev #WebDevelopment*

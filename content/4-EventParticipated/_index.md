@@ -6,16 +6,16 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-During the **First Cloud AI Journey (FCAJ)** internship program, I participated in **two technical community AWS events**. These activities provided valuable technical insights into AWS Cloud Architecture, system design thinking, AWS certification strategies, and modern Agentic AI trends.
+During the **First Cloud AI Journey (FCAJ)** internship program, I participated in **two technical community AWS events**. These activities provided valuable insights into enterprise AWS Cloud Architecture, career development, system design thinking, and modern Agentic AI trends.
 
-### [Event 1: Cloud Architect](4.1-event1/)
-&emsp;**Event Name:** Cloud Architect
+### [Event 1: Enterprise Cloud Architectures and Industry Application](4.1-event1/)
+&emsp;**Event Name:** Enterprise Cloud Architectures and Industry Application
 
-&emsp;**Date:** 11/07/2026
+&emsp;**Date:** 04/07/2026
 
-&emsp;**Role:** Participant / Team participant
+&emsp;**Role:** Attendee
 
-&emsp;**Summary:** A team-based Cloud Architecture knowledge competition. The event helped reinforce Cloud Computing fundamentals, architectural trade-off analysis, and practical preparation strategies for AWS certifications.
+&emsp;**Summary:** An AWS Study Tour featuring industry experts who shared practical perspectives on enterprise cloud architecture, real-world cloud adoption, and the skills expected of future cloud engineers. The event also highlighted structured problem-solving, continuous learning, and professional networking in the cloud industry.
 
 ---
 

@@ -1,105 +1,82 @@
 ---
-title: "Event 1 - Cloud Architect"
-date: 2024-01-01
+title: "Sự kiện 1 - Kiến trúc Cloud doanh nghiệp và ứng dụng thực tế"
+date: 2026-07-04
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Event 1 - Cloud Architect
+# Enterprise Cloud Architectures and Industry Application
 
-## Tổng quan sự kiện
+- **Tên sự kiện:** Enterprise Cloud Architectures and Industry Application
+- **Thời gian:** Ngày 4 tháng 7 năm 2026
+- **Địa điểm:** Tầng 26, Bitexco Financial Tower, số 2 Hải Triều, phường Sài Gòn, Thành phố Hồ Chí Minh, Việt Nam
+- **Vai trò:** Người tham dự
 
-**Cloud Architect** là một hoạt động sinh hoạt cộng đồng thuộc chương trình **AWS First Cloud AI Journey (FCAJ)**, được thiết kế dưới dạng trò chơi thi đấu kiến thức đồng đội về Điện toán đám mây và Thiết kế Kiến trúc Đám mây AWS. Sự kiện được tổ chức nhằm tạo ra một môi trường học tập tương tác, nâng cao tinh thần làm việc nhóm và chia sẻ tri thức thực tế giữa các sinh viên thực tập.
+### Mục đích sự kiện
 
-Trong mỗi trận đấu, hai đội thi sẽ trực tiếp đối kháng với nhau thông qua việc trả lời chuỗi câu hỏi được sắp xếp theo cấp độ từ dễ đến khó. Đội giành được tổng số điểm cao hơn sau các lượt hỏi sẽ giành chiến thắng để tiến vào vòng tiếp theo. Trong trường hợp hai đội bằng điểm khi kết thúc lượt thi, một câu hỏi phụ (tie-breaking question) sẽ được sử dụng; đội nào đưa ra đáp án chính xác nhanh nhất sẽ là đội giành chiến thắng chung cuộc.
+- Tìm hiểu cách doanh nghiệp thiết kế và vận hành hệ thống trên AWS.
+- Nắm bắt xu hướng tuyển dụng Cloud/AI và các kỹ năng doanh nghiệp kỳ vọng ở kỹ sư Cloud trẻ.
+- Trao đổi trực tiếp với chuyên gia trong ngành và trải nghiệm tinh thần cộng đồng của AWS First Cloud AI Journey.
 
-Nội dung câu hỏi trong cuộc thi tập trung vào các chủ đề cốt lõi:
-- Kiến thức nền tảng về Điện toán đám mây (Cloud Computing fundamentals).
-- Các dịch vụ và giải pháp trên Amazon Web Services (AWS).
-- Nguyên lý thiết kế kiến trúc đám mây (Cloud Architecture).
-- Ra quyết định thiết kế kiến trúc hệ thống (Architecture design decisions).
-- Các trụ cột về Bảo mật (Security), Độ tin cậy (Reliability), Khả năng mở rộng (Scalability) và Tối ưu chi phí (Cost considerations).
+### Danh sách diễn giả
 
----
+{{< blog-image src="images/events/enterprise-cloud/overview.jpg" alt="Sự kiện Enterprise Cloud Architectures and Industry Application" caption="Hình 1. Toàn cảnh Study Tour Enterprise Cloud Architectures and Industry Application." >}}
 
-## Hình thức tham gia và Thể lệ cuộc thi
+- **Nguyễn Trần Minh Duy** – Industry Liaison Officer, Swinburne Việt Nam.
+- **Nguyễn Gia Hưng** – Head of Solution Architecture, AWS Việt Nam.
+- **Khang Nguyen** – Solution Architect, Cloud Kinetics.
+- **Vinh Banh** – Senior Data Engineer, Renova Cloud.
 
-Hoạt động thi đấu được thiết kế quy mô cho:
-- **8 đội thi**
-- **5 thành viên mỗi đội**
+### Nội dung nổi bật
 
-Các thành viên trong một đội thi không nhất thiết phải thuộc cùng một nhóm dự án thực tập, giúp tăng cường giao lưu và kết nối giữa các sinh viên từ nhiều nhóm khác nhau.
+#### 1. Kết nối giáo dục, doanh nghiệp và cộng đồng
 
-### Cơ chế kỹ năng đặc biệt trong trò chơi:
+Phần mở đầu giúp em hiểu rõ hơn mối liên hệ giữa chương trình đào tạo tại trường và nhu cầu thực tế của doanh nghiệp. Study Tour tạo cơ hội cho sinh viên đến văn phòng AWS Việt Nam, quan sát môi trường làm việc chuyên nghiệp và học hỏi từ những người đang làm việc trong ngành. Việc tích hợp **AWS Academy** vào môn học Cloud cũng giúp sinh viên xây dựng nền tảng trước khi thực hiện các dự án thực tế.
 
-Cuộc thi tích hợp 2 cơ chế kỹ năng đặc biệt giúp các đội tính toán chiến thuật ra quyết định:
+Điểm em đặc biệt ấn tượng là tinh thần **Pay it Forward** của cộng đồng AWS First Cloud AI Journey, nơi những thành viên có kinh nghiệm quay lại chia sẻ kiến thức và hướng dẫn thế hệ tiếp theo.
 
-#### 1. Minimum Risk (Rủi ro tối thiểu)
-- Mỗi đội thi được quyền sử dụng kỹ năng này **01 lần** duy nhất trong suốt trận đấu.
-- Kỹ năng được sử dụng khi đội thi không chắc chắn về đáp án của câu hỏi.
-- **Nếu trả lời sai:** Đội thi **không bị trừ điểm**.
-- **Nếu trả lời đúng:** Đội thi chỉ nhận được **50% số điểm** của câu hỏi đó.
+#### 2. Thị trường tuyển dụng Cloud/AI
 
-#### 2. Hope Star (Ngôi sao hy vọng)
-- Mỗi đội thi được quyền sử dụng kỹ năng này **01 lần** duy nhất trong suốt trận đấu.
-- Kỹ năng được sử dụng khi đội thi cảm thấy rất tự tin về đáp án của câu hỏi.
-- **Nếu trả lời đúng:** Đội thi được **nhân đôi số điểm** của câu hỏi đó.
-- **Nếu trả lời sai:** Đội thi bị **trừ gấp đôi số điểm** tương ứng.
+{{< blog-image src="images/events/enterprise-cloud/part-1.png" alt="Phần trình bày về thị trường tuyển dụng Cloud và AI" caption="Hình 2. Phần chia sẻ của anh Nguyễn Gia Hưng." >}}
 
----
+Buổi chia sẻ nhấn mạnh rằng một thực tập sinh không nên chỉ biết một số dịch vụ AWS riêng lẻ. Các kiến thức nền như **Linux, Networking, Docker và Kubernetes** ngày càng quan trọng vì kỹ sư cần hiểu cách một hệ thống Cloud hoàn chỉnh vận hành.
 
-## Chia sẻ kinh nghiệm thi Chứng chỉ AWS (AWS Certification Sharing)
+Diễn giả cũng giới thiệu về **Hidden Job Market**. Nhiều cơ hội nghề nghiệp đến từ referral và cộng đồng chuyên môn thay vì chỉ xuất hiện trên trang tuyển dụng, vì vậy năng lực kỹ thuật và networking cần được phát triển song song.
 
-Bên cạnh phần thi đấu kiến thức **Cloud Architect**, sự kiện còn tích hợp phiên chia sẻ chuyên sâu về kinh nghiệm thực tế khi ôn tập và thi các chứng chỉ AWS. 
+#### 3. Kiến trúc Cloud doanh nghiệp trong thực tế
 
-Qua phần chia sẻ của các anh/chị đi trước và thành viên cộng đồng, em đã học hỏi được:
-- Phương pháp lập lộ trình ôn tập các chứng chỉ AWS một cách hệ thống.
-- Kỹ năng chuẩn bị trước kỳ thi, phân bổ thời gian và chiến lược làm bài trắc nghiệm kiến trúc.
-- Tư duy tập trung hiểu bản chất dịch vụ và luồng dữ liệu thay vì học vẹt câu hỏi (dump questions).
-- Phương pháp kết hợp bài tập thực hành (hands-on labs) để ghi nhớ và củng cố lý thuyết.
-- Những góc nhìn thực tế và bài học kinh nghiệm từ các thành viên đã hoàn thành chứng chỉ AWS.
+{{< blog-image src="images/events/enterprise-cloud/part-2.png" alt="Phần trình bày kiến trúc Cloud doanh nghiệp" caption="Hình 3. Chia sẻ về kiến trúc Cloud doanh nghiệp từ đại diện Cloud Kinetics." >}}
 
----
+Các doanh nghiệp thuộc lĩnh vực ngân hàng, tài chính, bảo hiểm và thương mại điện tử đang đưa nhiều workload quan trọng lên Cloud. Đây không chỉ là chuyển ứng dụng sang máy chủ ảo; kiến trúc phải giải quyết đồng thời **bảo mật, tính sẵn sàng cao, khả năng mở rộng, legacy migration, độ tin cậy và chi phí vận hành**.
 
-## Mục tiêu đạt được khi tham gia sự kiện
+#### 4. Tư duy giải quyết vấn đề và phát triển sự nghiệp
 
-- Củng cố và hệ thống hóa kiến thức nền tảng về AWS và Điện toán đám mây.
-- Nâng cao tư duy phân tích và thiết kế kiến trúc hệ thống đám mây.
-- Rèn luyện kỹ năng đọc hiểu, phân tích tình huống kiến trúc dưới áp lực thời gian.
-- Phát triển kỹ năng làm việc nhóm, trao đổi và thống nhất ý kiến khi ra quyết định.
-- Tiếp thu các kinh nghiệm thực tế quý báu cho quá trình chuẩn bị thi chứng chỉ AWS.
+{{< blog-image src="images/events/enterprise-cloud/part-3.png" alt="Phần chia sẻ tư duy giải quyết vấn đề" caption="Hình 4. Chia sẻ về tư duy giải quyết vấn đề có cấu trúc và phát triển sự nghiệp." >}}
 
----
+Khi cần hỗ trợ kỹ thuật, kỹ sư nên trình bày bối cảnh, nêu rõ **giả định**, liệt kê những nội dung đã kiểm tra và đặt câu hỏi cụ thể. Cách làm này giúp quá trình xử lý lỗi và phối hợp nhóm hiệu quả hơn. Các diễn giả còn nhấn mạnh sự phối hợp giữa kỹ thuật, business và marketing, cùng việc duy trì học tập và thực hành đều đặn.
 
-## Kiến thức thu nhận được (Knowledge Gained)
+### Liên hệ cá nhân với dự án Startups Blogs
 
-- **Phân tích trade-off kiến trúc:** Các câu hỏi kiến trúc đám mây luôn đòi hỏi sự đánh đổi (trade-off analysis) giữa bảo mật, hiệu năng và chi phí, thay vì chỉ chọn một dịch vụ đơn lẻ.
-- **Cân bằng các trụ cột kiến trúc:** Một thiết kế kiến trúc tốt phải đảm bảo hài hòa giữa Bảo mật (Security), Độ sẵn sàng (Availability), Khả năng mở rộng (Scalability), Độ tin cậy (Reliability) và Tối ưu chi phí (Cost).
-- **Góc nhìn đa chiều từ thảo luận nhóm:** Việc thảo luận đáp án cùng các thành viên trong đội giúp tiếp cận cùng một bài toán kiến trúc dưới nhiều góc nhìn khác nhau.
-- **Học kết hợp thực hành:** Lộ trình ôn thi chứng chỉ AWS hiệu quả nhất là kết hợp lý thuyết tài liệu chuẩn của AWS với các bài lab thực hành thực tế.
-- **Kỹ năng quản lý thời gian và ra quyết định:** Đánh giá rủi ro và ra quyết định chính xác dưới giới hạn thời gian là năng lực rất quan trọng trong thiết kế hệ thống.
+Với vai trò phụ trách **Frontend React** và biên soạn **tài liệu Hugo Workshop**, em liên hệ kiến thức từ sự kiện với dự án Startups Blogs như sau:
 
----
+- Nhìn Cognito, API Gateway, EC2, RDS PostgreSQL, S3 và CloudFront như một hệ thống thống nhất thay vì các dịch vụ AWS tách rời.
+- Chú ý hơn đến networking, ranh giới bảo mật, tính sẵn sàng và khả năng mở rộng khi mô tả kiến trúc triển khai.
+- Ghi rõ giả định và các bước đã kiểm tra trước khi xử lý lỗi kết nối từ Frontend đến API hoặc từ API đến cơ sở dữ liệu.
+- Hiểu rằng tài liệu kỹ thuật rõ ràng là một phần của giải pháp doanh nghiệp, không chỉ là bản ghi lại các thao tác cấu hình.
 
-## Ứng dụng vào dự án Startups Blogs
+### Bài học rút ra
 
-Những bài học từ sự kiện Cloud Architect đã được áp dụng trực tiếp vào quá trình phát triển dự án thực tập **Startups Blogs**:
+- Củng cố nền tảng Linux, Networking, Docker, Kubernetes và Infrastructure as Code.
+- Xem xét đồng thời bảo mật, khả năng mở rộng, tính sẵn sàng, độ tin cậy và chi phí khi thiết kế hệ thống Cloud.
+- Phân tích bối cảnh và nêu giả định trước khi yêu cầu hỗ trợ kỹ thuật.
+- Phát triển kết nối nghề nghiệp song song với năng lực chuyên môn.
+- Duy trì việc học và thực hành đều đặn thông qua dự án thực tế.
 
-- **Tư duy hệ thống tổng thể:** Nhìn nhận hạ tầng AWS của ứng dụng dưới dạng một hệ thống tổng thể gắn kết (API Gateway, EC2, RDS, Cognito, CloudFront, S3) thay vì các dịch vụ rời rạc.
-- **Xác định ranh giới bảo mật:** Phân định rõ ranh giới xác thực và phân quyền giữa các vai trò (`BUSINESS_OWNER`, `INVESTOR`, `ENTERPRISE_PARTNER`, `ADMIN`) trên Amazon Cognito.
-- **Cân bằng hiệu năng và chi phí:** Áp dụng nguyên lý trade-off khi lựa chọn mô hình EC2 Backend kết hợp RDS PostgreSQL trong private subnet và lưu trữ web tĩnh trên S3 CDN.
-- **Đánh giá dịch vụ AWS:** Đánh giá các giải pháp hạ tầng một cách bài bản trước khi triển khai vào dự án Startups Blogs.
+### Trải nghiệm cá nhân
 
----
+Việc tham dự trực tiếp giúp em có góc nhìn thực tế hơn so với chỉ học qua tài liệu hoặc khóa học trực tuyến. Các phần trình bày kết nối nhiều khía cạnh từ giáo dục, tuyển dụng, kiến trúc doanh nghiệp đến tư duy xử lý vấn đề và phát triển nghề nghiệp. Sự kiện cũng giúp em hiểu rằng một ứng dụng React ổn định phụ thuộc vào chất lượng của toàn bộ kiến trúc Cloud phía sau.
 
-## Hình ảnh
+{{< blog-image src="images/events/enterprise-cloud/meeting.jpeg" alt="Ảnh tập thể cùng diễn giả và người tham dự" caption="Hình 5. Ảnh tập thể cùng các diễn giả và người tham dự sự kiện." >}}
 
-![Hình 1. Toàn cảnh sự kiện Cloud Architect.](/images/events/cloud-architect-event-01.jpg)
-*Hình 1. Toàn cảnh sự kiện Cloud Architect.*
-
----
-
-## Kết luận
-
-Sự kiện **Cloud Architect** là một trải nghiệm thực tế tuyệt vời, giúp em củng cố sâu sắc kiến thức kiến trúc Đám mây AWS, nâng cao kỹ năng làm việc nhóm và tiếp thu những kinh nghiệm ôn thi chứng chỉ AWS rất thực tế. Những tư duy về phân tích trade-off kiến trúc và cân bằng các trụ cột hệ thống đã hỗ trợ em rất nhiều trong quá trình thiết kế và hoàn thiện dự án thực tập Startups Blogs.
+> Tổng thể, sự kiện giúp em tiếp cận Startups Blogs như một hệ thống Cloud có khả năng mở rộng thay vì chỉ là một ứng dụng hoạt động đúng chức năng. Đây cũng là động lực để em tham gia cộng đồng kỹ thuật và tiếp tục học hỏi thông qua các dự án thực tế.

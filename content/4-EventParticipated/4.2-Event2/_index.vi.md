@@ -14,7 +14,7 @@ pre: " <b> 4.2. </b> "
 
 Sự kiện quy tụ đông đảo các sinh viên, lập trình viên, kỹ sư điện toán đám mây và chuyên gia trí tuệ nhân tạo (AI). Tại sự kiện, các đội thi Hackathon đã trực tiếp trình diễn sản phẩm (demo), thuyết trình sơ đồ kiến trúc hệ thống, chia sẻ phương pháp triển khai thực tế và thảo luận về những thách thức khi xây dựng ứng dụng tích hợp Agentic AI.
 
-Mục tiêu tham dự sự kiện của em là tìm hiểu cách các đội thi phát triển sản phẩm AI trong giới hạn thời gian thực tế (khoảng 48 giờ), cũng như nghiên cứu quá trình chuyển đổi một bản thử nghiệm (Proof of Concept - PoC) thành một hệ thống sẵn sàng cho môi trường Production trên nền tảng AWS.
+Với nhiệm vụ phụ trách **Frontend React** và biên soạn **tài liệu Hugo Workshop** cho dự án Startups Blogs, mục tiêu tham dự của em là quan sát cách các đội biến ý tưởng thành sản phẩm AI hoạt động được trong khoảng 48 giờ. Em đặc biệt chú ý cách các đội trình bày luồng người dùng, giải thích kiến trúc AWS và xác định những yêu cầu bổ sung để đưa một bản Proof of Concept (PoC) tiến gần hơn đến môi trường Production.
 
 ---
 
@@ -69,8 +69,7 @@ Các đội thi đã hoàn thiện sản phẩm trong khoảng thời gian **48 
   - Tự động tạo đơn hàng và thêm sản phẩm vào giỏ hàng qua luồng hội thoại.
 - **Ý nghĩa:** Minh họa cách AI Agent có thể thay mặt người dùng thực thi tác vụ thay vì chỉ trả về văn bản phản hồi.
 
-![Hình 1. Kiến trúc AWS được trình bày bởi đội Agentic AI cho đặt món trực tuyến.](/images/events/agentic-ai-online-ordering-architecture.jpg)
-*Hình 1. Kiến trúc AWS được trình bày bởi đội Agentic AI cho đặt món trực tuyến.*
+{{< blog-image src="images/events/agentic-ai-online-ordering-architecture.jpg" alt="Kiến trúc AWS của đội Agentic AI cho đặt món trực tuyến" caption="Hình 1. Kiến trúc AWS được trình bày bởi đội Agentic AI cho đặt món trực tuyến." >}}
 
 ---
 
@@ -84,8 +83,7 @@ Các đội thi đã hoàn thiện sản phẩm trong khoảng thời gian **48 
   - Áp dụng **Guardrails** để kiểm tra và xác thực tính chính xác của dữ liệu trả về.
 - **Ý nghĩa:** Minh họa mô hình hợp tác hiệu quả giữa con người (Data Analyst) và AI Agent.
 
-![Hình 2. Kiến trúc AWS được trình bày bởi đội Agentic AI cho phân tích dữ liệu.](/images/events/agentic-ai-data-analysis-architecture.jpg)
-*Hình 2. Kiến trúc AWS được trình bày bởi đội Agentic AI cho phân tích dữ liệu.*
+{{< blog-image src="images/events/agentic-ai-data-analysis-architecture.jpg" alt="Kiến trúc AWS của đội Agentic AI cho phân tích dữ liệu" caption="Hình 2. Kiến trúc AWS được trình bày bởi đội Agentic AI cho phân tích dữ liệu." >}}
 
 ---
 
@@ -103,8 +101,7 @@ Các đội thi đã hoàn thiện sản phẩm trong khoảng thời gian **48 
 
 *(Lưu ý: Sơ đồ kiến trúc trên thuộc bài trình bày của đội thi Hackathon tại sự kiện, không phải kiến trúc của dự án Startups Blogs).*
 
-![Hình 3. Kiến trúc AWS được trình bày bởi đội theo dõi lưu lượng hành khách.](/images/events/agentic-ai-traffic-tracking-architecture.jpg)
-*Hình 3. Kiến trúc AWS được trình bày bởi đội theo dõi lưu lượng hành khách.*
+{{< blog-image src="images/events/agentic-ai-traffic-tracking-architecture.jpg" alt="Kiến trúc AWS của đội theo dõi lưu lượng hành khách" caption="Hình 3. Kiến trúc AWS được trình bày bởi đội theo dõi lưu lượng hành khách." >}}
 
 ---
 
@@ -132,19 +129,19 @@ Các đội thi đã hoàn thiện sản phẩm trong khoảng thời gian **48 
 
 ## Trải nghiệm cá nhân (Personal Experience)
 
-Đây là lần đầu tiên em có cơ hội tham sát một sự kiện Hackathon quy mô lớn tập trung vào chủ đề **Agentic AI**. Em rất ấn tượng không chỉ bởi các phần demo sản phẩm sáng tạo của các đội thi mà còn bởi những thảo luận sâu sắc về bài toán đưa AI vào môi trường Production.
+Đây là lần đầu tiên em có cơ hội quan sát một Hackathon quy mô lớn tập trung vào **Agentic AI**. Ở góc nhìn của người phụ trách Frontend, em chú ý cách mỗi đội chuyển một quy trình agent phức tạp thành giao diện dễ hiểu, có trạng thái rõ ràng và đủ thuyết phục trong thời gian demo ngắn.
 
-Sự kiện đã giúp em nhận ra rằng việc phát triển một ứng dụng AI đòi hỏi nhiều hơn là chỉ chọn một mô hình ngôn ngữ lớn (LLM); các yếu tố bảo mật, phân quyền, độ tin cậy, giám sát và tối ưu chi phí mới là chìa khóa quyết định sự thành bại của sản phẩm. Việc giao lưu cùng các bạn sinh viên, kỹ sư phần mềm và các chuyên gia AWS tại sự kiện đã mang lại cho em nhiều góc nhìn kỹ thuật và định hướng nghề nghiệp quý báu.
+Sự kiện cũng giúp em thay đổi cách biên soạn tài liệu kỹ thuật. Một phần trình bày tốt cần kết nối được bài toán người dùng, luồng thao tác, kiến trúc AWS, cơ chế bảo mật, rủi ro vận hành và kết quả đạt được thay vì chỉ đưa ra một sơ đồ độc lập. Em sẽ áp dụng bài học này khi tiếp tục hoàn thiện giao diện Startups Blogs và viết các bước thực hành trong Hugo Workshop.
 
 ---
 
 ## Bài học rút ra (Lessons Learned)
 
-- Luôn xuất phát từ bài toán thực tế của người dùng trước khi lựa chọn công nghệ.
-- Đảm bảo sự cân bằng giữa tính năng, độ chính xác, an toàn bảo mật và chi phí vận hành.
-- Thiết kế cơ chế phân quyền (RBAC) và bảo vệ dữ liệu ngay từ đầu khi ứng dụng AI truy cập dữ liệu hệ thống.
-- Phân biệt rõ ràng tiêu chuẩn giữa một bản thiết kế PoC và một kiến trúc Production.
-- Tham gia các cộng đồng công nghệ và sự kiện Hackathon là phương pháp học hỏi thực tế rất hiệu quả.
+- Xuất phát từ quy trình thực tế của người dùng trước khi lựa chọn mô hình AI hoặc dịch vụ AWS.
+- Thiết kế trạng thái Frontend rõ ràng cho tác vụ agent kéo dài, lỗi, bước xác nhận và điểm cần con người phê duyệt.
+- Tài liệu phải thể hiện quan hệ giữa thao tác giao diện, Backend API và dịch vụ AWS thay vì mô tả các bước rời rạc.
+- Xem RBAC, bảo vệ dữ liệu, observability và kiểm soát chi phí là yêu cầu Production ngay từ đầu.
+- Phân biệt rõ tính năng Startups Blogs đã triển khai với những ý tưởng Agentic AI chỉ mới ở định hướng nghiên cứu.
 
 <!-- Event 2 personal photos will be added later. -->
 

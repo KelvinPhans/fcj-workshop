@@ -1,6 +1,6 @@
 ---
 title: "Blog 1 - Building Secure Authentication with Amazon Cognito"
-date: 2024-01-01
+date: 2026-07-05
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
@@ -22,12 +22,7 @@ Bài viết này trình bày chi tiết cách tích hợp **Amazon Cognito** và
 
 Một trong những quyết định kiến trúc quan trọng nhất của Startups Blogs là **không bao giờ gọi trực tiếp Amazon Cognito SDK từ trình duyệt React**. Tất cả các thao tác xác thực (Đăng ký, Xác thực Email, Đăng nhập, Làm mới phiên, Đặt lại mật khẩu) đều được điều hướng qua **NestJS Backend Controller**.
 
-```mermaid
-graph TD
-    Client[React 19 Browser] <-->|1. HTTPS / REST API| Backend[NestJS Backend API]
-    Backend <-->|2. AWS SDK & ClientSecret HMAC-SHA256| Cognito[Amazon Cognito User Pool us-east-1]
-    Backend <-->|3. User Identity Mapping| DB[(PostgreSQL Database)]
-```
+{{< blog-image src="images/blogs/cognito-auth-architecture-comparison.jpg" alt="Kiến trúc xác thực Cognito thông qua NestJS Backend" caption="Hình 1. So sánh cách gọi Cognito trực tiếp từ trình duyệt và kiến trúc xác thực an toàn thông qua Backend." >}}
 
 #### Lý do kỹ thuật cốt lõi:
 1. **Bảo vệ tuyệt đối Cognito Client Secret**:
@@ -41,10 +36,9 @@ graph TD
 
 ### 3. Kiến trúc Luồng Xác thực Toàn diện (End-to-End Authentication Flows)
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
-    autonumber
-    actor User as Người dùng
+    participant User as Nguoi dung
     participant FE as React 19 Frontend
     participant BE as NestJS AuthController
     participant Cog as Amazon Cognito (us-east-1)
@@ -62,7 +56,7 @@ sequenceDiagram
     BE->>Cog: ConfirmSignUpCommand (with SecretHash)
     BE->>DB: Update User (status: ACTIVE, emailVerified: true)
     BE-->>FE: HTTP 200 OK (Email Verified)
-```
+{{< /mermaid >}}
 
 #### A. Quy trình Đăng ký Công khai (Public Registration)
 - **Ranh giới Phân quyền Đăng ký**: Đăng ký công khai trên giao diện web chỉ giới hạn cho 3 vai trò: `BUSINESS_OWNER`, `INVESTOR`, và `ENTERPRISE_PARTNER`. Vai trò `ADMIN` được quản lý và cấp phát nội bộ, **không mở đăng ký công khai**.
@@ -89,4 +83,12 @@ Bằng cách định tuyến tất cả request xác thực qua NestJS Backend, 
 - Ngăn chặn triệt để nguy cơ lộ token qua tấn công XSS nhờ HttpOnly Signed Cookies.
 - Đảm bảo sự đồng bộ nhất quán giữa danh tính đám mây Cognito và cơ sở dữ liệu ứng dụng PostgreSQL.
 
-Trong bài viết tiếp theo (Blog 2), chúng ta sẽ đi sâu vào kỹ thuật tính toán **SecretHash HMAC-SHA256** và cơ chế thẩm định chữ ký RSA của JWT bằng **`aws-jwt-verify`**.
+Trong bài viết tiếp theo (Blog 2), em sẽ đi sâu vào kỹ thuật tính toán **SecretHash HMAC-SHA256** và cơ chế thẩm định chữ ký RSA của JWT bằng **`aws-jwt-verify`**.
+
+### 💬 Thảo luận
+
+Mọi người thường lưu token xác thực trong `localStorage` hay cookie? Hãy cùng chia sẻ phương án và kinh nghiệm thực tế.
+
+👉 **[Tham gia thảo luận trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2242620649836228/)**
+
+*#AWS #AmazonCognito #ReactJS #NestJS #WebSecurity #SoftwareArchitecture #Fullstack #DevOps #FrontendDev #WebDevelopment*

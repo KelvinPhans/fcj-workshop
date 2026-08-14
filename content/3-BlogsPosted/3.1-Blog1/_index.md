@@ -1,6 +1,6 @@
 ---
 title: "Blog 1 - Building Secure Authentication with Amazon Cognito"
-date: 2024-01-01
+date: 2026-07-05
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
@@ -22,12 +22,7 @@ This article details how **Amazon Cognito** is integrated into a Full-Stack arch
 
 A core architectural decision in Startups Blogs is **never invoking the Amazon Cognito SDK directly from the React browser client**. All authentication flows (Register, Verify Email, Login, Refresh, Password Reset) are proxied through **NestJS Backend Controllers**.
 
-```mermaid
-graph TD
-    Client[React 19 Browser] <-->|1. HTTPS / REST API| Backend[NestJS Backend API]
-    Backend <-->|2. AWS SDK & ClientSecret HMAC-SHA256| Cognito[Amazon Cognito User Pool us-east-1]
-    Backend <-->|3. User Identity Mapping| DB[(PostgreSQL Database)]
-```
+{{< blog-image src="images/blogs/cognito-auth-architecture-comparison.jpg" alt="Cognito authentication architecture through the NestJS backend" caption="Figure 1. Comparison between direct browser integration and secure backend-mediated Cognito authentication." >}}
 
 #### Core Technical Rationale:
 1. **Absolute Cognito Client Secret Protection**:
@@ -41,10 +36,9 @@ graph TD
 
 ### 3. End-to-End Authentication Flows
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
-    autonumber
-    actor User as User
+    participant User as User
     participant FE as React 19 Frontend
     participant BE as NestJS AuthController
     participant Cog as Amazon Cognito (us-east-1)
@@ -62,7 +56,7 @@ sequenceDiagram
     BE->>Cog: ConfirmSignUpCommand (with SecretHash)
     BE->>DB: Update User (status: ACTIVE, emailVerified: true)
     BE-->>FE: HTTP 200 OK (Email Verified)
-```
+{{< /mermaid >}}
 
 #### A. Public Registration Boundary
 - **Role Boundary**: Public registration is strictly restricted to `BUSINESS_OWNER`, `INVESTOR`, and `ENTERPRISE_PARTNER`. The `ADMIN` role is managed internally and **not publicly registrable**.
@@ -88,3 +82,11 @@ By proxying all authentication requests through the NestJS backend, **Startups B
 - Keeps `COGNITO_CLIENT_SECRET` isolated on the server.
 - Prevents token exposure to XSS via HttpOnly Signed Cookies.
 - Ensures consistency between cloud identity and PostgreSQL application data.
+
+### 💬 Discussion
+
+Where do you usually store your tokens when handling authentication—in `localStorage` or cookies? Share your approach in the discussion.
+
+👉 **[Join the discussion on Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2242620649836228/)**
+
+*#AWS #AmazonCognito #ReactJS #NestJS #WebSecurity #SoftwareArchitecture #Fullstack #DevOps #FrontendDev #WebDevelopment*

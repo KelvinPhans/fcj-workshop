@@ -1,6 +1,6 @@
 ---
 title: "Blog 2 - Securing Cognito Auth with SecretHash and JWT Verification"
-date: 2024-01-01
+date: 2026-07-15
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
@@ -8,6 +8,8 @@ pre: " <b> 3.2. </b> "
 
 # SECURING AMAZON COGNITO AUTHENTICATION WITH SECRETHASH AND JWT VERIFICATION IN NESTJS
 ## Đảm bảo An toàn Tuyệt đối cho Backend với SecretHash HMAC-SHA256 và Thẩm định Chữ ký RSA JWT (`us-east-1`)
+
+{{< blog-image src="images/blogs/cognito-jwt-verification-comparison.jpg" alt="So sánh cách xác minh JWT trong Backend" caption="Hình 1. So sánh việc decode JWT không an toàn và xác minh chữ ký mật mã tại Backend." >}}
 
 ### 1. Giới thiệu bài viết
 Trong các ứng dụng doanh nghiệp sử dụng **Amazon Cognito Confidential App Client**, việc bảo vệ giao tiếp giữa Backend Server và Cognito User Pool đòi hỏi các cơ chế mã hóa và thẩm định nghiêm ngặt.
@@ -83,17 +85,18 @@ Chữ ký của Cognito JWT được ký bằng thuật toán mã hóa bất đ�
   `https://cognito-idp.us-east-1.amazonaws.com/<userPoolId>/.well-known/jwks.json`
 - Để thẩm định token, Backend phải tải JWKS, chọn đúng `kid` (Key ID) trùng với header của token, và dùng Public Key để kiểm tra chữ ký RSA.
 
-```mermaid
+{{< mermaid >}}
 graph TD
     Request[Request with sb_access_token Cookie] --> Guard[CognitoAuthGuard]
     Guard --> Verifier[aws-jwt-verify Verifier]
-    Verifier <-->|1. Fetch JWKS RSA Public Keys| JWKS[Cognito JWKS Endpoint us-east-1]
-    Verifier -->|2. Verify RSA Signature| SigCheck{Signature Valid?}
+    Verifier -->|Fetch JWKS Public Keys| JWKS[Cognito JWKS Endpoint]
+    JWKS -->|RSA Public Key| Verifier
+    Verifier -->|Verify RSA Signature| SigCheck{Signature Valid?}
     SigCheck -- No --> Reject[Throw 401 Unauthorized]
     SigCheck -- Yes --> ClaimsCheck{Validate Claims}
     ClaimsCheck -- Expired / Invalid ClientId / Invalid token_use --> Reject
     ClaimsCheck -- Valid --> Pass[Grant Access & Attach User]
-```
+{{< /mermaid >}}
 
 #### Triển khai Thẩm định trong NestJS Backend (`cognito.service.ts` & `cognito-auth.guard.ts`)
 Dự án **Startups Blogs** sử dụng thư viện chính thức `aws-jwt-verify` từ AWS để tự động hóa việc caching JWKS và kiểm tra 5 tiêu chuẩn an toàn:
@@ -145,3 +148,11 @@ Việc kết hợp **SecretHash (HMAC-SHA256)** ở chiều gửi request tới 
 - Không lộ Client Secret.
 - Chống tuyệt đối hành vi giả mạo JWT Token.
 - Bảo vệ các tuyến đường dữ liệu quan trọng như đăng ký gọi vốn.
+
+### 💬 Thảo luận
+
+Mọi người thường sử dụng thư viện nào để xác minh JWT token trong dự án thực tế? Hãy cùng chia sẻ kinh nghiệm.
+
+👉 **[Tham gia thảo luận trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/posts/2242621059836187/)**
+
+*#AWS #AmazonCognito #NestJS #ReactJS #WebSecurity #JWT #HMAC #SoftwareArchitecture #BackendDevelopment #CyberSecurity*

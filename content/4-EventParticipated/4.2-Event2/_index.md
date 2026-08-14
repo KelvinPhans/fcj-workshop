@@ -14,7 +14,7 @@ pre: " <b> 4.2. </b> "
 
 The event brought together students, software engineers, cloud professionals, and AI practitioners. Participating Hackathon teams demonstrated their live products, presented cloud architecture diagrams, shared practical implementation strategies, and discussed engineering challenges in building AI-powered applications.
 
-My objective in attending the event was to learn how teams developed AI solutions within a constrained timeframe (~48 hours) and to study how a Proof of Concept (PoC) evolves into a production-ready system hosted on AWS.
+As a student responsible for the **React frontend** and **Hugo workshop documentation** of the Startups Blogs project, I attended the event to observe how teams transformed ideas into working AI products within approximately 48 hours. I also focused on how they communicated user flows, presented AWS architectures, and identified the additional requirements needed to move a Proof of Concept (PoC) toward production.
 
 ---
 
@@ -69,8 +69,7 @@ Participating teams developed their solutions within an intensive **48-hour** de
   - Automatically generating orders and adding items to the cart through conversational workflows.
 - **Key Takeaway:** Demonstrated how an AI Agent can execute user tasks directly rather than returning text responses.
 
-![Figure 1. AWS architecture presented by the Agentic AI online ordering team.](/images/events/agentic-ai-online-ordering-architecture.jpg)
-*Figure 1. AWS architecture presented by the Agentic AI online ordering team.*
+{{< blog-image src="images/events/agentic-ai-online-ordering-architecture.jpg" alt="AWS architecture presented by the Agentic AI online ordering team" caption="Figure 1. AWS architecture presented by the Agentic AI online ordering team." >}}
 
 ---
 
@@ -84,8 +83,7 @@ Participating teams developed their solutions within an intensive **48-hour** de
   - Applying **Guardrails** to validate data accuracy and output formatting.
 - **Key Takeaway:** Demonstrated effective human-in-the-loop collaboration between analysts and AI Agents.
 
-![Figure 2. AWS architecture presented by the Agentic AI data analysis team.](/images/events/agentic-ai-data-analysis-architecture.jpg)
-*Figure 2. AWS architecture presented by the Agentic AI data analysis team.*
+{{< blog-image src="images/events/agentic-ai-data-analysis-architecture.jpg" alt="AWS architecture presented by the Agentic AI data analysis team" caption="Figure 2. AWS architecture presented by the Agentic AI data analysis team." >}}
 
 ---
 
@@ -103,8 +101,7 @@ Participating teams developed their solutions within an intensive **48-hour** de
 
 *(Note: The above AWS architecture belongs to the presentation delivered by a Hackathon team and does not represent the Startups Blogs architecture).*
 
-![Figure 3. AWS architecture presented by the passenger traffic tracking team.](/images/events/agentic-ai-traffic-tracking-architecture.jpg)
-*Figure 3. AWS architecture presented by the passenger traffic tracking team.*
+{{< blog-image src="images/events/agentic-ai-traffic-tracking-architecture.jpg" alt="AWS architecture presented by the passenger traffic tracking team" caption="Figure 3. AWS architecture presented by the passenger traffic tracking team." >}}
 
 ---
 
@@ -132,19 +129,19 @@ Participating teams developed their solutions within an intensive **48-hour** de
 
 ## Personal Experience
 
-This event provided my first opportunity to closely observe a large-scale Hackathon centered on **Agentic AI**. I was impressed not only by the creative product demonstrations but also by the rigorous discussions surrounding production readiness.
+This was my first opportunity to closely observe a large-scale Hackathon centered on **Agentic AI**. From a frontend perspective, I paid particular attention to how each team translated a complex agent workflow into an interface that users could understand and operate within a short demonstration.
 
-The experience highlighted that building AI applications involves much more than selecting a foundational LLM model; security, authorization, reliability, observability, and cost management are the critical factors determining real-world success. Interacting with students, software engineers, and AWS specialists provided invaluable technical perspectives and career insights.
+The event also changed how I approach technical documentation. A convincing presentation must connect the user problem, application flow, AWS architecture, security controls, operational risks, and measurable outcome rather than showing a diagram in isolation. I plan to apply this lesson when refining the Startups Blogs interface and writing the step-by-step Hugo workshop.
 
 ---
 
 ## Lessons Learned
 
-- Always start with real user problems before selecting technologies.
-- Balance functional features, output accuracy, security, and operational costs.
-- Design authorization (RBAC) and data protection from the ground up when AI accesses application data.
-- Clearly differentiate design standards between PoC prototypes and production architectures.
-- Active participation in technical communities and Hackathons serves as an effective learning channel.
+- Start with the user's actual workflow before selecting an AI model or AWS service.
+- Design frontend states that make long-running agent actions, errors, confirmations, and human approval points understandable.
+- Document the relationship between each interface action, backend API, and AWS service instead of presenting disconnected implementation steps.
+- Treat RBAC, data protection, observability, and cost controls as production requirements from the beginning.
+- Clearly distinguish implemented Startups Blogs features from future Agentic AI research ideas.
 
 <!-- Event 2 personal photos will be added later. -->
 
