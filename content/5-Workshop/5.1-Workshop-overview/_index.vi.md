@@ -13,16 +13,9 @@ Trong bài hướng dẫn này, chúng ta sẽ tìm hiểu kiến trúc tổng t
 #### 1. Sơ đồ Kiến trúc AWS Enterprise
 Hệ thống được thiết kế theo chuẩn Enterprise Microservices & Serverless kết hợp, tách biệt hoàn toàn giữa Frontend, Backend, Database và Hệ thống Xác thực. Toàn bộ hạ tầng được tự động hóa bằng **Terraform** (Infrastructure as Code).
 
-```mermaid
-graph TD
-    User([User Browser]) <-->|CloudFront CDN| S3_FE[Amazon S3 Frontend Hosting us-east-1]
-    User <-->|HTTPS / REST API| APIGW[Amazon API Gateway]
-    APIGW <-->|Forward Traffic| EC2[Amazon EC2 Backend NestJS + PM2]
-    EC2 <-->|Prisma ORM / Port 5432| RDS[(Amazon RDS PostgreSQL Private Subnet)]
-    EC2 <-->|aws-sdk & aws-jwt-verify| Cognito[Amazon Cognito User Pool us-east-1]
-    EC2 <-->|S3 SDK / Image Upload| S3_Storage[Amazon S3 Media Bucket]
-    EC2 <-->|Logs & Metrics| CloudWatch[Amazon CloudWatch Monitoring]
-```
+![Kiến trúc AWS Enterprise của Startups Blogs](/images/5-Workshop/5.1-Workshop-overview/enterprise-aws-architecture.png)
+
+*Hình 1. Kiến trúc AWS Enterprise của hệ thống Startups Blogs.*
 
 #### 2. Phân định rõ các vai trò và phạm vi đăng ký
 Hệ thống quản lý 4 vai trò người dùng chính (`UserRole`):
@@ -46,7 +39,3 @@ Hệ thống quản lý 4 vai trò người dùng chính (`UserRole`):
   - Hệ thống Thông báo thời gian thực (Real-time Notification System với Notification Schema & WebSocket).
   - Tối ưu hóa luồng phê duyệt gọi vốn đa tầng.
   - Mở rộng bộ kiểm thử tự động E2E.
-
-> Screenshot required:
-> Sơ đồ tổng quan kiến trúc hệ thống Startups Blogs Enterprise AWS Architecture.
-> Hide AWS account identifiers and sensitive values before capturing.

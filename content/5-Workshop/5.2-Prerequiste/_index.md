@@ -23,19 +23,15 @@ The Startups Blogs domain data model is declared inside `backend/prisma/schema.p
 
 Execute the following commands to generate Prisma Client and apply migrations:
 
-```bash
-cd backend
-npx prisma generate
-npx prisma db push
-```
+<div style="width: 100%; margin: 16px 0;">
+  <img src="/images/5-Workshop/5.2-Prerequiste/prisma-push.png" alt="Successful Prisma database synchronization" style="display: block; width: 100%; height: auto;">
+  <p style="margin: 8px 0 0; text-align: left;"><em>Figure 1. Successfully synchronizing the PostgreSQL database with the Prisma schema using <code>npx prisma db push</code>.</em></p>
+</div>
 
 #### 3. Seed Reference Data
 Seed taxonomy records for industries, business types, stages, articles, and sample accounts:
 
-```bash
-npx prisma db seed
-```
-
-> Screenshot required:
-> Successful execution of `npx prisma db push` showing PostgreSQL tables `users`, `businesses`, `funding_opportunities`, `articles`, and `change_proposals`.
-> Hide AWS account identifiers and sensitive values before capturing.
+<div style="width: 100%; margin: 16px 0;">
+  <img src="/images/5-Workshop/5.2-Prerequiste/prisma-seed.png" alt="Successful Prisma seed execution" style="display: block; width: 100%; height: auto;">
+  <p style="margin: 8px 0 0; text-align: left;"><em>Figure 2. Successfully seeding reference data and sample accounts using <code>npx prisma db seed</code>.</em></p>
+</div>

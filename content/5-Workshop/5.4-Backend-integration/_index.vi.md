@@ -1,9 +1,9 @@
 ---
 title: "Tích hợp Backend NestJS"
 date: 2024-01-01
-weight: 4
+weight: 5
 chapter: false
-pre: " <b> 5.4. </b> "
+pre: " <b> 5.5. </b> "
 ---
 
 ### Tích hợp Backend NestJS, REST APIs, Amazon S3 Upload & Security Guards
@@ -34,6 +34,23 @@ Trong phần này, chúng ta sẽ xem xét chi tiết cách NestJS Backend tri�
   - `GET /admin/stats`: Xem thống kê toàn hệ thống.
   - `POST /admin/proposals/business/:id`: Tạo Đề xuất thay đổi dữ liệu JSON.
   - `POST /proposals/:id/approve` & `POST /proposals/:id/reject`: Founder xem Diff/Merge và chấp thuận/từ chối.
+
+##### Kiểm tra Businesses API công khai
+
+Khởi chạy Backend NestJS và mở `http://localhost:3000/businesses`, hoặc gửi request tương đương bằng API client:
+
+```bash
+curl http://localhost:3000/businesses
+```
+
+Kết quả xác nhận route công khai `GET /businesses` đọc dữ liệu Business qua Prisma và trả về JSON có cấu trúc, bao gồm ID, slug, thông tin doanh nghiệp, trạng thái phê duyệt và xác minh, financial highlights, các bộ đếm và thông tin owner. Runtime hiện tại chưa bật global prefix `/api/v1`, vì vậy URL local là `/businesses`, đúng với ghi chú trong `API_LIST.md`.
+
+Ảnh là JSON response được trình duyệt hiển thị trực tiếp, không phải giao diện Swagger. Swagger/OpenAPI vẫn có thể được sử dụng riêng để cung cấp tài liệu endpoint tương tác khi được bật.
+
+<div style="width: 100%; margin: 16px 0;">
+  <img src="/images/5-Workshop/5.5-Backend/businesses-api-response.png" alt="JSON response từ Businesses API công khai" style="display: block; width: 100%; height: auto;">
+  <p style="margin: 8px 0 0; text-align: left;"><em>Hình 1. JSON response thành công từ GET /businesses trên NestJS server local.</em></p>
+</div>
 
 #### 2. Thẩm định Chữ ký RSA JWT & Issuer `us-east-1` (`CognitoStrategy`)
 
@@ -75,7 +92,3 @@ findAllForAdmin() {
   return this.businessesService.findAllForAdmin(...);
 }
 ```
-
-> Screenshot required:
-> NestJS Swagger API Documentation showing protected endpoints for Businesses, Funding Opportunities, Upload, and Admin routes.
-> Hide AWS account identifiers and sensitive values before capturing.

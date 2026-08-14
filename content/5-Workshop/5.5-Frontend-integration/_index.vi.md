@@ -1,9 +1,9 @@
 ---
 title: "Tích hợp Frontend React"
 date: 2024-01-01
-weight: 5
+weight: 6
 chapter: false
-pre: " <b> 5.5. </b> "
+pre: " <b> 5.6. </b> "
 ---
 
 ### Tích hợp Frontend React 19, Zustand State, REST APIs & Admin Dashboard

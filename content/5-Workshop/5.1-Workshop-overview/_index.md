@@ -13,16 +13,9 @@ In this section, we cover the overall architecture of **Startups Blogs** and the
 #### 1. Enterprise AWS Architecture Diagram
 The system is built according to Enterprise Microservices & Serverless best practices, isolating Frontend, Backend, Database, and Identity Management. 100% of the infrastructure is automated via **Terraform** (Infrastructure as Code).
 
-```mermaid
-graph TD
-    User([User Browser]) <-->|CloudFront CDN| S3_FE[Amazon S3 Frontend Hosting us-east-1]
-    User <-->|HTTPS / REST API| APIGW[Amazon API Gateway]
-    APIGW <-->|Forward Traffic| EC2[Amazon EC2 Backend NestJS + PM2]
-    EC2 <-->|Prisma ORM / Port 5432| RDS[(Amazon RDS PostgreSQL Private Subnet)]
-    EC2 <-->|aws-sdk & aws-jwt-verify| Cognito[Amazon Cognito User Pool us-east-1]
-    EC2 <-->|S3 SDK / Image Upload| S3_Storage[Amazon S3 Media Bucket]
-    EC2 <-->|Logs & Metrics| CloudWatch[Amazon CloudWatch Monitoring]
-```
+![Startups Blogs Enterprise AWS Architecture](/images/5-Workshop/5.1-Workshop-overview/enterprise-aws-architecture.png)
+
+*Figure 1. Startups Blogs Enterprise AWS architecture.*
 
 #### 2. User Roles & Registration Boundary
 The system defines 4 major roles (`UserRole`):
@@ -46,7 +39,3 @@ The system defines 4 major roles (`UserRole`):
   - Real-time Notification System (Notification Schema & WebSocket/polling).
   - Advanced multi-tier funding approval workflow.
   - Expanded automated E2E test coverage.
-
-> Screenshot required:
-> Startups Blogs System Architecture and Cognito Auth Flow Diagram.
-> Hide AWS account identifiers and sensitive values before capturing.

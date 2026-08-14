@@ -1,9 +1,9 @@
 ---
 title: "NestJS Backend Integration"
 date: 2024-01-01
-weight: 4
+weight: 5
 chapter: false
-pre: " <b> 5.4. </b> "
+pre: " <b> 5.5. </b> "
 ---
 
 ### NestJS Backend Integration, REST APIs, Amazon S3 Upload & Security Guards
@@ -34,6 +34,23 @@ In this section, we examine how the NestJS backend implements **REST APIs**, int
   - `GET /admin/stats`: Overview system statistics.
   - `POST /admin/proposals/business/:id`: Create JSON change proposal.
   - `POST /proposals/:id/approve` & `POST /proposals/:id/reject`: Founder Diff/Merge review & approval.
+
+##### Verify the public Businesses API
+
+Start the NestJS backend and open `http://localhost:3000/businesses`, or send the equivalent request with an API client:
+
+```bash
+curl http://localhost:3000/businesses
+```
+
+The response confirms that the public `GET /businesses` route reads Business records through Prisma and returns structured JSON containing identifiers, slugs, business information, approval and verification states, financial highlights, counters, and owner data. The current runtime does not enable a global `/api/v1` prefix, so the local URL is `/businesses`, consistent with `API_LIST.md`.
+
+The screenshot is a direct browser rendering of the JSON response, not the Swagger UI. Swagger/OpenAPI remains useful for interactive endpoint documentation when enabled separately.
+
+<div style="width: 100%; margin: 16px 0;">
+  <img src="/images/5-Workshop/5.5-Backend/businesses-api-response.png" alt="JSON response from the public Businesses API" style="display: block; width: 100%; height: auto;">
+  <p style="margin: 8px 0 0; text-align: left;"><em>Figure 1. Successful JSON response from GET /businesses on the local NestJS server.</em></p>
+</div>
 
 #### 2. Cryptographic RSA JWT Signature Verification & Issuer `us-east-1` (`CognitoStrategy`)
 
@@ -75,7 +92,3 @@ findAllForAdmin() {
   return this.businessesService.findAllForAdmin(...);
 }
 ```
-
-> Screenshot required:
-> NestJS Swagger API Documentation showing protected endpoints for Businesses, Funding Opportunities, Upload, and Admin routes.
-> Hide AWS account identifiers and sensitive values before capturing.

@@ -1,9 +1,9 @@
 ---
 title: "Tự động hóa Terraform & Bảo mật"
 date: 2024-01-01
-weight: 6
+weight: 7
 chapter: false
-pre: " <b> 5.6. </b> "
+pre: " <b> 5.7. </b> "
 ---
 
 ### Tự động hóa Hạ tầng bằng Terraform (IaC), Giám sát CloudWatch & Rà soát Bảo mật

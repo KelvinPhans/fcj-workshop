@@ -1,9 +1,9 @@
 ---
 title: "React Frontend Integration"
 date: 2024-01-01
-weight: 5
+weight: 6
 chapter: false
-pre: " <b> 5.5. </b> "
+pre: " <b> 5.6. </b> "
 ---
 
 ### React 19 Frontend Integration, Zustand State, REST APIs & Admin Dashboard
