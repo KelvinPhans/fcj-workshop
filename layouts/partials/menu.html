@@ -48,7 +48,7 @@
                 {{ range .AllTranslations }}
                 <option
                   id="{{ .Lang }}"
-                  value="{{ .RelPermalink }}"
+                  value="{{ .Permalink }}"
                   {{ if eq $pageLang .Lang }}selected{{ end }}
                 >
                   {{ if eq .Lang "en" }}English{{ else if eq .Lang "vi" }}Tiếng Việt{{ else }}{{ .Lang }}{{ end }}
