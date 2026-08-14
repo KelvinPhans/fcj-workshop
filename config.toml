@@ -1,6 +1,9 @@
 baseURL = "/"
 relativeURLs = false
-canonifyURLs = false
+# Rewrite root-relative asset URLs with the deployment base path. This keeps
+# /images/... references working both locally and under GitHub Pages at
+# /fcj-workshop/.
+canonifyURLs = true
 defaultContentLanguage = "en"
 
 # Change the default theme to be use when building the site with Hugo
